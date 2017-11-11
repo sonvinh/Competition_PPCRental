@@ -39,11 +39,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -109,7 +114,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -118,6 +122,48 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DISTRICT.cs">
+      <DependentUpon>PPCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FEATURE.cs">
+      <DependentUpon>PPCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PPCModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PPCModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PPCModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PPCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PPCModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PPCModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PROJECT_STATUS.cs">
+      <DependentUpon>PPCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PROPERTY.cs">
+      <DependentUpon>PPCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PROPERTY_FEATURE.cs">
+      <DependentUpon>PPCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PROPERTY_TYPE.cs">
+      <DependentUpon>PPCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\STREET.cs">
+      <DependentUpon>PPCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USER.cs">
+      <DependentUpon>PPCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WARD.cs">
+      <DependentUpon>PPCModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -133,6 +179,23 @@
     <Content Include="Images\3.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\PPCModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PPCModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PPCModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PPCModel.edmx</DependentUpon>
+      <LastGenOutput>PPCModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PPCModel.edmx.diagram">
+      <DependentUpon>PPCModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\PPCModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PPCModel.edmx</DependentUpon>
+      <LastGenOutput>PPCModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -156,7 +219,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
