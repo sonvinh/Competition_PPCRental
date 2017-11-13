@@ -40,3 +40,19 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+/*************************************************************************/
+                                    /*My Style*/
+/*************************************************************************/
+#district_filter
+{
+  
+}
+
+.caret_center
+{
+    margin-top: 10px;
+}
+.component_filter
+{
+    margin-bottom: 10px;
+}

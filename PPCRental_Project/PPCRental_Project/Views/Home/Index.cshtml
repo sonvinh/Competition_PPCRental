@@ -1,3 +1,95 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<!--View List-->
+<div class="col-sm-9" style="background: red; height:300px">
+    <div class="row">
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail">
+                <img src="~/Images/1.jpg" />
+            </a>
+        </div>
+        ...
+    </div>
+</div>
+<!--End View List-->
+<!--Filter-->
+<div class="col-sm-3">
+    <!--Filter Header-->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3>Filter</h3>
+        </div>
+    <!--End Filter Header-->
+
+        <!--Filter Boby-->
+        <div class="panel-body">
+            <!--District Filter-->
+            <div class="dropdown col-md-12 component_filter" id="district_filter">
+                <div class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+                    Quận
+                    <span class="caret pull-right caret_center"></span>
+                </div>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Quận 2</a></li>
+                    <li><a href="#">Quận 3</a></li>
+                    <li><a href="#">Quận 4</a></li>
+                </ul>
+            </div>
+            <!--End District Filter-->
+
+            <!--Ward Filter-->
+            <div class="dropdown col-md-12 component_filter" id="ward_filter">
+
+                <div id="filterquan" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+                    Phường
+                    <span class="caret pull-right caret_center"></span>
+                </div>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Binh Hung Hoa</a></li>
+                    <li><a href="#">Phu Thanh</a></li>
+                    <li><a href="#">Tan Son Nhi</a></li>
+                </ul>
+            </div>
+            <!--End Ward Filter-->
+
+            <!--Street Filter-->
+            <div class="dropdown col-md-12 component_filter" id="street_filter">
+
+                <div id="filterquan" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+                    Đường
+                    <span class="caret pull-right caret_center"></span>
+                </div>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Trần Hưng Đạo</a></li>
+                    <li><a href="#">Lương Nhữ Học</a></li>
+                    <li><a href="#">Hồng Bàng</a></li>
+                </ul>
+            </div>
+            <!--End Street Filter-->
+
+            <!--Type Filter-->
+            <div class="dropdown col-md-12 component_filter" id="type_filter">
+
+                <div id="filterquan" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+                    Loại bất động sản
+                    <span class="caret pull-right caret_center"></span>
+                </div>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Trần Hưng Đạo</a></li>
+                    <li><a href="#">Lương Nhữ Học</a></li>
+                    <li><a href="#">Hồng Bàng</a></li>
+                </ul>
+            </div>
+            <!--End Type Filter-->
+
+           
+
+        </div>
+        <!--End Filter Boby-->
+
+    </div>
+    <!--End Filter Quan-->
+
+</div>
+<!--End Filter-->
