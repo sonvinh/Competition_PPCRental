@@ -119,51 +119,55 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DISTRICT.cs">
-      <DependentUpon>PPCModel.tt</DependentUpon>
+      <DependentUpon>PPCRental.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FEATURE.cs">
-      <DependentUpon>PPCModel.tt</DependentUpon>
+      <DependentUpon>PPCRental.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PPCModel.Context.cs">
+    <Compile Include="Models\PPCRental.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PPCModel.Context.tt</DependentUpon>
+      <DependentUpon>PPCRental.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PPCModel.cs">
+    <Compile Include="Models\PPCRental.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PPCModel.tt</DependentUpon>
+      <DependentUpon>PPCRental.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PPCModel.Designer.cs">
+    <Compile Include="Models\PPCRental.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PPCModel.edmx</DependentUpon>
+      <DependentUpon>PPCRental.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\PROJECT_STATUS.cs">
-      <DependentUpon>PPCModel.tt</DependentUpon>
+      <DependentUpon>PPCRental.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PROPERTY.cs">
-      <DependentUpon>PPCModel.tt</DependentUpon>
+      <DependentUpon>PPCRental.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PROPERTY_FEATURE.cs">
-      <DependentUpon>PPCModel.tt</DependentUpon>
+      <DependentUpon>PPCRental.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PROPERTY_TYPE.cs">
-      <DependentUpon>PPCModel.tt</DependentUpon>
+      <DependentUpon>PPCRental.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\STREET.cs">
-      <DependentUpon>PPCModel.tt</DependentUpon>
+      <DependentUpon>PPCRental.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>PPCRental.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\USER.cs">
-      <DependentUpon>PPCModel.tt</DependentUpon>
+      <DependentUpon>PPCRental.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\WARD.cs">
-      <DependentUpon>PPCModel.tt</DependentUpon>
+      <DependentUpon>PPCRental.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -177,24 +181,34 @@
     <Content Include="Images\1.jpg" />
     <Content Include="Images\2.jpg" />
     <Content Include="Images\3.jpg" />
+    <Content Include="Images\IMG_1592-stamp.jpg" />
+    <Content Include="Images\PIS3280-Edit-stamp.jpg" />
+    <Content Include="Images\PIS3611.jpg" />
+    <Content Include="Images\PIS_4622-Edit.jpg" />
+    <Content Include="Images\PIS_6656-Edit-stamp.jpg" />
+    <Content Include="Images\PIS_6706-Edit-stamp.jpg" />
+    <Content Include="Images\PIS_7319-Edit-stamp.jpg" />
+    <Content Include="Images\PIS_7389-Edit-stamp.jpg" />
+    <Content Include="Images\PIS_7432-Edit-stamp.jpg" />
+    <Content Include="Images\sunshine-benthanh-cityhome-10-stamp.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\PPCModel.edmx">
+    <EntityDeploy Include="Models\PPCRental.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PPCModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>PPCRental.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\PPCModel.Context.tt">
+    <Content Include="Models\PPCRental.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PPCModel.edmx</DependentUpon>
-      <LastGenOutput>PPCModel.Context.cs</LastGenOutput>
+      <DependentUpon>PPCRental.edmx</DependentUpon>
+      <LastGenOutput>PPCRental.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\PPCModel.edmx.diagram">
-      <DependentUpon>PPCModel.edmx</DependentUpon>
+    <Content Include="Models\PPCRental.edmx.diagram">
+      <DependentUpon>PPCRental.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\PPCModel.tt">
+    <Content Include="Models\PPCRental.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PPCModel.edmx</DependentUpon>
-      <LastGenOutput>PPCModel.cs</LastGenOutput>
+      <DependentUpon>PPCRental.edmx</DependentUpon>
+      <LastGenOutput>PPCRental.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -218,6 +232,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Detail\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

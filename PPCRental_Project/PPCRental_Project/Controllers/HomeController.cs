@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PPCRental_Project.Models;
 
 namespace PPCRental_Project.Controllers
 {
     public class HomeController : Controller
     {
+        DemoPPCRentalEntities1 db = new DemoPPCRentalEntities1();
         public ActionResult Index()
         {
-            return View();
+            var p = db.PROPERTY.ToList();
+            return View(p);
         }
 
         public ActionResult About()

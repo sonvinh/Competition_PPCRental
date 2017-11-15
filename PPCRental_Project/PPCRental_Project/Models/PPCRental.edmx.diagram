@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ca46c11729e441a8a9ff37ef92f1f981" Name="Diagram1">
+      <Diagram DiagramId="60c597d8de5a4204838fa5a9f3fcc787" Name="Diagram1">
         <EntityTypeShape EntityType="DemoPPCRentalModel.DISTRICT" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DemoPPCRentalModel.FEATURE" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DemoPPCRentalModel.PROJECT_STATUS" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
@@ -12,6 +12,7 @@
         <EntityTypeShape EntityType="DemoPPCRentalModel.PROPERTY_FEATURE" Width="1.5" PointX="7.5" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DemoPPCRentalModel.PROPERTY_TYPE" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DemoPPCRentalModel.STREET" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoPPCRentalModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DemoPPCRentalModel.USER" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DemoPPCRentalModel.WARD" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
         <AssociationConnector Association="DemoPPCRentalModel.FK_PROPERTY_DISTRICT" ManuallyRouted="false" />
