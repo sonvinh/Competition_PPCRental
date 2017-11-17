@@ -6814,3 +6814,11 @@ td.visible-print {
     display: none !important;
   }
 }
+/*new style*/
+.navbar-img
+{
+  float:left;
+  padding: 0px 15px;
+  font-size: 18px;
+  line-height: 20px;
+}

@@ -13,26 +13,42 @@ namespace PPCRental_Project.Controllers
 
         [HttpGet]
         //search theo id cua quan,phuong,duong,loai du an
-        public ActionResult Search(int district,  int PropertyType)
+        public ActionResult Search(int district, int PropertyType, int BedRoom, int BathRoom, int Price_Min, int Price_Max)
         {
-            object product;
-            if (district == 0 && PropertyType == 0) // khong chon cai nao
+            var product = PPCRENTAL.PROPERTY.Where(p => p.Status_ID == 3);
+            if (district != 0)
             {
-                product = PPCRENTAL.PROPERTY.ToList();
+                product = product.Where(p => p.District_ID == district);
             }
-            else if (PropertyType == 0) //chi chon quan
+            if (PropertyType != 0)
             {
-                product = PPCRENTAL.PROPERTY.ToList().Where(x => x.District_ID == district);
+                product = product.Where(p => p.PropertyType_ID == PropertyType);
             }
-            else if (district == 0) //chi chon loai du an
+            if (BedRoom != 0)
             {
-                product = PPCRENTAL.PROPERTY.ToList().Where(x => x.PropertyType_ID == PropertyType);
+                product = product.Where(p => p.BedRoom == BedRoom);
             }
-            else //chon tat ca cac field
+            if (BathRoom != 0)
             {
-                product = PPCRENTAL.PROPERTY.ToList().Where(x => x.District_ID == district && x.PropertyType_ID == PropertyType);
+                product = product.Where(p => p.BathRoom == BathRoom);
             }
-            return View(product);
+            if (Price_Min != 0)
+            {
+                product = product.Where(p => p.Price >= Price_Min);
+            }
+            if (Price_Max != 0)
+            {
+                product = product.Where(p => p.Price <= Price_Max);
+            }
+            if (district == 0 && PropertyType == 0 && BedRoom == 0 && BathRoom == 0 && Price_Min == 0 && Price_Max == 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(product.ToList());
+            }
+
         }
 
         //xem chi tiet 1 du an truyen vao ma id

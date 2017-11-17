@@ -70,6 +70,7 @@
                                 <p>Mô tả: @item.Content.Substring(0, 50)...</p>
                                 <p>Giá: @item.Price @item.UnitPrice</p>
                                 <p>Địa chỉ: @item.STREET.StreetName, @item.WARD.WardName, @item.DISTRICT.DistrictName</p>
+                                
                                 <p><a href="~/Project/Detail/@item.ID" class="btn btn-primary" role="button">Xem chi tiết</a></p>
                             </div>
                         </div>
@@ -113,6 +114,51 @@
                         }
                     </select>
                     <!--End Type Filter-->
+
+                    <!--Bedroom Filter-->
+                    <select name="BedRoom" class="dropdown col-md-12 component_filter">
+                        <option value="0" selected>--Chọn Số Phòng Ngủ--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <!--End Bedroom Filter-->
+
+                    <!--Bathroom Filter-->
+                    <select name="BathRoom" class="dropdown col-md-12 component_filter">
+                        <option value="0" selected>--Chọn Số Phòng Tắm--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <!--End Bathroom Filter-->
+
+                    <!--Price min Filter-->
+                    <select name="Price_Min" class="dropdown col-md-12 component_filter">
+                        <option value="0" " selected>--Chọn Giá Tối Thiểu--</option>
+                        <option value="10000">10000</option>
+                        <option value="30000">30000</option>
+                        <option value="50000">50000</option>
+                        <option value="70000">70000</option>
+                        <option value="100000">100000</option>
+                    </select>
+                    <!--End price min filter-->
+
+                    <!--Price max Filter-->
+                    <select name="Price_Max" class="dropdown col-md-12 component_filter">
+                        <option value="0" selected>--Chọn Giá Tối Đa--</option>
+                        <option value="200000">200000</option>
+                        <option value="400000">400000</option>
+                        <option value="600000">600000</option>
+                        <option value="800000">800000</option>
+                        <option value="1000000">1000000</option>
+                    </select>
+                    <!--End Price max Filter-->
+
                     <div>
                         <button class="btn btn-primary" id="btnfilter" style="margin-top:20px"> Filter</button>
                     </div>
