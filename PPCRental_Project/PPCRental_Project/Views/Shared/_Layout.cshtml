@@ -7,6 +7,16 @@
     <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <style>
+        .wow:first-child {
+            visibility: hidden;
+        }
+    </style>
+    <script src="~/Content/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
 </head>
 <body>
     <!--Navbar Bootstrap-->
