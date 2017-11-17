@@ -13,10 +13,10 @@ namespace PPCRental_Project.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DemoPPCRentalEntities1 : DbContext
+    public partial class K21T3_Team1_PPC3129Entities : DbContext
     {
-        public DemoPPCRentalEntities1()
-            : base("name=DemoPPCRentalEntities1")
+        public K21T3_Team1_PPC3129Entities()
+            : base("name=K21T3_Team1_PPC3129Entities")
         {
         }
     
@@ -32,7 +32,6 @@ namespace PPCRental_Project.Models
         public DbSet<PROPERTY_FEATURE> PROPERTY_FEATURE { get; set; }
         public DbSet<PROPERTY_TYPE> PROPERTY_TYPE { get; set; }
         public DbSet<STREET> STREET { get; set; }
-        public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<USER> USER { get; set; }
         public DbSet<WARD> WARD { get; set; }
     }

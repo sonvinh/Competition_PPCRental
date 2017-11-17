@@ -9,11 +9,18 @@ namespace PPCRental_Project.Controllers
 {
     public class HomeController : Controller
     {
-        DemoPPCRentalEntities1 db = new DemoPPCRentalEntities1();
+        K21T3_Team1_PPC3129Entities db = new K21T3_Team1_PPC3129Entities();
         public ActionResult Index()
         {
-            var p = db.PROPERTY.ToList();
-            return View(p);
+            //liet ke cac bang se su dung trong trang index
+            List<object> model = new List<object>();
+            model.Add(db.PROPERTY.ToList());
+            model.Add(db.DISTRICT.ToList());
+            model.Add(db.STREET.ToList());
+            model.Add(db.WARD.ToList());
+            model.Add(db.PROPERTY_TYPE.ToList());
+            model.Add(db.FEATURE.ToList());
+            return View(model);
         }
 
         public ActionResult About()

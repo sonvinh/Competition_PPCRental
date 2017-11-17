@@ -1,4 +1,11 @@
-﻿@model IEnumerable<PPCRental_Project.Models.PROPERTY>
+﻿@model IEnumerable<object>
+@{
+    List<PPCRental_Project.Models.PROPERTY> lstProperty = Model.ToList()[0] as List<PPCRental_Project.Models.PROPERTY>;
+    List<PPCRental_Project.Models.DISTRICT> lstDistrict = Model.ToList()[1] as List<PPCRental_Project.Models.DISTRICT>;
+    List<PPCRental_Project.Models.STREET> lstStreet = Model.ToList()[2] as List<PPCRental_Project.Models.STREET>;
+    List<PPCRental_Project.Models.WARD> lstWard = Model.ToList()[3] as List<PPCRental_Project.Models.WARD>;
+    List<PPCRental_Project.Models.PROPERTY_TYPE> lstType = Model.ToList()[4] as List<PPCRental_Project.Models.PROPERTY_TYPE>;
+}
 
 @{
     ViewBag.Title = "Home Page";
@@ -49,19 +56,21 @@
 
 <div class="container" id="viewandfilter">
     <!--View List-->
-    <div class="col-sm-9">
+    <div class="col-sm-9 wow slideInLeft">
         <div class="row">
             @{
-                foreach (var item in Model)
+                foreach (var item in lstProperty)
                 {
                     <div class="col-sm-6 col-md-4">
                         <div class="thumbnail projectcomponent">
                             <img class="img-rounded img-responsive" src="~/Images/@item.Avatar" alt="@item.PropertyName">
                             <div class="caption">
-                                <h3>@item.PropertyName</h3>
+                                <h4>@item.PropertyName</h4>
+                                <p>Loại dự án: @item.PROPERTY_TYPE.Description</p>
+                                <p>Mô tả: @item.Content.Substring(0, 50)...</p>
                                 <p>Giá: @item.Price @item.UnitPrice</p>
-                                <p>Quận: @item.DISTRICT.DistrictName</p>
-                                <p><a href="~/Detail/Detail/@item.ID" class="btn btn-primary" role="button">Xem chi tiết</a></p>
+                                <p>Địa chỉ: @item.STREET.StreetName, @item.WARD.WardName, @item.DISTRICT.DistrictName</p>
+                                <p><a href="~/Project/Detail/@item.ID" class="btn btn-primary" role="button">Xem chi tiết</a></p>
                             </div>
                         </div>
                     </div>
@@ -69,88 +78,50 @@
             }
         </div>
     </div>
-    <!--End View List-->
-
     <!--Filter-->
-    <div class="col-sm-3" >
-        <!--Filter Header-->
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3>Filter</h3>
+    <form role="search" action="@Url.Action("Search","Project")" method="get">
+
+        <div class="col-sm-3 wow slideInRight">
+            <!--Filter Header-->
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3>Filter</h3>
+                </div>
+                <!--End Filter Header-->
+                <!--Filter Boby-->
+                <div class="panel-body">
+                    <!--District Filter-->
+                    <select name="district" class="dropdown col-md-12 component_filter">
+                        <option selected value="0">--Chọn Quận--</option>
+                        @foreach (var item in lstDistrict)
+                        {
+                            if (item.ID >= 31 && item.ID <= 54) 
+                            {
+                                <option value="@item.ID">@item.DistrictName</option>
+                            }
+                            
+                        }
+                    </select>
+                    <!--End District Filter-->
+            
+                    <!--Type Filter-->
+                    <select name="PropertyType" class="dropdown col-md-12 component_filter">
+                        <option selected value="0">--Chọn Loại Dự Án</option>
+                        @foreach (var item in lstType)
+                        {
+                            <option value="@item.ID">@item.CodeType</option>
+                        }
+                    </select>
+                    <!--End Type Filter-->
+                    <div>
+                        <button class="btn btn-primary" id="btnfilter" style="margin-top:20px"> Filter</button>
+                    </div>
+                </div>
+                <!--End Filter Boby-->
             </div>
-            <!--End Filter Header-->
-            <!--Filter Boby-->
-            <div class="panel-body">
-                <!--District Filter-->
-                <div class="dropdown col-md-12 component_filter" id="district_filter">
-                    <div class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-                        Quận
-                        <span class="caret pull-right caret_center"></span>
-                    </div>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Quận 2</a></li>
-                        <li><a href="#">Quận 3</a></li>
-                        <li><a href="#">Quận 4</a></li>
-                    </ul>
-                </div>
-                <!--End District Filter-->
-
-                <!--Ward Filter-->
-                <div class="dropdown col-md-12 component_filter" id="ward_filter">
-
-                    <div id="filterquan" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-                        Phường
-                        <span class="caret pull-right caret_center"></span>
-                    </div>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Binh Hung Hoa</a></li>
-                        <li><a href="#">Phu Thanh</a></li>
-                        <li><a href="#">Tan Son Nhi</a></li>
-                    </ul>
-                </div>
-                <!--End Ward Filter-->
-
-                <!--Street Filter-->
-                <div class="dropdown col-md-12 component_filter" id="street_filter">
-
-                    <div id="filterquan" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-                        Đường
-                        <span class="caret pull-right caret_center"></span>
-                    </div>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Trần Hưng Đạo</a></li>
-                        <li><a href="#">Lương Nhữ Học</a></li>
-                        <li><a href="#">Hồng Bàng</a></li>
-                    </ul>
-                </div>
-                <!--End Street Filter-->
-                <!--Type Filter-->
-                <div class="dropdown col-md-12 component_filter" id="type_filter">
-
-                    <div id="filterquan" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-                        Loại bất động sản
-                        <span class="caret pull-right caret_center"></span>
-                    </div>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Trần Hưng Đạo</a></li>
-                        <li><a href="#">Lương Nhữ Học</a></li>
-                        <li><a href="#">Hồng Bàng</a></li>
-                    </ul>
-                </div>
-                <!--End Type Filter-->
-
-
-                <div>
-                    <button class="btn btn-primary" id="btnfilter"> Filter</button>
-                </div>
-
-
-            </div>
-            <!--End Filter Boby-->
-
+            <!--End Filter Quan-->
         </div>
-        <!--End Filter Quan-->
 
-    </div>
+    </form>
     <!--End Filter-->
 </div>

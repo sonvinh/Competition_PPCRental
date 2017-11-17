@@ -4,19 +4,17 @@
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div id="detail-header">
     <p>Chi tiết dự án</p>
     <p>@Html.DisplayFor(model => model.PropertyName)</p>
 </div>
-
 <div class="container-fluid">
-    <img class="img-rounded img-responsive img-decorate" src="/Images/@Model.Avatar"/>
+    <img class="img-rounded img-responsive img-decorate wow fadeIn" src="/Images/@Model.Avatar" />
 </div>
 <div>
     <hr />
     <div class="container">
-        <div class="col-md-3">
+        <div class="col-md-3 wow slideInLeft">
             <div class="panel panel-primary">
                 <div class="panel-heading">Thông tin dự án</div>
                 <div class="panel-body">
@@ -32,9 +30,9 @@
                     <p>Price: @Html.DisplayFor(model => model.Price) @Html.DisplayFor(model => model.UnitPrice)</p>
                 </div>
             </div>
-           
+
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 wow slideInRight">
             <div class="panel panel-primary">
                 <div class="panel-heading">Mô tả dự án</div>
                 <div class="panel-body" id="project-description">
@@ -45,7 +43,7 @@
     </div>
     <hr />
     <div class="container">
-        <div class="panel panel-primary">
+        <div class="panel panel-primary wow rotateIn">
             <div class="panel-heading">Thông tin tác giả</div>
             <div class="panel-body">
                 <p>Email: @Html.DisplayFor(model => model.USER.Email)</p>
@@ -54,10 +52,8 @@
                 <p>Update At: @Html.DisplayFor(model => model.Updated_at)</p>
                 <p>Status Name: @Html.DisplayFor(model => model.PROJECT_STATUS.Status_Name)</p>
                 <p>Note: @Html.DisplayFor(model => model.Note)</p>
-
             </div>
         </div>
     </div>
-   
-</div>
 
+</div>
