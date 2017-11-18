@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -181,6 +182,8 @@
     <Content Include="Images\2.jpg" />
     <Content Include="Images\3.jpg" />
     <Content Include="Images\IMG_1592-stamp.jpg" />
+    <Content Include="Images\MandT_486.jpg" />
+    <Content Include="Images\PIS01258.jpg" />
     <Content Include="Images\PIS3280-Edit-stamp.jpg" />
     <Content Include="Images\PIS3611.jpg" />
     <Content Include="Images\PIS_4622-Edit.jpg" />
@@ -259,7 +262,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61656</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
