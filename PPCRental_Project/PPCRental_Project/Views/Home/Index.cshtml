@@ -67,7 +67,14 @@
                             <div class="caption">
                                 <!--Boundary of project title-->
                                 <div class="thumbnail-title">
-                                    <h4>@item.PropertyName</h4>
+                                    @if (@item.PropertyName.Length > 36)
+                                    {
+                                        <h4>@item.PropertyName.Substring(0, 36)...</h4>
+                                    }
+                                    else
+                                    {
+                                        <h4>@item.PropertyName</h4>
+                                    }
                                 </div>
                                 <!--End Boundary of project title-->
                                 <!--Boundary of project short content-->
@@ -76,7 +83,17 @@
                                         <span class="glyphicons glyphicons-money"></span>
                                         @item.Price @item.UnitPrice
                                     </p>
-                                    <p>@item.Content.Substring(0, 50)...</p>
+                                    <p>
+                                        @if(@item.Content.Length > 90)
+                                        {
+                                             @item.Content.Substring(0, 90)
+                                        }
+                                        else
+                                        {
+                                             @item.Content
+                                        }
+                                      
+                                    </p>
                                     <p>
                                         <span class="glyphicons glyphicons-home"></span>                                 @item.STREET.StreetName, @item.WARD.WardName,                                  @item.DISTRICT.DistrictName
                                     </p>
