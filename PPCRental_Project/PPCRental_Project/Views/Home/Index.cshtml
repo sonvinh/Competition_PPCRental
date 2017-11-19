@@ -65,13 +65,27 @@
                         <div class="thumbnail projectcomponent">
                             <img class="img-rounded img-responsive" src="~/Images/@item.Avatar" alt="@item.PropertyName">
                             <div class="caption">
-                                <h4>@item.PropertyName</h4>
-                                <p>Loại dự án: @item.PROPERTY_TYPE.Description</p>
-                                <p>Mô tả: @item.Content.Substring(0, 50)...</p>
-                                <p>Giá: @item.Price @item.UnitPrice</p>
-                                <p>Địa chỉ: @item.STREET.StreetName, @item.WARD.WardName, @item.DISTRICT.DistrictName</p>
-                                
-                                <p><a href="~/Project/Detail/@item.ID" class="btn btn-primary" role="button">Xem chi tiết</a></p>
+                                <!--Boundary of project title-->
+                                <div class="thumbnail-title">
+                                    <h4>@item.PropertyName</h4>
+                                </div>
+                                <!--End Boundary of project title-->
+                                <!--Boundary of project short content-->
+                                <div class="thumbnail-content">
+                                    <p>
+                                        <span class="glyphicons glyphicons-money"></span>
+                                        @item.Price @item.UnitPrice
+                                    </p>
+                                    <p>@item.Content.Substring(0, 50)...</p>
+                                    <p>
+                                        <span class="glyphicons glyphicons-home"></span>                                 @item.STREET.StreetName, @item.WARD.WardName,                                  @item.DISTRICT.DistrictName
+                                    </p>
+                                </div>
+                                <!--End Boundary of project short content-->
+                                <!--Boundary of Detail button-->
+                                <div class="thumbnail-footer">
+                                    <a href="~/Project/Detail/@item.ID" class="btn btn-primary" role="button" id="btn-detail">Xem chi tiết</a>
+                                </div>
                             </div>
                         </div>
                     </div>

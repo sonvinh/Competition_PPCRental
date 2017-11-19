@@ -101,4 +101,24 @@ input[type="checkbox"].input-validation-error {
      box-shadow: 5px 5px 5px #888888;
      margin: 0 auto;
 }
+.thumbnail-title {
+    height: 40px;
+    background-color: green;
+    margin-bottom: 3px;
+}
+
+.thumbnail-content {
+    height: 180px;
+    background-color: red;
+    margin-bottom: 3px;
+}
+
+.thumbnail-footer {
+    height: 37px;
+    background-color: pink;
+}
+
+#btn-detail {
+    margin-left: 25%;
+}
 
