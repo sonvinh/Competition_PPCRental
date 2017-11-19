@@ -40,13 +40,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -115,11 +117,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\PropertyAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Global.asax.cs">
@@ -170,6 +175,39 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\sb-admin.css" />
+    <Content Include="Assets\css\sb-admin.min.css" />
+    <Content Include="Assets\js\sb-admin-charts.js" />
+    <Content Include="Assets\js\sb-admin-charts.min.js" />
+    <Content Include="Assets\js\sb-admin-datatables.js" />
+    <Content Include="Assets\js\sb-admin-datatables.min.js" />
+    <Content Include="Assets\js\sb-admin.js" />
+    <Content Include="Assets\js\sb-admin.min.js" />
+    <Content Include="Assets\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Assets\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Assets\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Assets\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Assets\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Assets\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Assets\vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Assets\vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Assets\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Assets\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Assets\vendor\chart.js\Chart.bundle.js" />
+    <Content Include="Assets\vendor\chart.js\Chart.bundle.min.js" />
+    <Content Include="Assets\vendor\chart.js\Chart.js" />
+    <Content Include="Assets\vendor\chart.js\Chart.min.js" />
+    <Content Include="Assets\vendor\datatables\dataTables.bootstrap4.css" />
+    <Content Include="Assets\vendor\datatables\dataTables.bootstrap4.js" />
+    <Content Include="Assets\vendor\datatables\jquery.dataTables.js" />
+    <Content Include="Assets\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="Assets\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Assets\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\vendor\jquery-easing\jquery.easing.compatibility.js" />
+    <Content Include="Assets\vendor\jquery-easing\jquery.easing.js" />
+    <Content Include="Assets\vendor\jquery-easing\jquery.easing.min.js" />
+    <Content Include="Assets\vendor\jquery\jquery.js" />
+    <Content Include="Assets\vendor\jquery\jquery.min.js" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -197,7 +235,6 @@
     <Content Include="Images\PIS3611.jpg" />
     <Content Include="Images\PIS7081-stamp.jpg" />
     <Content Include="Images\PIS8581.jpg" />
-    <Content Include="Images\PIS_4560.jpg" />
     <Content Include="Images\PIS_4622-Edit.jpg" />
     <Content Include="Images\PIS_6656-Edit-stamp.jpg" />
     <Content Include="Images\PIS_6656.jpg" />
@@ -228,6 +265,71 @@
       <DependentUpon>PPCRental.edmx</DependentUpon>
       <LastGenOutput>PPCRental.cs</LastGenOutput>
     </Content>
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\PropertyAdmin\Index.cshtml" />
+    <Content Include="Assets\pug\blank.pug" />
+    <Content Include="Assets\pug\cards.pug" />
+    <Content Include="Assets\pug\charts.pug" />
+    <Content Include="Assets\pug\forgot-password.pug" />
+    <Content Include="Assets\pug\includes\css\core.pug" />
+    <Content Include="Assets\pug\includes\css\custom.pug" />
+    <Content Include="Assets\pug\includes\footer.pug" />
+    <Content Include="Assets\pug\includes\js\core.pug" />
+    <Content Include="Assets\pug\includes\js\custom.pug" />
+    <Content Include="Assets\pug\includes\modals\logout.pug" />
+    <Content Include="Assets\pug\includes\navbar.pug" />
+    <Content Include="Assets\pug\includes\scroll-to-top.pug" />
+    <Content Include="Assets\pug\index.pug" />
+    <Content Include="Assets\pug\login.pug" />
+    <Content Include="Assets\pug\navbar.pug" />
+    <Content Include="Assets\pug\register.pug" />
+    <Content Include="Assets\pug\tables.pug" />
+    <Content Include="Assets\scss\navbar\_navbar_colors.scss" />
+    <Content Include="Assets\scss\navbar\_navbar_fixed.scss" />
+    <Content Include="Assets\scss\navbar\_navbar_global.scss" />
+    <Content Include="Assets\scss\navbar\_navbar_static.scss" />
+    <Content Include="Assets\scss\navbar\_navbar_toggle.scss" />
+    <Content Include="Assets\scss\sb-admin.scss" />
+    <Content Include="Assets\scss\_cards.scss" />
+    <Content Include="Assets\scss\_footer.scss" />
+    <Content Include="Assets\scss\_global.scss" />
+    <Content Include="Assets\scss\_login.scss" />
+    <Content Include="Assets\scss\_mixins.scss" />
+    <Content Include="Assets\scss\_utilities.scss" />
+    <Content Include="Assets\scss\_variables.scss" />
+    <Content Include="Assets\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Assets\vendor\font-awesome\less\animated.less" />
+    <Content Include="Assets\vendor\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Assets\vendor\font-awesome\less\core.less" />
+    <Content Include="Assets\vendor\font-awesome\less\fixed-width.less" />
+    <Content Include="Assets\vendor\font-awesome\less\font-awesome.less" />
+    <Content Include="Assets\vendor\font-awesome\less\icons.less" />
+    <Content Include="Assets\vendor\font-awesome\less\larger.less" />
+    <Content Include="Assets\vendor\font-awesome\less\list.less" />
+    <Content Include="Assets\vendor\font-awesome\less\mixins.less" />
+    <Content Include="Assets\vendor\font-awesome\less\path.less" />
+    <Content Include="Assets\vendor\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Assets\vendor\font-awesome\less\screen-reader.less" />
+    <Content Include="Assets\vendor\font-awesome\less\stacked.less" />
+    <Content Include="Assets\vendor\font-awesome\less\variables.less" />
+    <Content Include="Assets\vendor\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Assets\vendor\font-awesome\scss\_animated.scss" />
+    <Content Include="Assets\vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Assets\vendor\font-awesome\scss\_core.scss" />
+    <Content Include="Assets\vendor\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Assets\vendor\font-awesome\scss\_icons.scss" />
+    <Content Include="Assets\vendor\font-awesome\scss\_larger.scss" />
+    <Content Include="Assets\vendor\font-awesome\scss\_list.scss" />
+    <Content Include="Assets\vendor\font-awesome\scss\_mixins.scss" />
+    <Content Include="Assets\vendor\font-awesome\scss\_path.scss" />
+    <Content Include="Assets\vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Assets\vendor\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Assets\vendor\font-awesome\scss\_stacked.scss" />
+    <Content Include="Assets\vendor\font-awesome\scss\_variables.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -252,7 +354,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Project\Detail.cshtml" />
     <Content Include="Views\Project\Search.cshtml" />
-    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
