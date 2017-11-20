@@ -229,6 +229,7 @@
     <Content Include="Images\IMG_1592-stamp.jpg" />
     <Content Include="Images\MandT_486.jpg" />
     <Content Include="Images\pearl-plaza-pool-2-watermark.jpg" />
+    <Content Include="Images\PIS-15874.jpg" />
     <Content Include="Images\PIS01258.jpg" />
     <Content Include="Images\PIS2080.jpg" />
     <Content Include="Images\PIS3280-Edit-stamp.jpg" />
@@ -244,6 +245,7 @@
     <Content Include="Images\PIS_7319-Edit-stamp.jpg" />
     <Content Include="Images\PIS_7389-Edit-stamp.jpg" />
     <Content Include="Images\PIS_7432-Edit-stamp.jpg" />
+    <Content Include="Images\PIS_7891.jpg" />
     <Content Include="Images\PPCRentalLogo.png" />
     <Content Include="Images\sunshine-benthanh-cityhome-10-stamp.jpg" />
     <Content Include="Images\villa-7-watermark.jpg" />
@@ -331,6 +333,7 @@
     <Content Include="Assets\vendor\font-awesome\scss\_screen-reader.scss" />
     <Content Include="Assets\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Assets\vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="Areas\Admin\Views\PropertyAdmin\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
