@@ -63,7 +63,7 @@
                 {
                     <div class="col-sm-6 col-md-4">
                         <div class="thumbnail projectcomponent">
-                            <img class="img-rounded img-responsive" src="~/Images/@item.Avatar" alt="@item.PropertyName">
+                            <img class="img-rounded img-responsive display-img" src="~/Images/@item.Avatar" alt="@item.PropertyName">
                             <div class="caption">
                                 <!--Boundary of project title-->
                                 <div class="thumbnail-title">
@@ -79,11 +79,15 @@
                                 <!--End Boundary of project title-->
                                 <!--Boundary of project short content-->
                                 <div class="thumbnail-content">
-                                    <p>
-                                        <span class="glyphicons glyphicons-money"></span>
-                                        @item.Price @item.UnitPrice
-                                    </p>
-                                    <p>
+                                    <!--Boundary of price-->
+                                        <p class="display-price">
+                                             <span class="glyphicons glyphicons-money"></span>
+                                               @item.Price @item.UnitPrice
+                                        </p>
+                                    <!--End Boundary of price-->
+
+                                    <!--Boundary of content-->
+                                    <p class="display-content">
                                         @if(@item.Content.Length > 90)
                                         {
                                              @item.Content.Substring(0, 90)
@@ -94,8 +98,10 @@
                                         }
                                       
                                     </p>
+                                    <!--End Boundary of content-->
+
                                     <p>
-                                        <span class="glyphicons glyphicons-home"></span>                                 @item.STREET.StreetName, @item.WARD.WardName,                                  @item.DISTRICT.DistrictName
+                                        <span class="glyphicon glyphicon-home"></span>                                                      @item.DISTRICT.DistrictName 
                                     </p>
                                 </div>
                                 <!--End Boundary of project short content-->

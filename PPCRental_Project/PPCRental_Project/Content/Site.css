@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Lora', serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -75,6 +76,10 @@ input[type="checkbox"].input-validation-error {
 {
     margin-top:15px;
 }
+#btn-detail {
+    margin-left: 25%;
+}
+
 
 .caret_center
 {
@@ -103,22 +108,39 @@ input[type="checkbox"].input-validation-error {
 }
 .thumbnail-title {
     height: 40px;
-    background-color: green;
+    /*background-color: green;*/
     margin-bottom: 3px;
+    font-weight: bold;
+    color: 	#ff3333;
 }
 
 .thumbnail-content {
     height: 180px;
-    background-color: red;
+    /*background-color: red;*/
     margin-bottom: 3px;
 }
 
 .thumbnail-footer {
     height: 37px;
-    background-color: pink;
+    /*background-color: pink;*/
 }
 
-#btn-detail {
-    margin-left: 25%;
+.display-price
+{
+    font-size: 18px;
+    height: 25px;
+    font-weight:bold;
+    color: rgba(255, 102, 0, 0.5);
 }
+
+.display-content
+{
+    height: 80px;
+    color: 	#80aaff;
+}
+.display-img
+{
+    max-height:160px;
+}
+
 
