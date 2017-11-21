@@ -22,9 +22,9 @@ namespace PPCRental_Project.Areas.Admin.Controllers
         {
             var property = db.PROPERTY.FirstOrDefault(x => x.ID == id);
             ViewBag.property_type = db.PROPERTY_TYPE.OrderByDescending(x => x.ID).ToList();
-            ViewBag.StreetName = db.STREET.OrderByDescending(x => x.ID).ToList();
-            ViewBag.WardName = db.WARD.OrderByDescending(x => x.ID).ToList();
-            ViewBag.District = db.DISTRICT.OrderByDescending(x => x.ID).ToList();
+            ViewBag.StreetName = db.STREET.OrderByDescending(x => x.ID).Where(x => x.District_ID >= 31 && x.District_ID <= 54).ToList();
+            ViewBag.WardName = db.WARD.OrderByDescending(x => x.ID).Where(x => x.District_ID >= 31 && x.District_ID <= 54).ToList();
+            ViewBag.District = db.DISTRICT.OrderByDescending(x => x.ID).Where(x => x.ID>=31&& x.ID<=54).ToList();
             ViewBag.UserName = db.USER.OrderByDescending(x => x.ID).ToList();
             ViewBag.ProJectStatus = db.PROJECT_STATUS.OrderByDescending(x => x.ID).ToList();
 

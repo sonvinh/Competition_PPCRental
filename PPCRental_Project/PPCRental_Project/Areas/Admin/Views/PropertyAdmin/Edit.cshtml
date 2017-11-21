@@ -31,7 +31,7 @@
        
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PropertyType_ID, "PropertyType_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PropertyType_ID, "PropertyType", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("PropertyType_ID", new SelectList(ViewBag.property_type, "ID", "CodeType", Model.PROPERTY_TYPE))
                 @Html.ValidationMessageFor(model => model.PropertyType_ID)
@@ -47,7 +47,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Street_ID, "Street_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Street_ID, "Street", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
 
                 @Html.DropDownList("Street_ID", new SelectList(ViewBag.StreetName, "ID", "StreetName", Model.STREET))
@@ -56,7 +56,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Ward_ID, "Ward_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Ward_ID, "Ward", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Ward_ID", new SelectList(ViewBag.WardName, "ID", "WardName", Model.WARD))
                 @Html.ValidationMessageFor(model => model.Ward_ID)
@@ -64,7 +64,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.District_ID, "District_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.District_ID, "District", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("District_ID", new SelectList(ViewBag.District, "ID", "DistrictName", Model.DISTRICT))
                 @Html.ValidationMessageFor(model => model.District_ID)
