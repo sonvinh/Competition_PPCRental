@@ -19,7 +19,7 @@ namespace PPCRental_Project.Models
         {
             this.PROPERTY_FEATURE = new HashSet<PROPERTY_FEATURE>();
         }
-    
+
         public int ID { get; set; }
         public string PropertyName { get; set; }
         public string Avatar { get; set; }
@@ -42,7 +42,7 @@ namespace PPCRental_Project.Models
         public string Note { get; set; }
         public Nullable<System.DateTime> Updated_at { get; set; }
         public Nullable<int> Sale_ID { get; set; }
-    
+
         public virtual DISTRICT DISTRICT { get; set; }
         public virtual PROJECT_STATUS PROJECT_STATUS { get; set; }
         public virtual ICollection<PROPERTY_FEATURE> PROPERTY_FEATURE { get; set; }

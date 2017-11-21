@@ -17,6 +17,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
             var p = db.PROPERTY.OrderByDescending(x => x.ID).ToList();
             return View(p);
         }
+
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -24,40 +25,41 @@ namespace PPCRental_Project.Areas.Admin.Controllers
             ViewBag.property_type = db.PROPERTY_TYPE.OrderByDescending(x => x.ID).ToList();
             ViewBag.StreetName = db.STREET.OrderByDescending(x => x.ID).Where(x => x.District_ID >= 31 && x.District_ID <= 54).ToList();
             ViewBag.WardName = db.WARD.OrderByDescending(x => x.ID).Where(x => x.District_ID >= 31 && x.District_ID <= 54).ToList();
-            ViewBag.District = db.DISTRICT.OrderByDescending(x => x.ID).Where(x => x.ID>=31&& x.ID<=54).ToList();
+            ViewBag.District = db.DISTRICT.OrderByDescending(x => x.ID).Where(x => x.ID >= 31 && x.ID <= 54).ToList();
             ViewBag.UserName = db.USER.OrderByDescending(x => x.ID).ToList();
             ViewBag.ProJectStatus = db.PROJECT_STATUS.OrderByDescending(x => x.ID).ToList();
 
             return View(property);
         }
-        [HttpPost]
-        public ActionResult Edit(int id, PROPERTY p)
-        {
-            var property = db.PROPERTY.FirstOrDefault(x => x.ID == id);
-            property.PropertyName = p.PropertyName;
-            property.Avatar = p.Avatar;
-            property.Images = p.Images;
-            property.PropertyType_ID = p.PropertyType_ID;
-            property.Content = p.Content;
-            property.Street_ID = p.Street_ID;
-            property.Ward_ID = p.Ward_ID;
-            property.District_ID = p.District_ID;
-            property.UnitPrice = p.UnitPrice;
-            property.Area = p.Area;
-            property.BedRoom = p.BedRoom;
-            property.BathRoom = p.BathRoom;
-            property.PackingPlace = p.PackingPlace;
-            property.UserID = p.UserID;
-            property.Created_at = p.Created_at;
-            property.Create_post = p.Create_post;
-            property.Status_ID = p.Status_ID;
-            property.Note = p.Note;
-            property.Updated_at = p.Updated_at;
-            property.Sale_ID = p.Sale_ID;
-            db.SaveChanges();
-            return RedirectToAction("Index");
+        //[HttpPost]
+        //public ActionResult Edit(int id, PROPERTY p)
+        //{
+        //    var property = db.PROPERTY.FirstOrDefault(x => x.ID == id);
+        //    property.PropertyName = p.PropertyName;
+        //    property.Avatar = p.Avatar;
+        //    property.Images = p.Images;
+        //    property.PropertyType_ID = p.PropertyType_ID;
+        //    property.Content = p.Content;
+        //    property.Street_ID = p.Street_ID;
+        //    property.Ward_ID = p.Ward_ID;
+        //    property.District_ID = p.District_ID;
+        //    property.UnitPrice = p.UnitPrice;
+        //    property.Area = p.Area;
+        //    property.BedRoom = p.BedRoom;
+        //    property.BathRoom = p.BathRoom;
+        //    property.PackingPlace = p.PackingPlace;
+        //    property.UserID = p.UserID;
+        //    property.Created_at = p.Created_at;
+        //    property.Create_post = p.Create_post;
+        //    property.Status_ID = p.Status_ID;
+        //    property.Note = p.Note;
+        //    property.Updated_at = p.Updated_at;
+        //    property.Sale_ID = p.Sale_ID;
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
 
-        }
+        //}
+
         [HttpGet]
         public ActionResult Create(int id)
         {
@@ -70,7 +72,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
             var property = new PROPERTY();
             property.PropertyName = p.PropertyName;
             property.Avatar = p.Avatar;
-            property.Images = p.Images;
+            //property.Images = p.Images;
             property.PropertyType_ID = p.PropertyType_ID;
             property.Content = p.Content;
             property.Street_ID = p.Street_ID;
@@ -113,39 +115,95 @@ namespace PPCRental_Project.Areas.Admin.Controllers
             var property = db.PROPERTY.FirstOrDefault(x => x.ID == id);
             return View(property);
         }
+
+
         [HttpPost]
-        public ActionResult FileUpload(HttpPostedFileBase file)
+        public ActionResult Edit(PROPERTY p)
         {
-            if (file != null)
-            {
-                //string pic = System.IO.Path.GetFileName(file.FileName);
-                //string path = System.IO.Path.Combine(
-                //                       Server.MapPath("~/Images/") + pic);
-                // file is uploaded 
-                file.SaveAs(HttpContext.Server.MapPath("C:\\Users\\san\\Source\\Repos\\Competition_PPCRental2\\PPCRental_Project\\PPCRental_Project\\Images")
-                                                  + file.FileName);
-                //file.SaveAs(path);
+            ListAll();
+            // Images
 
-                // save the image path path to the database or you can send image 
-                // directly to database
-                // in-case if you want to store byte[] ie. for DB
+            var entity = db.PROPERTY.Find(p.ID);
 
-                // file is uploaded
+            string filename = Path.GetFileNameWithoutExtension(p.ImageFile.FileName);
+            string extension = Path.GetExtension(p.ImageFile.FileName);
+            filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
+
+            p.Images = "~/Images/" + filename;
+            string s = p.Images;
+            filename = Path.Combine(Server.MapPath("~/Images"), filename);
+            p.ImageFile.SaveAs(filename);
+            // Avatar
+            //string filename2 = Path.GetFileNameWithoutExtension(property.ImageFile2.FileName);
+            //string extension2 = Path.GetExtension(property.ImageFile2.FileName);
+            //filename2 = filename2 + "Avatar" + DateTime.Now.ToString("yymmssfff") + extension2;
+            //property.Avatar = "~/Images/" + filename2;
+            //filename2 = Path.Combine(Server.MapPath("~/Images"), filename2);
+            // Save
+
+            //if (Path.GetFileNameWithoutExtension(property.ImageFile2.FileName)==null)
+            //{
+            //    string s1 = "~/ Images / AvatarNull.png";
+            //    property.ImageFile2.SaveAs(s1);
+            //    property.ImageFile.SaveAs(filename);
+            //}
+            //if (Path.GetFileNameWithoutExtension(entity.ImageFile.FileName) == null)
+            //{
+            //    string s2 = "~/Images/ImagesNull.png";
+            //    p.ImageFile.SaveAs(s2);
+            //    //property.ImageFile2.SaveAs(filename2);
+            //}
+            //else
+            //{
+            //    //property.ImageFile2.SaveAs(filename2);
+            //    p.ImageFile.SaveAs(filename);
+            //}
+            entity.PropertyName = p.PropertyName;
 
 
-                // save the image path path to the database or you can send image 
-                // directly to database
-                // in-case if you want to store byte[] ie. for DB
-                //using (MemoryStream ms = new MemoryStream())
-                //{
-                //    file.InputStream.CopyTo(ms);
-                //    byte[] array = ms.GetBuffer();
-                //}
+            entity.Avatar = s;
+
+            //property.Avatar = p.Avatar;
+            //property.Images = p.Images;
+            entity.PropertyType_ID = p.PropertyType_ID;
+            entity.Content = p.Content;
+            entity.Street_ID = p.Street_ID;
+            entity.Ward_ID = p.Ward_ID;
+            entity.District_ID = p.District_ID;
+            entity.UnitPrice = p.UnitPrice;
+            entity.Area = p.Area;
+            entity.BedRoom = p.BedRoom;
+            entity.BathRoom = p.BathRoom;
+            entity.PackingPlace = p.PackingPlace;
+            entity.UserID = p.UserID;
+            entity.Created_at = p.Created_at;
+            entity.Create_post = p.Create_post;
+            entity.Status_ID = p.Status_ID;
+            entity.Note = p.Note;
+            entity.Updated_at = p.Updated_at;
+            entity.Sale_ID = p.Sale_ID;
+
+            db.SaveChanges();
 
 
-            }
-            // after successfully uploading redirect the user
-            return View();
+            // TODO: Add insert logic here
+
+            return RedirectToAction("Index", "PropertyAdmin");
+            //   return View("Index");
+
+            // return View("Index");
+        }
+
+        public void ListAll()
+        {
+            ViewBag.property_type = db.PROPERTY_TYPE.ToList();
+            ViewBag.street = db.STREET.OrderBy(x => x.StreetName).ToList();
+            ViewBag.ward = db.WARD.OrderBy(x => x.WardName).ToList();
+            ViewBag.district = db.DISTRICT.OrderBy(x => x.DistrictName).ToList();
+            ViewBag.user = db.USER.OrderBy(x => x.FullName).ToList();
+            ViewBag.status = db.PROJECT_STATUS.OrderBy(x => x.Status_Name).ToList();
+            //ViewBag.sale = model.Sla.ToList();
+
         }
     }
 }
