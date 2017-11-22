@@ -9,7 +9,7 @@
     <p>@Html.DisplayFor(model => model.PropertyName)</p>
 </div>
 <div class="container-fluid">
-    <img class="img-rounded img-responsive img-decorate wow fadeIn" src="/Images/@Model.Avatar" />
+    <img class="img-rounded img-responsive img-decorate wow fadeIn" src="@Url.Content(Model.Avatar)" />
 </div>
 <div>
     <hr />

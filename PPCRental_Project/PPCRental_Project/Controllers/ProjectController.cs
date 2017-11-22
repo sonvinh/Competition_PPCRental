@@ -15,7 +15,9 @@ namespace PPCRental_Project.Controllers
         //search theo id cua quan,phuong,duong,loai du an
         public ActionResult Search(int district, int PropertyType, int BedRoom, int BathRoom, int Price_Min, int Price_Max)
         {
+            // Kiem tra du an do co trang thai la post hay ko
             var product = PPCRENTAL.PROPERTY.Where(p => p.Status_ID == 3);
+            // Cac truong hop tim kiem
             if (district != 0)
             {
                 product = product.Where(p => p.District_ID == district);
