@@ -6822,3 +6822,8 @@ td.visible-print {
   font-size: 18px;
   line-height: 20px;
 }
+/*edit*/
+.btn-shape{
+    width: 120px;
+    height: 40px;
+}
