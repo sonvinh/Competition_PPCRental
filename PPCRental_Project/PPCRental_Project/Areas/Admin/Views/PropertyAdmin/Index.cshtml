@@ -22,65 +22,38 @@
                         <th>PropertyName</th>
                         <th>Avatar</th>
                         <th>Area</th>
-                        <th>BedRoom</th>
-                        <th>BathRoom</th>
-                        <th>PackingPlace</th>
                         <th>DistrictName</th>
                         <th>StreetName</th>
                         <th>WardName</th>
                     </tr>
                 </thead>
                 <tfoot>
-                    <tr>
-                        <th>PropertyName</th>
-                        <th>Avatar</th>
-                        <th>Area</th>
-                        <th>BedRoom</th>
-                        <th>BathRoom</th>
-                        <th>PackingPlace</th>
-                        <th>DistrictName</th>
-                        <th>StreetName</th>
-                        <th>WardName</th>
-                    </tr>
                 </tfoot>
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr class="odd gradeX">
                             <td>@item.PropertyName</td>
-                            @*<td><img src="/Images/@item.Images" width="100px"></td>*@
-
                             @{
-
                                 try
-                                {//
-
+                                {
                                     <td><img src="@Url.Content(item.Avatar)" width="100px"></td>
-                                    //    <td><img src="/Images/@item.Avatar"  width="100px"></td>
-
-
                                 }
                                 catch (Exception)
                                 {
-
                                 }
                             }
                             <td>@item.Area</td>
-                            <td>@item.BedRoom</td>
-                            <td>@item.BathRoom</td>
-                            <td>@item.PackingPlace</td>
                             <td>@item.DISTRICT.DistrictName</td>
                             <td>@item.STREET.StreetName</td>
                             <td>@item.WARD.WardName</td>
                             <td>
-
                                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                                 @Html.ActionLink("Details", "Details", new { id = item.ID }) |
                                 @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-
                             </td>
                         </tr>
-                                }
+                     }
                 </tbody>
             </table>
         </div>
