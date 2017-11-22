@@ -195,14 +195,14 @@ namespace PPCRental_Project.Areas.Admin.Controllers
         }
 
         public void ListAll()
-        {
+        {   
             ViewBag.property_type = db.PROPERTY_TYPE.ToList();
             ViewBag.street = db.STREET.OrderBy(x => x.StreetName).ToList();
             ViewBag.ward = db.WARD.OrderBy(x => x.WardName).ToList();
             ViewBag.district = db.DISTRICT.OrderBy(x => x.DistrictName).ToList();
             ViewBag.user = db.USER.OrderBy(x => x.FullName).ToList();
             ViewBag.status = db.PROJECT_STATUS.OrderBy(x => x.Status_Name).ToList();
-            //ViewBag.sale = model.Sla.ToList();
+            //ViewBag.sale = model.Sla.ToLi st();
 
         }
     }
