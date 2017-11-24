@@ -5,6 +5,9 @@
     List<PPCRental_Project.Models.STREET> lstStreet = Model.ToList()[2] as List<PPCRental_Project.Models.STREET>;
     List<PPCRental_Project.Models.WARD> lstWard = Model.ToList()[3] as List<PPCRental_Project.Models.WARD>;
     List<PPCRental_Project.Models.PROPERTY_TYPE> lstType = Model.ToList()[4] as List<PPCRental_Project.Models.PROPERTY_TYPE>;
+    int max = 10;
+    int page = (int)ViewBag.Page;
+    lstProperty = lstProperty.Skip((page - 1) * max).Take(max).ToList();
 }
 
 @{
@@ -56,66 +59,64 @@
 
 <div class="container" id="viewandfilter">
     <!--View List-->
-    <div class="col-sm-9 wow slideInLeft">
+    <div class="col-sm-9 ">
         <div class="row">
             @{
-                foreach (var item in lstProperty)
-                {
-                    <div class="col-sm-6 col-md-4">
-                        <div class="thumbnail projectcomponent">
-                            <img class="img-rounded img-responsive display-img"  src="@Url.Content(item.Avatar)" alt="@item.PropertyName">
-                            <div class="caption">
-                                <!--Boundary of project title-->
-                                <div class="thumbnail-title">
-                                    @if (@item.PropertyName.Length > 36)
-                                    {
-                                        <h4>@item.PropertyName.Substring(0, 36)...</h4>
-                                    }
-                                    else
-                                    {
-                                        <h4>@item.PropertyName</h4>
-                                    }
-                                </div>
-                                <!--End Boundary of project title-->
-                                <!--Boundary of project short content-->
-                                <div class="thumbnail-content">
-                                    <!--Boundary of price-->
-                                        <p class="display-price">
-                                             <span class="glyphicons glyphicons-money"></span>
-                                               @item.Price @item.UnitPrice
-                                        </p>
-                                    <!--End Boundary of price-->
-
-                                    <!--Boundary of content-->
-                                    <p class="display-content">
-                                        @if(@item.Content.Length > 90)
-                                        {
-                                             @item.Content.Substring(0, 90)
-                                        }
-                                        else
-                                        {
-                                             @item.Content
-                                        }
-                                      
-                                    </p>
-                                    <!--End Boundary of content-->
-
-                                    <p>
-                                        <span class="glyphicon glyphicon-home"></span>                                                      @item.DISTRICT.DistrictName 
-                                    </p>
-                                </div>
-                                <!--End Boundary of project short content-->
-                                <!--Boundary of Detail button-->
-                                <div class="thumbnail-footer">
-                                    <a href="~/Project/Detail/@item.ID" class="btn btn-primary" role="button" id="btn-detail">Xem chi tiết</a>
-                                </div>
-                            </div>
-                        </div>
+    foreach (var item in lstProperty)
+    {
+        <div class="col-sm-6 col-md-4 wow slideInLeft">
+            <div class="thumbnail projectcomponent">
+                <img class="img-rounded img-responsive display-img" src="@Url.Content(item.Avatar)" alt="@item.PropertyName">
+                <div class="caption">
+                    <!--Boundary of project title-->
+                    <div class="thumbnail-title">
+                        @if (@item.PropertyName.Length > 36)
+                        {
+                            <h4>@item.PropertyName.Substring(0, 36)...</h4>
+                        }
+                        else
+                        {
+                            <h4>@item.PropertyName</h4>
+                        }
                     </div>
-                }
-            }
+                    <!--End Boundary of project title-->
+                    <!--Boundary of project short content-->
+                    <div class="thumbnail-content">
+                        <!--Boundary of price-->
+                        <p class="display-price">
+                            <span class="glyphicons glyphicons-money"></span>
+                            @item.Price @item.UnitPrice
+                        </p>
+                        <!--End Boundary of price-->
+                        <!--Boundary of content-->
+                        <p class="display-content">
+                            @if (@item.Content.Length > 90)
+                            {
+                                @item.Content.Substring(0, 90)
+                            }
+                            else
+                            {
+                                @item.Content
+                            }
+
+                        </p>
+                        <!--End Boundary of content-->
+
+                        <p>
+                            <span class="glyphicon glyphicon-home"></span>   @item.DISTRICT.DistrictName, @item.WARD.WardName, @item.STREET.StreetName
+                        </p>
+                    </div>
+                    <!--End Boundary of project short content-->
+                    <!--Boundary of Detail button-->
+                    <div class="thumbnail-footer">
+                        <a href="~/Project/Detail/@item.ID" class="btn btn-primary" role="button" id="btn-detail">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+                
+    }
+}
     <!--Filter-->
     <form role="search" action="@Url.Action("Search","Project")" method="get">
 

@@ -10,7 +10,7 @@ namespace PPCRental_Project.Controllers
     public class HomeController : Controller
     {
         K21T3_Team1_PPC3129Entities db = new K21T3_Team1_PPC3129Entities();
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
             //liet ke cac bang se su dung trong trang index
             List<object> model = new List<object>();
@@ -20,6 +20,7 @@ namespace PPCRental_Project.Controllers
             model.Add(db.WARD.ToList());
             model.Add(db.PROPERTY_TYPE.ToList());
             model.Add(db.FEATURE.ToList());
+            ViewBag.Page = page;
             return View(model);
         }
 
