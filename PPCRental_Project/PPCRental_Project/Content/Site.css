@@ -21,11 +21,17 @@
 input,
 select,
 textarea {
+    margin-bottom: 20px;
+    margin-top:20px;
     max-width: 280px;
+    height : 25px;
+    width: 180px;
 }
 select
 {
+    width : 180px;
     margin-top:20px;
+    height:25px;
 }
 /* styles for validation helpers */
 .field-validation-error {
