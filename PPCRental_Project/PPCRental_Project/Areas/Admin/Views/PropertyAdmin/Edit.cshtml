@@ -5,6 +5,10 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    if (Session["UserID"] == null)
+    {
+        Response.Redirect("~/Home/Index");
+    }
 }
 
 <h2>Edit</h2>
