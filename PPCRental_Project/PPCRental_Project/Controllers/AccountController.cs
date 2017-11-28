@@ -31,19 +31,26 @@ namespace PPCRental_Project.Controllers
             {
                 if (user.Password.Equals(password))
                 {
-                    Session["Fullname"] = user.FullName;
-                    Session["UserID"] = user.ID;
-                    Session["UserRole"] = user.Role;
-                    if (user.Role.Equals("1")) 
+                    if (user.Status == true) 
                     {
-                        return RedirectToAction("Index", "Agency/PropertyAgency");
+                        Session["Fullname"] = user.FullName;
+                        Session["UserID"] = user.ID;
+                        Session["UserRole"] = user.Role;
+                        if (user.Role.Equals("1"))
+                        {
+                            return RedirectToAction("Index", "Agency/PropertyAgency");
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Admin/PropertyAdmin");
+                        }
                     }
                     else 
                     {
-                        return RedirectToAction("Index", "Admin/PropertyAdmin");
+                        ViewBag.messageStatus = "Tai khoan khong kha dung";
                     }
-
                 }
+
             }
             else
             {
