@@ -46,26 +46,28 @@
                 </div>
             </div>
             <div class="form-group">
+                @Html.LabelFor(model => model.District_ID, "District", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style=" width: 230px; margin-left: 50px;">
+                    @Html.DropDownList("District_ID", new SelectList(ViewBag.District, "ID", "DistrictName", Model.DISTRICT), new { @Styles = "width: 175px; height: 25px;" })
+                    @Html.ValidationMessageFor(model => model.District_ID)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Ward_ID, "Ward", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style=" width: 230px; margin-left: 50px;">
+                    @Html.DropDownList("Ward_ID", new SelectList(ViewBag.WardName, "ID", "WardName", Model.WARD), new { @Styles = "width: 175px; height: 25px;" })
+                    @Html.ValidationMessageFor(model => model.Ward_ID)
+                </div>
+            </div>
+            <div class="form-group">
                 @Html.LabelFor(model => model.Street_ID, "Street", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10" style=" width: 230px; margin-left: 50px;">
                         @Html.DropDownList("Street_ID", new SelectList(ViewBag.StreetName, "ID", "StreetName", Model.STREET), new { @Styles = "width: 175px; height: 25px;" })
                         @Html.ValidationMessageFor(model => model.Street_ID)              
                     </div>
             </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Ward_ID, "Ward", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10" style=" width: 230px; margin-left: 50px;">
-                        @Html.DropDownList("Ward_ID", new SelectList(ViewBag.WardName, "ID", "WardName", Model.WARD), new { @Styles = "width: 175px; height: 25px;" })
-                        @Html.ValidationMessageFor(model => model.Ward_ID)
-                    </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.District_ID, "District", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10" style=" width: 230px; margin-left: 50px;">
-                        @Html.DropDownList("District_ID", new SelectList(ViewBag.District, "ID", "DistrictName", Model.DISTRICT), new { @Styles = "width: 175px; height: 25px;" })
-                        @Html.ValidationMessageFor(model => model.District_ID)
-                    </div>
-            </div>
+            
+            
             <div class="form-group">
                 @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10" style=" width: 230px; margin-left: 50px;">
@@ -156,16 +158,30 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @*<img src="~/Images/@Model.Avatar" width="200" /> <br><br>*@
+                    @*<img src="@Url.Content(Model.Avatar)" width="100px">*@
                     <div>
-                        @using (Html.BeginForm("FileUpload", "PropertyAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                        {
+                      
                             <input type="file" name="ImageFile" />
                             @*@Html.EditorFor(model => model.Images, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })*@
-                        }
+                        
                     </div>
                 </div>
+                
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*<img src="@Url.Content(Model.Avatar)" width="100px">*@
+                    <div>
+
+                        <input type="file" name="ImageFile2" multiple />
+                        @*@Html.EditorFor(model => model.Images, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })*@
+
+                    </div>
+                </div>
+
             </div>
         </div>
         @*<div class="form-group">

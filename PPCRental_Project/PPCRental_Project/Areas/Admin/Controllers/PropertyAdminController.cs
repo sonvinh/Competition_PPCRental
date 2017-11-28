@@ -124,15 +124,8 @@ namespace PPCRental_Project.Areas.Admin.Controllers
             // Images
 
             var entity = db.PROPERTY.Find(p.ID);
-
-            string filename = Path.GetFileNameWithoutExtension(p.ImageFile.FileName);
-            string extension = Path.GetExtension(p.ImageFile.FileName);
-            filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
-
-            p.Images = "~/Images/" + filename;
-            string s = p.Images;
-            filename = Path.Combine(Server.MapPath("~/Images"), filename);
-            p.ImageFile.SaveAs(filename);
+            string s = Upava(p);
+            string c = Upima(p);
             // Avatar
             //string filename2 = Path.GetFileNameWithoutExtension(property.ImageFile2.FileName);
             //string extension2 = Path.GetExtension(property.ImageFile2.FileName);
@@ -162,7 +155,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
 
 
             entity.Avatar = s;
-
+            entity.Images = c;
             //property.Avatar = p.Avatar;
             //property.Images = p.Images;
             entity.PropertyType_ID = p.PropertyType_ID;
@@ -194,6 +187,38 @@ namespace PPCRental_Project.Areas.Admin.Controllers
             // return View("Index");
         }
 
+        private string Upava(PROPERTY p)
+        {
+            string filename = Path.GetFileNameWithoutExtension(p.ImageFile.FileName);
+            string extension = Path.GetExtension(p.ImageFile.FileName);
+            filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
+
+            p.Avatar = "~/Images/" + filename;
+            string s = p.Avatar;
+            filename = Path.Combine(Server.MapPath("~/Images"), filename);
+            p.ImageFile.SaveAs(filename);
+            return s;
+        }
+        private string Upima(PROPERTY p)
+        {
+            string filename;
+            string extension;
+            string s="";
+            foreach(var item in p.ImageFile2)
+
+            {
+               filename = Path.GetFileNameWithoutExtension(item.FileName);
+                 extension = Path.GetExtension(item.FileName);
+                filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
+
+                p.Images = "~/Images/" + filename;
+                 s += p.Images +",";
+                filename = Path.Combine(Server.MapPath("~/Images"), filename);
+                p.ImageFile.SaveAs(filename);
+            }
+            
+            return s;
+        }
         public void ListAll()
         {   
             ViewBag.property_type = db.PROPERTY_TYPE.ToList();
