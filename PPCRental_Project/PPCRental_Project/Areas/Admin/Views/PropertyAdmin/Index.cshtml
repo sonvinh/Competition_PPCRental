@@ -7,6 +7,13 @@
     {
         Response.Redirect("~/Home/Index");
     }
+    else 
+    {
+        if (Session["UserRole"].ToString().Equals("1")) 
+        {
+            Response.Redirect("~/Home/Error"); 
+        }
+    }
 }
 
 <h2>IndexAdmin</h2>

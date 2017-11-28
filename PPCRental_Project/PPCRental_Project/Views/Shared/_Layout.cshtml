@@ -42,7 +42,15 @@
                     <li><a href="~/Home/About">About Us</a></li>
                     @if (Session["UserID"] != null)
                     {
-                        <li><a href="~/Agency/PropertyAgency/Index">My Project</a></li>
+                        if (Session["UserRole"].ToString().Equals("1"))
+                        {
+                            <li><a href="~/Agency/PropertyAgency/Index">My Project</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="~/Admin/PropertyAdmin/Index">Manage</a></li>
+                        }
+
                         <li><a href="~/Account/LogOut">Log out</a></li>
                     }
                     else

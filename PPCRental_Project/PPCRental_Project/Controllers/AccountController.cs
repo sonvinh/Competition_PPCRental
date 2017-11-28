@@ -33,6 +33,7 @@ namespace PPCRental_Project.Controllers
                 {
                     Session["Fullname"] = user.FullName;
                     Session["UserID"] = user.ID;
+                    Session["UserRole"] = user.Role;
                     if (user.Role.Equals("1")) 
                     {
                         return RedirectToAction("Index", "Agency/PropertyAgency");

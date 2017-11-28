@@ -37,5 +37,11 @@ namespace PPCRental_Project.Controllers
 
             return View();
         }
+
+        public ActionResult Error() 
+        {
+            return View();
+        }
+
     }
 }
