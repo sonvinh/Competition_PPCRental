@@ -117,6 +117,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
         }
 
 
+
         [HttpPost]
         public ActionResult Edit(PROPERTY p)
         {
@@ -124,59 +125,115 @@ namespace PPCRental_Project.Areas.Admin.Controllers
             // Images
 
             var entity = db.PROPERTY.Find(p.ID);
-            string s = Upava(p);
-            string c = Upima(p);
-            // Avatar
-            //string filename2 = Path.GetFileNameWithoutExtension(property.ImageFile2.FileName);
-            //string extension2 = Path.GetExtension(property.ImageFile2.FileName);
-            //filename2 = filename2 + "Avatar" + DateTime.Now.ToString("yymmssfff") + extension2;
-            //property.Avatar = "~/Images/" + filename2;
-            //filename2 = Path.Combine(Server.MapPath("~/Images"), filename2);
-            // Save
+            try
+            {
+                string s = Upava(p);
+                string c = Upima(p);
+                entity.PropertyName = p.PropertyName;
+                entity.Avatar = s;
+                entity.Images = c;
+                entity.PropertyType_ID = p.PropertyType_ID;
+                entity.Content = p.Content;
+                entity.Street_ID = p.Street_ID;
+                entity.Ward_ID = p.Ward_ID;
+                entity.District_ID = p.District_ID;
+                entity.UnitPrice = p.UnitPrice;
+                entity.Area = p.Area;
+                entity.BedRoom = p.BedRoom;
+                entity.BathRoom = p.BathRoom;
+                entity.PackingPlace = p.PackingPlace;
+                entity.UserID = p.UserID;
+                entity.Created_at = p.Created_at;
+                entity.Create_post = p.Create_post;
+                entity.Status_ID = p.Status_ID;
+                entity.Note = p.Note;
+                entity.Updated_at = p.Updated_at;
+                entity.Sale_ID = p.Sale_ID;
 
-            //if (Path.GetFileNameWithoutExtension(property.ImageFile2.FileName)==null)
-            //{
-            //    string s1 = "~/ Images / AvatarNull.png";
-            //    property.ImageFile2.SaveAs(s1);
-            //    property.ImageFile.SaveAs(filename);
-            //}
-            //if (Path.GetFileNameWithoutExtension(entity.ImageFile.FileName) == null)
-            //{
-            //    string s2 = "~/Images/ImagesNull.png";
-            //    p.ImageFile.SaveAs(s2);
-            //    //property.ImageFile2.SaveAs(filename2);
-            //}
-            //else
-            //{
-            //    //property.ImageFile2.SaveAs(filename2);
-            //    p.ImageFile.SaveAs(filename);
-            //}
-            entity.PropertyName = p.PropertyName;
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    string s = Upava(p);
+                    entity.PropertyName = p.PropertyName;
+                    entity.Avatar = s;
+                    entity.PropertyType_ID = p.PropertyType_ID;
+                    entity.Content = p.Content;
+                    entity.Street_ID = p.Street_ID;
+                    entity.Ward_ID = p.Ward_ID;
+                    entity.District_ID = p.District_ID;
+                    entity.UnitPrice = p.UnitPrice;
+                    entity.Area = p.Area;
+                    entity.BedRoom = p.BedRoom;
+                    entity.BathRoom = p.BathRoom;
+                    entity.PackingPlace = p.PackingPlace;
+                    entity.UserID = p.UserID;
+                    entity.Created_at = p.Created_at;
+                    entity.Create_post = p.Create_post;
+                    entity.Status_ID = p.Status_ID;
+                    entity.Note = p.Note;
+                    entity.Updated_at = p.Updated_at;
+                    entity.Sale_ID = p.Sale_ID;
+
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    try
+                    {
+                        string c = Upima(p);
+                        entity.Images = c;
+                        entity.PropertyName = p.PropertyName;
+                        entity.PropertyType_ID = p.PropertyType_ID;
+                        entity.Content = p.Content;
+                        entity.Street_ID = p.Street_ID;
+                        entity.Ward_ID = p.Ward_ID;
+                        entity.District_ID = p.District_ID;
+                        entity.UnitPrice = p.UnitPrice;
+                        entity.Area = p.Area;
+                        entity.BedRoom = p.BedRoom;
+                        entity.BathRoom = p.BathRoom;
+                        entity.PackingPlace = p.PackingPlace;
+                        entity.UserID = p.UserID;
+                        entity.Created_at = p.Created_at;
+                        entity.Create_post = p.Create_post;
+                        entity.Status_ID = p.Status_ID;
+                        entity.Note = p.Note;
+                        entity.Updated_at = p.Updated_at;
+                        entity.Sale_ID = p.Sale_ID;
+
+                        db.SaveChanges();
 
 
-            entity.Avatar = s;
-            entity.Images = c;
-            //property.Avatar = p.Avatar;
-            //property.Images = p.Images;
-            entity.PropertyType_ID = p.PropertyType_ID;
-            entity.Content = p.Content;
-            entity.Street_ID = p.Street_ID;
-            entity.Ward_ID = p.Ward_ID;
-            entity.District_ID = p.District_ID;
-            entity.UnitPrice = p.UnitPrice;
-            entity.Area = p.Area;
-            entity.BedRoom = p.BedRoom;
-            entity.BathRoom = p.BathRoom;
-            entity.PackingPlace = p.PackingPlace;
-            entity.UserID = p.UserID;
-            entity.Created_at = p.Created_at;
-            entity.Create_post = p.Create_post;
-            entity.Status_ID = p.Status_ID;
-            entity.Note = p.Note;
-            entity.Updated_at = p.Updated_at;
-            entity.Sale_ID = p.Sale_ID;
+                    }
+                    catch (Exception)
+                    {
+                        entity.PropertyType_ID = p.PropertyType_ID;
+                        entity.Content = p.Content;
+                        entity.Street_ID = p.Street_ID;
+                        entity.Ward_ID = p.Ward_ID;
+                        entity.District_ID = p.District_ID;
+                        entity.UnitPrice = p.UnitPrice;
+                        entity.Area = p.Area;
+                        entity.BedRoom = p.BedRoom;
+                        entity.BathRoom = p.BathRoom;
+                        entity.PackingPlace = p.PackingPlace;
+                        entity.UserID = p.UserID;
+                        entity.Created_at = p.Created_at;
+                        entity.Create_post = p.Create_post;
+                        entity.Status_ID = p.Status_ID;
+                        entity.Note = p.Note;
+                        entity.Updated_at = p.Updated_at;
+                        entity.Sale_ID = p.Sale_ID;
 
-            db.SaveChanges();
+                        db.SaveChanges();
+
+                    }
+                }
+            }
+
 
 
             // TODO: Add insert logic here
@@ -189,6 +246,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
 
         private string Upava(PROPERTY p)
         {
+
             string filename = Path.GetFileNameWithoutExtension(p.ImageFile.FileName);
             string extension = Path.GetExtension(p.ImageFile.FileName);
             filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
@@ -203,20 +261,20 @@ namespace PPCRental_Project.Areas.Admin.Controllers
         {
             string filename;
             string extension;
-            string s="";
-            foreach(var item in p.ImageFile2)
-
+            string s = "";
+            string b;
+            foreach (var item in p.ImageFile2)
             {
-               filename = Path.GetFileNameWithoutExtension(item.FileName);
-                 extension = Path.GetExtension(item.FileName);
+                filename = Path.GetFileNameWithoutExtension(item.FileName);
+                extension = Path.GetExtension(item.FileName);
                 filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
-
                 p.Images = "~/Images/" + filename;
-                 s += p.Images +",";
+                b = p.Images;
+                s = string.Concat(s, b, ",");
                 filename = Path.Combine(Server.MapPath("~/Images"), filename);
-                p.ImageFile.SaveAs(filename);
+                item.SaveAs(filename);
             }
-            
+
             return s;
         }
         public void ListAll()
