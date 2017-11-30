@@ -52,6 +52,8 @@ namespace PPCRental_Project.Models
         public virtual USER USER1 { get; set; }
         public virtual WARD WARD { get; set; }
 
+        public HttpPostedFileBase AvatarUpload { get; set; }
+
         public HttpPostedFileBase ImageFile { get; set; }
         public IEnumerable<HttpPostedFileBase> ImageFile2 { get; set; }
     }

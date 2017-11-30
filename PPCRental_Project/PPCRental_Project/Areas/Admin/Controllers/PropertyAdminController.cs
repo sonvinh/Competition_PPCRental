@@ -31,39 +31,17 @@ namespace PPCRental_Project.Areas.Admin.Controllers
 
             return View(property);
         }
-        //[HttpPost]
-        //public ActionResult Edit(int id, PROPERTY p)
-        //{
-        //    var property = db.PROPERTY.FirstOrDefault(x => x.ID == id);
-        //    property.PropertyName = p.PropertyName;
-        //    property.Avatar = p.Avatar;
-        //    property.Images = p.Images;
-        //    property.PropertyType_ID = p.PropertyType_ID;
-        //    property.Content = p.Content;
-        //    property.Street_ID = p.Street_ID;
-        //    property.Ward_ID = p.Ward_ID;
-        //    property.District_ID = p.District_ID;
-        //    property.UnitPrice = p.UnitPrice;
-        //    property.Area = p.Area;
-        //    property.BedRoom = p.BedRoom;
-        //    property.BathRoom = p.BathRoom;
-        //    property.PackingPlace = p.PackingPlace;
-        //    property.UserID = p.UserID;
-        //    property.Created_at = p.Created_at;
-        //    property.Create_post = p.Create_post;
-        //    property.Status_ID = p.Status_ID;
-        //    property.Note = p.Note;
-        //    property.Updated_at = p.Updated_at;
-        //    property.Sale_ID = p.Sale_ID;
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-
-        //}
 
         [HttpGet]
-        public ActionResult Create(int id)
+        public ActionResult Create()
         {
-            return View();
+            var property = new PROPERTY();
+            ViewBag.property_type = db.PROPERTY_TYPE.OrderByDescending(x => x.ID).ToList();
+            ViewBag.StreetName = db.STREET.OrderByDescending(x => x.ID).Where(x => x.District_ID >= 31 && x.District_ID <= 54).ToList();
+            ViewBag.WardName = db.WARD.OrderByDescending(x => x.ID).Where(x => x.District_ID >= 31 && x.District_ID <= 54).ToList();
+            ViewBag.District = db.DISTRICT.OrderByDescending(x => x.ID).Where(x => x.ID >= 31 && x.ID <= 54).ToList();
+            return View(property);
+
         }
 
         [HttpPost]
@@ -72,7 +50,6 @@ namespace PPCRental_Project.Areas.Admin.Controllers
             var property = new PROPERTY();
             property.PropertyName = p.PropertyName;
             property.Avatar = p.Avatar;
-            //property.Images = p.Images;
             property.PropertyType_ID = p.PropertyType_ID;
             property.Content = p.Content;
             property.Street_ID = p.Street_ID;
@@ -149,7 +126,6 @@ namespace PPCRental_Project.Areas.Admin.Controllers
                 entity.Note = p.Note;
                 entity.Updated_at = p.Updated_at;
                 entity.Sale_ID = p.Sale_ID;
-
                 db.SaveChanges();
             }
             catch (Exception)
@@ -234,14 +210,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
                 }
             }
 
-
-
-            // TODO: Add insert logic here
-
             return RedirectToAction("Index", "PropertyAdmin");
-            //   return View("Index");
-
-            // return View("Index");
         }
 
         private string Upava(PROPERTY p)
@@ -257,6 +226,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
             p.ImageFile.SaveAs(filename);
             return s;
         }
+
         private string Upima(PROPERTY p)
         {
             string filename;
@@ -285,8 +255,23 @@ namespace PPCRental_Project.Areas.Admin.Controllers
             ViewBag.district = db.DISTRICT.OrderBy(x => x.DistrictName).ToList();
             ViewBag.user = db.USER.OrderBy(x => x.FullName).ToList();
             ViewBag.status = db.PROJECT_STATUS.OrderBy(x => x.Status_Name).ToList();
-            //ViewBag.sale = model.Sla.ToLi st();
 
+        }
+
+        public JsonResult GetStreet(int District_id)
+        {
+            return Json(
+            db.STREET.Where(s => s.District_ID == District_id)
+            .Select(s => new { id = s.ID, text = s.StreetName }).ToList(),
+            JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetWard(int District_id)
+        {
+            return Json(
+            db.WARD.Where(s => s.District_ID == District_id)
+            .Select(s => new { id = s.ID, text = s.WardName }).ToList(),
+            JsonRequestBehavior.AllowGet);
         }
     }
 }

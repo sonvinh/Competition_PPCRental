@@ -60,5 +60,21 @@ namespace PPCRental_Project.Controllers
             return View(detail);
         }
 
+        public JsonResult GetStreet(int District_id)
+        {
+            return Json(
+            PPCRENTAL.STREET.Where(s => s.District_ID == District_id)
+            .Select(s => new { id = s.ID, text = s.StreetName }).ToList(),
+            JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetWard(int District_id)
+        {
+            return Json(
+            PPCRENTAL.WARD.Where(s => s.District_ID == District_id)
+            .Select(s => new { id = s.ID, text = s.WardName }).ToList(),
+            JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

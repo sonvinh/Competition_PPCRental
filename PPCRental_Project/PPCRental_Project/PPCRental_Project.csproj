@@ -120,6 +120,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Agency\Models\" />
     <Folder Include="Areas\Agency\Views\Shared\" />
+    <Folder Include="MultiImages\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -351,6 +352,7 @@
     <Content Include="Areas\Admin\Views\PropertyAdmin\Edit.cshtml" />
     <Content Include="Areas\Agency\Views\web.config" />
     <Content Include="Areas\Agency\Views\PropertyAgency\Index.cshtml" />
+    <Content Include="Areas\Agency\Views\PropertyAgency\Create.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
