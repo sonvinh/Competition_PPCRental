@@ -58,7 +58,7 @@ namespace PPCRental_Project.Areas.Agency.Controllers
             var np = new PROPERTY();
             var IDUser = (int)Session["UserID"];
             NewProperty.UserID = IDUser;
-            NewProperty.Status_ID = 2;
+            NewProperty.Status_ID = 1;
             if (String.IsNullOrEmpty(NewProperty.UnitPrice) || String.IsNullOrWhiteSpace(NewProperty.UnitPrice))
             {
                 NewProperty.UnitPrice = "VND";

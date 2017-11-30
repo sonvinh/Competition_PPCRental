@@ -124,8 +124,8 @@ namespace PPCRental_Project.Areas.Admin.Controllers
                 entity.Create_post = p.Create_post;
                 entity.Status_ID = p.Status_ID;
                 entity.Note = p.Note;
-                entity.Updated_at = p.Updated_at;
-                entity.Sale_ID = p.Sale_ID;
+                entity.Updated_at = DateTime.Parse(DateTime.Now.ToShortDateString());
+                entity.Sale_ID = (int)Session["UserID"];
                 db.SaveChanges();
             }
             catch (Exception)
@@ -150,8 +150,8 @@ namespace PPCRental_Project.Areas.Admin.Controllers
                     entity.Create_post = p.Create_post;
                     entity.Status_ID = p.Status_ID;
                     entity.Note = p.Note;
-                    entity.Updated_at = p.Updated_at;
-                    entity.Sale_ID = p.Sale_ID;
+                    entity.Updated_at = DateTime.Parse(DateTime.Now.ToShortDateString());
+                    entity.Sale_ID = (int)Session["UserID"];
 
                     db.SaveChanges();
                 }
@@ -177,8 +177,8 @@ namespace PPCRental_Project.Areas.Admin.Controllers
                         entity.Create_post = p.Create_post;
                         entity.Status_ID = p.Status_ID;
                         entity.Note = p.Note;
-                        entity.Updated_at = p.Updated_at;
-                        entity.Sale_ID = p.Sale_ID;
+                        entity.Updated_at = DateTime.Parse(DateTime.Now.ToShortDateString());
+                        entity.Sale_ID = (int)Session["UserID"];
 
                         db.SaveChanges();
 
@@ -201,8 +201,8 @@ namespace PPCRental_Project.Areas.Admin.Controllers
                         entity.Create_post = p.Create_post;
                         entity.Status_ID = p.Status_ID;
                         entity.Note = p.Note;
-                        entity.Updated_at = p.Updated_at;
-                        entity.Sale_ID = p.Sale_ID;
+                        entity.Updated_at = DateTime.Parse(DateTime.Now.ToShortDateString());
+                        entity.Sale_ID = (int)Session["UserID"];
 
                         db.SaveChanges();
 
@@ -215,11 +215,9 @@ namespace PPCRental_Project.Areas.Admin.Controllers
 
         private string Upava(PROPERTY p)
         {
-
             string filename = Path.GetFileNameWithoutExtension(p.ImageFile.FileName);
             string extension = Path.GetExtension(p.ImageFile.FileName);
             filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
-
             p.Avatar = "~/Images/" + filename;
             string s = p.Avatar;
             filename = Path.Combine(Server.MapPath("~/Images"), filename);

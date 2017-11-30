@@ -56,5 +56,6 @@ namespace PPCRental_Project.Models
 
         public HttpPostedFileBase ImageFile { get; set; }
         public IEnumerable<HttpPostedFileBase> ImageFile2 { get; set; }
+        
     }
 }

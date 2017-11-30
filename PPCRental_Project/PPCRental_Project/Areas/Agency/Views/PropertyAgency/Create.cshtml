@@ -51,7 +51,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.PropertyType_ID, "PropertyType_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.PropertyType_ID, "PropertyType", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("PropertyType_ID", new SelectList(ViewBag.property_type, "ID", "CodeType"))
                     @Html.ValidationMessageFor(model => model.PropertyType_ID)
@@ -67,7 +67,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Street_ID, "Street_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Street_ID, "Street", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("Street_ID", new SelectList(ViewBag.street, "ID", "StreetName"))
                     @Html.ValidationMessageFor(model => model.Street_ID)
@@ -83,7 +83,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.District_ID, "District_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.District_ID, "District", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("District_ID", new SelectList(ViewBag.district, "ID", "DistrictName"))
                     @Html.ValidationMessageFor(model => model.District_ID)
