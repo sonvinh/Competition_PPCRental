@@ -12,14 +12,14 @@ namespace PPCRental_Project.Areas.Agency.Controllers
 
     public class PropertyAgencyController : Controller
     {
-        K21T3_Team1_PPC3129Entities model = new K21T3_Team1_PPC3129Entities();
+        K21T3_Team1_PPC3129Entities db = new K21T3_Team1_PPC3129Entities();
 
         
             public long Insert(PROPERTY entytiy)
             {
                 K21T3_Team1_PPC3129Entities model = new K21T3_Team1_PPC3129Entities();
-                model.PROPERTY.Add(entytiy);
-                model.SaveChanges();
+            db.PROPERTY.Add(entytiy);
+            db.SaveChanges();
                 return entytiy.ID;
             }
         
@@ -31,7 +31,7 @@ namespace PPCRental_Project.Areas.Agency.Controllers
             if (Session["UserID"] != null)
             {
                 var id = (int)Session["UserID"];
-                var user = model.PROPERTY.Where(x => x.USER.ID == id).ToList();
+                var user = db.PROPERTY.Where(x => x.USER.ID == id).ToList();
                 return View(user);
             }
             else
@@ -40,145 +40,115 @@ namespace PPCRental_Project.Areas.Agency.Controllers
             }
 
         }
+       
 
-        [HttpGet]
+        // POST: /Project/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         public ActionResult Create()
         {
-            PROPERTY newproperty = new PROPERTY();
-            ListItem();
-            return View(newproperty);
+            ViewBag.District_ID = new SelectList(db.DISTRICT.Where(y => y.ID >= 31 && y.ID <= 54), "ID", "DistrictName");
+            ViewBag.Status_ID = new SelectList(db.PROJECT_STATUS, "ID", "Status_Name");
+            ViewBag.PropertyType_ID = new SelectList(db.PROPERTY_TYPE, "ID", "CodeType");
+            ViewBag.Street_ID = new SelectList(db.STREET.Where(y => y.ID >= 31 && y.ID <= 54), "ID", "StreetName");
+            ViewBag.UserID = new SelectList(db.USER, "ID", "Email");
+            ViewBag.Sale_ID = new SelectList(db.USER, "ID", "Email");
+            ViewBag.Ward_ID = new SelectList(db.WARD.Where(y => y.ID >= 31 && y.ID <= 54), "ID", "WardName");
+            ViewBag.Feature_ID = new SelectList(db.FEATURE, "ID", "FeatureName");
+            return View();
         }
 
-        //Demo
+        // POST: /Project/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public ActionResult Create(PROPERTY NewProperty, List<HttpPostedFileBase> files) 
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(PROPERTY property)
         {
-            ListItem();
-            var np = new PROPERTY();
-            var IDUser = (int)Session["UserID"];
-            NewProperty.UserID = IDUser;
-            NewProperty.Status_ID = 1;
-            if (String.IsNullOrEmpty(NewProperty.UnitPrice) || String.IsNullOrWhiteSpace(NewProperty.UnitPrice))
+
+            property.Avatar = AvatarU(property);
+            property.Images = ImagesU(property);
+            property.Created_at = DateTime.Now;
+            property.Create_post = DateTime.Now; // sua lai sau
+            property.UnitPrice = "VND";
+            property.Status_ID = 1;
+            property.UserID = (int)Session["UserID"];
+
+            if (ModelState.IsValid)
             {
-                NewProperty.UnitPrice = "VND";
+
+                db.PROPERTY.Add(property);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-                try
-                {
 
-                    string filename = Path.GetFileNameWithoutExtension(NewProperty.AvatarUpload.FileName);
-                    string extension = Path.GetExtension(NewProperty.AvatarUpload.FileName);
-                    filename = filename + "checkcheck" + DateTime.Now.ToString("yymmssfff") + extension;
-                    NewProperty.Avatar = "~/Images/"+filename;
-                    filename = Path.Combine(Server.MapPath("~/Images"), filename);
-                    // Avatar
-
-                    if (Path.GetFileNameWithoutExtension(NewProperty.AvatarUpload.FileName) == null)
-                    {
-                        string s2 = "~/Images/ImagesNull.png";
-                        NewProperty.Avatar = s2;
-                        //NewProperty.AvatarUpload.SaveAs(s2);
-                        //property.ImageFile2.SaveAs(filename2);
-                    }
-                    else
-                    {
-                        //property.ImageFile2.SaveAs(filename2);
-                        NewProperty.AvatarUpload.SaveAs(filename);
-                    }
-                    
-                    NewProperty.Created_at = DateTime.Parse(DateTime.Now.ToShortDateString());
-                   
-                    if (ModelState.IsValid)
-                    {
-                        long id = Insert(NewProperty);
-                        var path = "";
-                        foreach (var item in files)
-                        {
-                            if (item != null)
-                            {
-                                if (item.ContentLength > 0)
-                                {
-                                    if (Path.GetExtension(item.FileName).ToLower() == ".jpg"
-                                        || Path.GetExtension(item.FileName).ToLower() == ".png"
-                                        || Path.GetExtension(item.FileName).ToLower() == ".gif"
-                                        || Path.GetExtension(item.FileName).ToLower() == ".jpeg")
-                                    {
-                                        var path0 = id + "," + item.FileName;
-                                        path = Path.Combine(Server.MapPath("~/MultiImages"), path0);
-
-                                        item.SaveAs(path);
-                                        ViewBag.UploadSuccess = true;
-
-                                    }
-                                }
-                            }
-                        }
-                        if (id > 0)
-                        {
-                            return RedirectToAction("Index", "PropertyAgency");
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("", "Create khong thanh cong");
-                        }
-                    }
-
-
-                }
-                catch(NullReferenceException)
-                {
-                    NewProperty.Created_at = DateTime.Parse(DateTime.Now.ToShortDateString());
-                    string s2 = "~/Images/ImagesNull.png";
-                    NewProperty.Avatar = s2;
-                    if (ModelState.IsValid)
-                    {
-                        long id = Insert(NewProperty);
-                        var path = "";
-                        foreach (var item in files)
-                        {
-                            if (item != null)
-                            {
-                                if (item.ContentLength > 0)
-                                {
-                                    if (Path.GetExtension(item.FileName).ToLower() == ".jpg"
-                                        || Path.GetExtension(item.FileName).ToLower() == ".png"
-                                        || Path.GetExtension(item.FileName).ToLower() == ".gif"
-                                        || Path.GetExtension(item.FileName).ToLower() == ".jpeg")
-                                    {
-                                        var path0 = id + "," + item.FileName;
-                                        path = Path.Combine(Server.MapPath("~/MultiImages"), path0);
-
-                                        item.SaveAs(path);
-                                        ViewBag.UploadSuccess = true;
-
-                                    }
-                                }
-                            }
-                        }
-                        if (id > 0)
-                        {
-                            return RedirectToAction("Index", "PropertyAgency");
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("", "Create khong thanh cong");
-                        }
-                    }
-                }
-
-                return View();
-            
+            ViewBag.District_ID = new SelectList(db.DISTRICT, "ID", "DistrictName", property.District_ID);
+            ViewBag.Status_ID = new SelectList(db.PROJECT_STATUS, "ID", "Status_Name", property.Status_ID);
+            ViewBag.PropertyType_ID = new SelectList(db.PROPERTY_TYPE, "ID", "CodeType", property.PropertyType_ID);
+            ViewBag.Street_ID = new SelectList(db.STREET, "ID", "StreetName", property.Street_ID);
+            ViewBag.UserID = new SelectList(db.USER, "ID", "Email", property.UserID);
+            ViewBag.Sale_ID = new SelectList(db.USER, "ID", "Email", property.Sale_ID);
+            ViewBag.Ward_ID = new SelectList(db.WARD, "ID", "WardName", property.Ward_ID);
+            return View(property);
         }
+
+        private string ImagesU(PROPERTY p)
+        {
+
+            string filename;
+            string extension;
+            string b;
+            string s = "";
+            foreach (var file in p.ImageFile2)
+            {
+                if (file.ContentLength > 0)
+                {
+                    filename = Path.GetFileNameWithoutExtension(file.FileName);
+                    extension = Path.GetExtension(file.FileName);
+                    filename = filename + DateTime.Now.ToString("yymmssff") + extension;
+                    p.Images = "~/Images/"+ filename;
+                    b = p.Images;
+                    s = string.Concat(s, b, ",");
+                    filename = Path.Combine(Server.MapPath("~/Images"), filename);
+                    file.SaveAs(filename);
+
+                }
+
+            }
+            return s;
+
+        }
+        private string AvatarU(PROPERTY p)
+        {
+            string s = "";
+            string filename;
+            string extension;
+
+
+          
+                 filename = Path.GetFileNameWithoutExtension(p.ImageFile.FileName);
+                 extension = Path.GetExtension(p.ImageFile.FileName);
+                filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
+                p.Avatar = "~/Images/" + filename;
+                 s = p.Avatar;
+                filename = Path.Combine(Server.MapPath("~/Images"), filename);
+                p.ImageFile.SaveAs(filename);
+                return s;
+            
+            return s;
+
+        }
+
 
 
         public void ListItem()
         {
-            ViewBag.property_type = model.PROPERTY_TYPE.ToList();
-            ViewBag.ward = model.WARD.OrderByDescending(x => x.ID).Where(x=> x.District_ID>=31&& x.District_ID<=54).ToList();
-            ViewBag.street = model.STREET.OrderByDescending(x => x.ID).Where(x => x.District_ID >= 31 && x.District_ID <= 54).ToList();
-            ViewBag.district = model.DISTRICT.OrderByDescending(x => x.ID).Where(x => x.ID>=31 && x.ID<=54).ToList();
-            ViewBag.user = model.USER.OrderByDescending(x => x.ID).ToList();
-            ViewBag.status = model.PROJECT_STATUS.OrderByDescending(x => x.ID).ToList();
+            ViewBag.property_type = db.PROPERTY_TYPE.ToList();
+            ViewBag.ward = db.WARD.OrderByDescending(x => x.ID).Where(x=> x.District_ID>=31&& x.District_ID<=54).ToList();
+            ViewBag.street = db.STREET.OrderByDescending(x => x.ID).Where(x => x.District_ID >= 31 && x.District_ID <= 54).ToList();
+            ViewBag.district = db.DISTRICT.OrderByDescending(x => x.ID).Where(x => x.ID>=31 && x.ID<=54).ToList();
+            ViewBag.user = db.USER.OrderByDescending(x => x.ID).ToList();
+            ViewBag.status = db.PROJECT_STATUS.OrderByDescending(x => x.ID).ToList();
 
         }
     }

@@ -18,7 +18,7 @@
     }
 }
 
-<h2>Edit</h2>
+<h2 style="text-align:center">Edit</h2>
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/Site.css" rel="stylesheet" />
@@ -26,8 +26,8 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>PROPERTY</h4>
+    <div class="form-horizontal" >
+        <h4 style="text-align:center">PROPERTY</h4>
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.ID)
