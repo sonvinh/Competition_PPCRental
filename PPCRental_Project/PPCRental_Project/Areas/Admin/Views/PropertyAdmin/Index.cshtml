@@ -3,15 +3,15 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-    if (Session["UserID"] == null) 
+    if (Session["UserID"] == null)
     {
-        Response.Redirect("~/Home/Index");
+        Response.Redirect("~/Admin/Account/Login");
     }
-    else 
+    else
     {
-        if (Session["UserRole"].ToString().Equals("1")) 
+        if (Session["UserRole"].ToString().Equals("1"))
         {
-            Response.Redirect("~/Home/Error"); 
+            Response.Redirect("~/Home/Error");
         }
     }
 }
@@ -36,6 +36,8 @@
                         <th>DistrictName</th>
                         <th>StreetName</th>
                         <th>WardName</th>
+                        <th>Status</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -49,19 +51,36 @@
                                 try
                                 {
                                     <td><img src="@Url.Content(item.Avatar)" width="100px"></td>
+
                                 }
                                 catch (Exception)
                                 {
                                 }
+
                             }
+
                             <td>@item.Area</td>
                             <td>@item.DISTRICT.DistrictName</td>
                             <td>@item.STREET.StreetName</td>
                             <td>@item.WARD.WardName</td>
+                            @if (item.Status_ID == 1) 
+                            {
+                                ViewBag.status = "Chưa duyệt";
+                            }
+                            else if (item.Status_ID == 3) 
+                            {
+                                ViewBag.status = "Đã duyệt";
+                            }
+                            else if (item.Status_ID == 4) 
+                            {
+                                ViewBag.status = "Hết hạn";
+                            }
+                            <td>@ViewBag.status</td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                
+                                <a href="~/Admin/PropertyAdmin/Details/@item.ID"><span class="glyphicon glyphicon-list-alt"></span></a><br />
+                                <a href="~/Admin/PropertyAdmin/Edit/@item.ID"><span class="glyphicon glyphicon-pencil"></span></a><br />
+                                <a href="~/Admin/PropertyAdmin/DeleteConfirm/@item.ID"><span class="glyphicon glyphicon-remove"></span></a>
                             </td>
                         </tr>
                      }

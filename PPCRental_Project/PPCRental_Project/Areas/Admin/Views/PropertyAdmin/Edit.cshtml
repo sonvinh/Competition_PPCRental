@@ -7,7 +7,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     if (Session["UserID"] == null)
     {
-        Response.Redirect("~/Home/Index");
+        Response.Redirect("~/Admin/Account/Login");
     }
     else
     {
@@ -82,7 +82,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10" style=" width: 230px; margin-left: 50px;">
-                    @Html.EditorFor(model => model.Price, new { @class = "shapestyle" })
+                    @Html.TextBoxFor(model => model.Price, new { type = "number", min = 0, @class = "shapestyle" })
                     @Html.ValidationMessageFor(model => model.Price)
                 </div>
             </div>
@@ -139,21 +139,21 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.BedRoom, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.BedRoom, new { @class = "shapestyle" })
+                    @Html.TextBoxFor(model => model.BedRoom, new { type = "number", min = 0, max=15, @class = "shapestyle" })
                     @Html.ValidationMessageFor(model => model.BedRoom)
                 </div>
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.BathRoom, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.BathRoom, new { @class = "shapestyle" })
+                    @Html.TextBoxFor(model => model.BathRoom, new { type = "number", min = 0, max = 15, @class = "shapestyle" })
                     @Html.ValidationMessageFor(model => model.BathRoom)
                 </div>
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.PackingPlace, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.PackingPlace, new { @class = "shapestyle" })
+                    @Html.TextBoxFor(model => model.PackingPlace, new { type = "number", min = 0, max = 15, @class = "shapestyle" })
                     @Html.ValidationMessageFor(model => model.PackingPlace)
                 </div>
             </div>

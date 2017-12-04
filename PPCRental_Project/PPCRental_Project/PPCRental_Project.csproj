@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\PropertyAdminController.cs" />
     <Compile Include="Areas\Agency\AgencyAreaRegistration.cs" />
     <Compile Include="Areas\Agency\Controllers\PropertyAgencyController.cs" />
@@ -351,8 +352,9 @@
     <Content Include="Assets\vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Areas\Admin\Views\PropertyAdmin\Edit.cshtml" />
     <Content Include="Areas\Agency\Views\web.config" />
-    <Content Include="Areas\Agency\Views\PropertyAgency\Index.cshtml" />
     <Content Include="Areas\Agency\Views\PropertyAgency\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Agency\Views\PropertyAgency\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
