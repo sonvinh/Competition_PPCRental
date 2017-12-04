@@ -46,6 +46,11 @@ namespace PPCRental_Project.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            if (product.Count() == 0) 
+            {
+                TempData["messagefilter"] = "Không tìm thấy dự án phù hợp";
+                return RedirectToAction("Index", "Home");
+            }
             else
             {
                 return View(product.ToList());

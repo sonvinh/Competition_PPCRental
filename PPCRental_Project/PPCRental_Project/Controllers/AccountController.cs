@@ -11,11 +11,47 @@ namespace PPCRental_Project.Controllers
     {
         K21T3_Team1_PPC3129Entities model = new K21T3_Team1_PPC3129Entities();
         //
-        // GET: /Account/
-        public ActionResult Index()
+        public ActionResult ViewDetail() 
         {
+            if (Session["UserID"] != null) 
+            {
+                int id = (int)Session["UserID"];
+                var userdetail = model.USER.FirstOrDefault(x => x.ID == id);
+                return View(userdetail);
+            }
+            else 
+            {
+                return RedirectToAction("Index","Home");
+            }
+
+        }
+
+        [HttpGet]
+        public ActionResult ChangePassword() 
+        {
+            int id = (int)Session["UserID"];
+            var userdetail = model.USER.FirstOrDefault(x => x.ID == id);
+            return View(userdetail);
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(string oldpass, string newpass, string conpass) 
+        {
+            int id = (int)Session["UserID"];
+            var userdetail = model.USER.FirstOrDefault(x => x.ID == id);
+            if (userdetail.Password==oldpass) 
+            {
+                if (newpass == conpass) 
+                {
+                    userdetail.Password = newpass;
+                    model.SaveChanges();
+                    return RedirectToAction("ViewDetail","Account");
+                }
+
+            }
             return View();
         }
+
 
         [HttpGet]
         public ActionResult Login()
@@ -38,7 +74,7 @@ namespace PPCRental_Project.Controllers
                         Session["UserRole"] = user.Role;
                         if (user.Role.Equals("1"))
                         {
-                            return RedirectToAction("Index", "Agency/PropertyAgency");
+                            return RedirectToAction("Index", "Home");
                         }
                         else
                         {
@@ -50,7 +86,7 @@ namespace PPCRental_Project.Controllers
                         ViewBag.messageStatus = "Tai khoan khong kha dung";
                     }
                 }
-
+                ViewBag.message = "Email hoac mat khau khong hop le!";
             }
             else
             {

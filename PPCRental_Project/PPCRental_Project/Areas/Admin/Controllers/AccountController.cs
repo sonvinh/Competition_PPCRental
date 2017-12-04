@@ -45,7 +45,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
                         ViewBag.messageStatus = "Tai khoan khong kha dung";
                     }
                 }
-
+                ViewBag.message = "Email hoac mat khau khong hop le!";
             }
             else
             {
@@ -61,7 +61,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
             Session["FullName"] = null;
             Session["UserID"] = null;
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home", new { area=""});
         }
     }
 }
