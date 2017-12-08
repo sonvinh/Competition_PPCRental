@@ -1537,7 +1537,8 @@ body.is-touch .poptrox-popup .nav-next,  body.is-touch .poptrox-popup .nav-previ
 	z-index: 100;
 	top: 0;
 	background-position: right top;
-    background:url(../images/trans11.png) 0 0 repeat;
+    background:#f2f2f2;
+    color:#f2f2f2;
 
 }
 .top_banner_content {
@@ -1560,9 +1561,9 @@ body.is-touch .poptrox-popup .nav-next,  body.is-touch .poptrox-popup .nav-previ
 	z-index: 100;
 	bottom:0;
 	height:25px;
-	background-color:#4a7713;
+	background-color:#f2f2f2;
 
-	color:#fff;
+	color:#444444;
 	
 }
 .footer_content {
