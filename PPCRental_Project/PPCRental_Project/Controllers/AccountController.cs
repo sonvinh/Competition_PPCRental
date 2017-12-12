@@ -59,6 +59,36 @@ namespace PPCRental_Project.Controllers
             return View("Login");
         }
 
+
+        [HttpPost]
+        public ActionResult Register(USER u) 
+        {
+            USER nu = new USER();
+            try 
+            {
+                if (ModelState.IsValid)
+                {
+                    nu.Email = u.Email;
+                    nu.Password = u.Password;
+                    nu.FullName = u.FullName;
+                    nu.Address = u.Address;
+                    nu.Phone = u.Phone;
+                    nu.Role = "1";
+                    nu.Status = false;
+                    model.USER.Add(nu);
+                    model.SaveChanges();
+                    return RedirectToAction("Login", "Account", new { area = "" });
+               }
+            }
+            catch 
+            {
+                return View("Login",u);
+            }
+            return View("Login", u);
+
+
+        }
+
         [HttpPost]
         public ActionResult Login(string email, string password)
         {

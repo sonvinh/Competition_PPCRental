@@ -11,6 +11,8 @@ namespace PPCRental_Project.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class USER
     {
@@ -21,12 +23,28 @@ namespace PPCRental_Project.Models
         }
     
         public int ID { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [Required]
         public string FullName { get; set; }
+
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        [StringLength(15)]
         public string Phone { get; set; }
+
+        [Required]
         public string Address { get; set; }
+
         public string Role { get; set; }
+
         public Nullable<bool> Status { get; set; }
     
         public virtual ICollection<PROPERTY> PROPERTY { get; set; }
