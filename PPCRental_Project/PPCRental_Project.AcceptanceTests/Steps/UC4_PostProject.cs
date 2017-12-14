@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
-using PPCRental_Project.AcceptanceTestS.
+
 using PPCRental_Project.AcceptanceTests.Driver.PropertyDetails;
 
 namespace PPCRental_Project.AcceptanceTests.Steps
