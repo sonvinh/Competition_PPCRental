@@ -1533,7 +1533,7 @@ body.is-touch .poptrox-popup .nav-next,  body.is-touch .poptrox-popup .nav-previ
 .top_banner {
 	position:fixed;
 	width:100%;
-	height:45px;
+	height:50px;
 	z-index: 100;
 	top: 0;
 	background-position: right top;
