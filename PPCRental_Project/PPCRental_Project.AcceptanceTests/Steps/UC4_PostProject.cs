@@ -23,16 +23,17 @@ namespace PPCRental_Project.AcceptanceTests.Steps
             }
 
             [When(@"I input the following information")]
-        public void WhenIInputTheFollowingInformation(Table table)
-        {
-            ScenarioContext.Current.Pending();
-        }
+            public void WhenIInputTheFollowingInformation(Table table)
+            {
+                ScenarioContext.Current.Pending();
+            }
 
-        [Then(@"the list of books should update")]
-        public void ThenTheListOfBooksShouldUpdate(Table table)
-        {
-            ScenarioContext.Current.Pending();
-        }
+            [Then(@"the list of books should update")]
+            public void ThenTheListOfBooksShouldUpdate(Table table)
+            {
+                ScenarioContext.Current.Pending();
+            }
 
+        }
     }
 }

@@ -238,6 +238,7 @@
     <Content Include="Content\wp-content\themes\vpwtheme\images\arrow_up.png" />
     <Content Include="Content\wp-content\themes\vpwtheme\images\bg_tran1.png" />
     <Content Include="Content\wp-content\themes\vpwtheme\images\chtk.png" />
+    <Content Include="Content\wp-content\themes\vpwtheme\images\Contact.PNG" />
     <Content Include="Content\wp-content\themes\vpwtheme\images\facebook.png" />
     <Content Include="Content\wp-content\themes\vpwtheme\images\facebook_menu.png" />
     <Content Include="Content\wp-content\themes\vpwtheme\images\google-plus.png" />
