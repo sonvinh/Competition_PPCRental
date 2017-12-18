@@ -11,6 +11,7 @@ namespace PPCRental_Project.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class PROPERTY_TYPE
     {
@@ -20,7 +21,12 @@ namespace PPCRental_Project.Models
         }
     
         public int ID { get; set; }
+
+        [Required]
         public string CodeType { get; set; }
+        
+        [Required]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
         public Nullable<bool> Status { get; set; }
     

@@ -1,0 +1,61 @@
+﻿@model PPCRental_Project.Models.PROPERTY_TYPE
+
+@{
+    ViewBag.Title = "editPropertyType";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    if (Session["UserID"] == null)
+    {
+        Response.Redirect("~/Admin/Account/Login");
+    }
+    else
+    {
+        if (Session["UserRole"].ToString().Equals("1"))
+        {
+            Response.Redirect("~/Home/Error");
+        }
+    }
+}
+
+<h2>EDIT PROPERTY TYPE</h2>
+
+
+@using (Html.BeginForm("editPropertyType", "PropertyType", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CodeType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CodeType)
+                @Html.ValidationMessageFor(model => model.CodeType)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "5", cols = "20" })
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Srcipts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

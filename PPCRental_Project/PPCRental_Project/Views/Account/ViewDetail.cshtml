@@ -3,53 +3,77 @@
 @{
     ViewBag.Title = "ViewDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
+    
 }
 
 <h2>ViewDetail</h2>
+    <div>
+        <h4>USER</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-<div>
-    <h4>USER</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.FullName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
 
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Back to List", "Index", "Home") |
-    @Html.ActionLink("Change Password", "ChangePassword")
-    
-</p>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Back to List", "Index", "Home") |
+        @Html.ActionLink("Change Password", "ChangePassword")
+
+    </p>
+@*@if (TempData["changepassword"] != null)
+{
+    <div id="myDIV">
+        This is my DIV element.
+    </div>
+}
+
+
+@section Srcipts
+{
+    @if (TempData["changepassword"] != null) 
+    {
+        <script>
+            funtion()
+            {
+                var x = document.getElementById("myDIV");
+                if (x.style.display == "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+        </script>
+    }   
+    }*@

@@ -45,6 +45,7 @@ namespace PPCRental_Project.Controllers
                 {
                     userdetail.Password = newpass;
                     model.SaveChanges();
+                    TempData["changepassword"] = "Mật khẩu thay đổi thành công";
                     return RedirectToAction("ViewDetail","Account");
                 }
 

@@ -130,6 +130,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\PropertyAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PropertyTypeController.cs" />
     <Compile Include="Areas\Agency\AgencyAreaRegistration.cs" />
     <Compile Include="Areas\Agency\Controllers\PropertyAgencyController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -414,6 +415,9 @@
     <Content Include="Areas\Agency\Views\PropertyAgency\Index.cshtml" />
     <Content Include="Content\wp-content\themes\vpwtheme\font\utm_helvetins-webfont.ttf" />
     <Content Include="Content\wp-content\themes\vpwtheme\font\utm_helvetins-webfont.woff" />
+    <Content Include="Areas\Admin\Views\PropertyType\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PropertyType\createPropertyType.cshtml" />
+    <Content Include="Areas\Admin\Views\PropertyType\editPropertyType.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
