@@ -60,6 +60,43 @@ namespace PPCRental_Project.Controllers
             return View("Login");
         }
 
+        [HttpPost]
+        public ActionResult Login(string email, string password)
+        {
+            var user = model.USER.FirstOrDefault(x => x.Email == email);
+            if (user != null)
+            {
+                if (user.Password.Equals(password))
+                {
+                    if (user.Status == true)
+                    {
+                        if (user.Role.Equals("1"))
+                        {
+                            Session["Fullname"] = user.FullName;
+                            Session["UserID"] = user.ID;
+                            Session["UserRole"] = user.Role;
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            return RedirectToAction("Error", "Home", new { area=""});
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.messageStatus = "Tai khoan khong kha dung";
+                    }
+                }
+                ViewBag.message = "Email hoac mat khau khong hop le!";
+            }
+            else
+            {
+                ViewBag.message = "Email hoac mat khau khong hop le!";
+            }
+            return View();
+        }
+
+
 
         [HttpPost]
         public ActionResult Register(USER u) 
@@ -88,42 +125,6 @@ namespace PPCRental_Project.Controllers
             return View("Login", u);
 
 
-        }
-
-        [HttpPost]
-        public ActionResult Login(string email, string password)
-        {
-            var user = model.USER.FirstOrDefault(x => x.Email == email);
-            if (user != null)
-            {
-                if (user.Password.Equals(password))
-                {
-                    if (user.Status == true) 
-                    {
-                        Session["Fullname"] = user.FullName;
-                        Session["UserID"] = user.ID;
-                        Session["UserRole"] = user.Role;
-                        if (user.Role.Equals("1"))
-                        {
-                            return RedirectToAction("Index", "Home");
-                        }
-                        else
-                        {
-                            return RedirectToAction("Index", "Admin/PropertyAdmin");
-                        }
-                    }
-                    else 
-                    {
-                        ViewBag.messageStatus = "Tai khoan khong kha dung";
-                    }
-                }
-                ViewBag.message = "Email hoac mat khau khong hop le!";
-            }
-            else
-            {
-                ViewBag.message = "Email hoac mat khau khong hop le!";
-            }
-            return View();
         }
 
         [HttpGet]
