@@ -12,6 +12,7 @@ namespace PPCRental_Project.Controllers
         K21T3_Team1_PPC3129Entities db = new K21T3_Team1_PPC3129Entities();
         public ActionResult Index(int page = 1)
         {
+            
             //liet ke cac bang se su dung trong trang index
             List<object> model = new List<object>();
             model.Add(db.PROPERTY.ToList());

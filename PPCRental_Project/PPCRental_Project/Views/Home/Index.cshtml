@@ -277,10 +277,9 @@
 {
     <script type="text/javascript">
         window.onload = function () {
-            alert("@(TempData["messagefilter"] as string)");
+            alert("@MvcHtmlString.Create(TempData["messagefilter"] as string)");
         };
     </script>
 }
-
 <script src="~/Scripts/jquery.twbsPagination.js"></script>
 <script src="~/Scripts/jquery.twbsPagination.min.js"></script>

@@ -63,22 +63,30 @@ namespace PPCRental_Project.Areas.Agency.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PROPERTY property)
+        public ActionResult Create(PROPERTY property, int[] Feature_ID)
         {
-
-            property.Avatar = AvatarU(property);
-            property.Images = ImagesU(property);
+            
+            //property.Avatar = AvatarU(property);
+            //property.Images = ImagesU(property);
             property.Created_at = DateTime.Now;
             property.Create_post = DateTime.Now; // sua lai sau
             property.UnitPrice = "VND";
             property.Status_ID = 1;
             property.UserID = (int)Session["UserID"];
-
+            
             if (ModelState.IsValid)
             {
-
                 db.PROPERTY.Add(property);
                 db.SaveChanges();
+                foreach (var fid in Feature_ID)
+                {
+                    PROPERTY_FEATURE pf = new PROPERTY_FEATURE();
+                    pf.Property_ID = property.ID;
+                    pf.Feature_ID = fid;
+                    db.PROPERTY_FEATURE.Add(pf);
+                }
+                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
@@ -89,55 +97,56 @@ namespace PPCRental_Project.Areas.Agency.Controllers
             ViewBag.UserID = new SelectList(db.USER, "ID", "Email", property.UserID);
             ViewBag.Sale_ID = new SelectList(db.USER, "ID", "Email", property.Sale_ID);
             ViewBag.Ward_ID = new SelectList(db.WARD, "ID", "WardName", property.Ward_ID);
+            ViewBag.Feature_ID = new SelectList(db.FEATURE, "ID", "FeatureName");
             return View(property);
         }
 
-        private string ImagesU(PROPERTY p)
-        {
+        //private string ImagesU(PROPERTY p)
+        //{
 
-            string filename;
-            string extension;
-            string b;
-            string s = "";
-            foreach (var file in p.ImageFile2)
-            {
-                if (file.ContentLength > 0)
-                {
-                    filename = Path.GetFileNameWithoutExtension(file.FileName);
-                    extension = Path.GetExtension(file.FileName);
-                    filename = filename + DateTime.Now.ToString("yymmssff") + extension;
-                    p.Images = "~/Images/"+ filename;
-                    b = p.Images;
-                    s = string.Concat(s, b, ",");
-                    filename = Path.Combine(Server.MapPath("~/Images"), filename);
-                    file.SaveAs(filename);
+        //    string filename;
+        //    string extension;
+        //    string b;
+        //    string s = "";
+        //    foreach (var file in p.ImageFile2)
+        //    {
+        //        if (file.ContentLength > 0)
+        //        {
+        //            filename = Path.GetFileNameWithoutExtension(file.FileName);
+        //            extension = Path.GetExtension(file.FileName);
+        //            filename = filename + DateTime.Now.ToString("yymmssff") + extension;
+        //            p.Images = "~/Images/" + filename;
+        //            b = p.Images;
+        //            s = string.Concat(s, b, ",");
+        //            filename = Path.Combine(Server.MapPath("~/Images"), filename);
+        //            file.SaveAs(filename);
 
-                }
+        //        }
 
-            }
-            return s;
+        //    }
+        //    return s;
 
-        }
-        private string AvatarU(PROPERTY p)
-        {
-            string s = "";
-            string filename;
-            string extension;
+        //}
+        //private string AvatarU(PROPERTY p)
+        //{
+        //    string s = "";
+        //    string filename;
+        //    string extension;
 
 
-          
-                 filename = Path.GetFileNameWithoutExtension(p.ImageFile.FileName);
-                 extension = Path.GetExtension(p.ImageFile.FileName);
-                filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
-                p.Avatar = "~/Images/" + filename;
-                 s = p.Avatar;
-                filename = Path.Combine(Server.MapPath("~/Images"), filename);
-                p.ImageFile.SaveAs(filename);
-                return s;
-            
-            return s;
 
-        }
+        //    filename = Path.GetFileNameWithoutExtension(p.ImageFile.FileName);
+        //    extension = Path.GetExtension(p.ImageFile.FileName);
+        //    filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
+        //    p.Avatar = "~/Images/" + filename;
+        //    s = p.Avatar;
+        //    filename = Path.Combine(Server.MapPath("~/Images"), filename);
+        //    p.ImageFile.SaveAs(filename);
+        //    return s;
+
+        //    return s;
+
+        //}
 
 
 
