@@ -126,6 +126,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
                 entity.Note = p.Note;
                 entity.Updated_at = DateTime.Parse(DateTime.Now.ToShortDateString());
                 entity.Sale_ID = (int)Session["UserID"];
+                TempData["edit"] = "Thông tin đã được chỉnh sửa thành công";
                 db.SaveChanges();
             }
             catch (Exception)
@@ -152,7 +153,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
                     entity.Note = p.Note;
                     entity.Updated_at = DateTime.Parse(DateTime.Now.ToShortDateString());
                     entity.Sale_ID = (int)Session["UserID"];
-
+                    TempData["edit"] = "Thông tin đã được chỉnh sửa thành công";
                     db.SaveChanges();
                 }
                 catch (Exception)
@@ -179,7 +180,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
                         entity.Note = p.Note;
                         entity.Updated_at = DateTime.Parse(DateTime.Now.ToShortDateString());
                         entity.Sale_ID = (int)Session["UserID"];
-
+                        TempData["edit"] = "Thông tin đã được chỉnh sửa thành công";
                         db.SaveChanges();
 
 
@@ -203,7 +204,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
                         entity.Note = p.Note;
                         entity.Updated_at = DateTime.Parse(DateTime.Now.ToShortDateString());
                         entity.Sale_ID = (int)Session["UserID"];
-
+                        TempData["edit"] = "Thông tin đã được chỉnh sửa thành công";
                         db.SaveChanges();
 
                     }

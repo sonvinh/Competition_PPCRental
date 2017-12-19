@@ -4,7 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="K21T3_Team1_PPC3129Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="K21T3_Team1_PPC3129Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ABOUT_US">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Contents" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Update_day" Type="datetime" Nullable="false" />
+          <Property Name="Sale_ID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="DISTRICT">
           <Key>
             <PropertyRef Name="ID" />
@@ -82,6 +92,16 @@
           <Property Name="District_ID" Type="int" />
           <Property Name="Status" Type="bit" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="USER">
           <Key>
             <PropertyRef Name="ID" />
@@ -104,6 +124,18 @@
           <Property Name="District_ID" Type="int" />
           <Property Name="Status" Type="bit" />
         </EntityType>
+        <Association Name="FK_ABOUT_US_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="ABOUT_US" Type="Self.ABOUT_US" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ABOUT_US">
+              <PropertyRef Name="Sale_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PROPERTY_DISTRICT">
           <End Role="DISTRICT" Type="Self.DISTRICT" Multiplicity="0..1" />
           <End Role="PROPERTY" Type="Self.PROPERTY" Multiplicity="*" />
@@ -164,7 +196,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PROPERTY_STREET1">
+        <Association Name="FK_PROPERTY_STREET">
           <End Role="STREET" Type="Self.STREET" Multiplicity="0..1" />
           <End Role="PROPERTY" Type="Self.PROPERTY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -237,6 +269,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="K21T3_Team1_PPC3129ModelStoreContainer">
+          <EntitySet Name="ABOUT_US" EntityType="Self.ABOUT_US" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DISTRICT" EntityType="Self.DISTRICT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FEATURE" EntityType="Self.FEATURE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PROJECT_STATUS" EntityType="Self.PROJECT_STATUS" Schema="dbo" store:Type="Tables" />
@@ -244,8 +277,13 @@
           <EntitySet Name="PROPERTY_FEATURE" EntityType="Self.PROPERTY_FEATURE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PROPERTY_TYPE" EntityType="Self.PROPERTY_TYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STREET" EntityType="Self.STREET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WARD" EntityType="Self.WARD" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ABOUT_US_USER" Association="Self.FK_ABOUT_US_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="ABOUT_US" EntitySet="ABOUT_US" />
+          </AssociationSet>
           <AssociationSet Name="FK_PROPERTY_DISTRICT" Association="Self.FK_PROPERTY_DISTRICT">
             <End Role="DISTRICT" EntitySet="DISTRICT" />
             <End Role="PROPERTY" EntitySet="PROPERTY" />
@@ -266,7 +304,7 @@
             <End Role="PROPERTY_TYPE" EntitySet="PROPERTY_TYPE" />
             <End Role="PROPERTY" EntitySet="PROPERTY" />
           </AssociationSet>
-          <AssociationSet Name="FK_PROPERTY_STREET1" Association="Self.FK_PROPERTY_STREET1">
+          <AssociationSet Name="FK_PROPERTY_STREET" Association="Self.FK_PROPERTY_STREET">
             <End Role="STREET" EntitySet="STREET" />
             <End Role="PROPERTY" EntitySet="PROPERTY" />
           </AssociationSet>
@@ -291,8 +329,7 @@
             <End Role="WARD" EntitySet="WARD" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="K21T3_Team1_PPC3129Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -405,6 +442,7 @@
           <Property Name="Status" Type="Boolean" />
           <NavigationProperty Name="PROPERTY" Relationship="Self.FK_PROPERTY_USER" FromRole="USER" ToRole="PROPERTY" />
           <NavigationProperty Name="PROPERTY1" Relationship="Self.FK_PROPERTY_USER1" FromRole="USER" ToRole="PROPERTY" />
+          <NavigationProperty Name="ABOUT_US" Relationship="K21T3_Team1_PPC3129Model.FK_ABOUT_US_USER" FromRole="USER" ToRole="ABOUT_US" />
         </EntityType>
         <EntityType Name="WARD">
           <Key>
@@ -603,7 +641,46 @@
             <End Role="WARD" EntitySet="WARD" />
             <End Role="PROPERTY" EntitySet="PROPERTY" />
           </AssociationSet>
+          <EntitySet Name="ABOUT_US" EntityType="K21T3_Team1_PPC3129Model.ABOUT_US" />
+          <EntitySet Name="sysdiagrams" EntityType="K21T3_Team1_PPC3129Model.sysdiagrams" />
+          <AssociationSet Name="FK_ABOUT_US_USER" Association="K21T3_Team1_PPC3129Model.FK_ABOUT_US_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="ABOUT_US" EntitySet="ABOUT_US" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ABOUT_US">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Contents" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Update_day" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sale_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="USER" Relationship="K21T3_Team1_PPC3129Model.FK_ABOUT_US_USER" FromRole="ABOUT_US" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_ABOUT_US_USER">
+          <End Type="K21T3_Team1_PPC3129Model.USER" Role="USER" Multiplicity="1" />
+          <End Type="K21T3_Team1_PPC3129Model.ABOUT_US" Role="ABOUT_US" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ABOUT_US">
+              <PropertyRef Name="Sale_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -718,6 +795,28 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ABOUT_US">
+            <EntityTypeMapping TypeName="K21T3_Team1_PPC3129Model.ABOUT_US">
+              <MappingFragment StoreEntitySet="ABOUT_US">
+                <ScalarProperty Name="Sale_ID" ColumnName="Sale_ID" />
+                <ScalarProperty Name="Update_day" ColumnName="Update_day" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="K21T3_Team1_PPC3129Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -734,7 +833,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

@@ -139,6 +139,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ABOUT_US.cs">
+      <DependentUpon>PPCRental.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DISTRICT.cs">
       <DependentUpon>PPCRental.tt</DependentUpon>
     </Compile>
@@ -173,6 +176,9 @@
       <DependentUpon>PPCRental.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\STREET.cs">
+      <DependentUpon>PPCRental.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>PPCRental.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\USER.cs">

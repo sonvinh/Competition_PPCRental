@@ -60,7 +60,14 @@
                     <div class="caption">
                         <h4>@item.PropertyName</h4>
                         <p>Loại dự án: @item.PROPERTY_TYPE.Description</p>
-                        <p>Mô tả: @item.Content.Substring(0, 50)...</p>
+                        @if (item.Content.Length > 50)
+                        {
+                            <p>Mô tả: @item.Content.Substring(0, 50)...</p>
+                        }
+                        else
+                        {
+                            <p>Mô tả: @item.Content</p>
+                        }
                         <p>Giá: @item.Price @item.UnitPrice</p>
                         <p>Địa chỉ: @item.STREET.StreetName, @item.WARD.WardName, @item.DISTRICT.DistrictName</p>
                         <p><a href="~/Project/Detail/@item.ID" class="btn btn-primary" role="button">Xem chi tiết</a></p>

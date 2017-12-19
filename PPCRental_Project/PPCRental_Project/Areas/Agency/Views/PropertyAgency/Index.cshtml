@@ -111,3 +111,12 @@
             }
         </div>
     </div>
+
+    @if (TempData["create"] != null)
+    {
+        <script type="text/javascript">
+        window.onload = function () {
+            alert("@MvcHtmlString.Create(TempData["create"] as string)");
+        };
+        </script>
+    }
