@@ -27,9 +27,9 @@ namespace PPCRental_Project.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            var content = db.ABOUT_US.FirstOrDefault(x => x.ID == 2);
 
-            return View();
+            return View(content);
         }
 
         public ActionResult Contact()

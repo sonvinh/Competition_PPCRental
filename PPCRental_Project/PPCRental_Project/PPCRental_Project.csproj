@@ -120,6 +120,8 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Agency\Models\" />
     <Folder Include="Areas\Agency\Views\Shared\" />
+    <Folder Include="Areas\Engineer\Models\" />
+    <Folder Include="Areas\Engineer\Views\Shared\" />
     <Folder Include="Content\wp-content\themes\vpwtheme\css\images\" />
     <Folder Include="MultiImages\" />
   </ItemGroup>
@@ -133,6 +135,8 @@
     <Compile Include="Areas\Admin\Controllers\PropertyTypeController.cs" />
     <Compile Include="Areas\Agency\AgencyAreaRegistration.cs" />
     <Compile Include="Areas\Agency\Controllers\PropertyAgencyController.cs" />
+    <Compile Include="Areas\Engineer\Controllers\AboutUsController.cs" />
+    <Compile Include="Areas\Engineer\EngineerAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
@@ -421,9 +425,11 @@
     <Content Include="Areas\Agency\Views\PropertyAgency\Index.cshtml" />
     <Content Include="Content\wp-content\themes\vpwtheme\font\utm_helvetins-webfont.ttf" />
     <Content Include="Content\wp-content\themes\vpwtheme\font\utm_helvetins-webfont.woff" />
-    <Content Include="Areas\Admin\Views\PropertyType\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PropertyType\createPropertyType.cshtml" />
     <Content Include="Areas\Admin\Views\PropertyType\editPropertyType.cshtml" />
+    <Content Include="Areas\Admin\Views\PropertyType\Index.cshtml" />
+    <Content Include="Areas\Engineer\Views\web.config" />
+    <Content Include="Areas\Engineer\Views\AboutUs\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

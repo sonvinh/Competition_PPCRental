@@ -30,18 +30,30 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                    <a class="nav-link" href="/Admin/PropertyAdmin">
-                        <i class="fa fa-fw fa-dashboard"></i>
-                        <span class="nav-link-text">Manage Project</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="">
-                    <a class="nav-link" href="~/Areas/Admin/PropertyType">                        
-                        <i class="fa fa-fw fa-dashboard"></i>
-                        <span class="nav-link-text">Manage Property Type</span>
-                    </a>
-                </li>
+                @if (Session["UserRole"].ToString().Equals("0"))
+                {
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                        <a class="nav-link" href="@Url.Action("Index", "PropertyAdmin", new { area="Admin"})">
+                            <i class="fa fa-fw fa-dashboard"></i>
+                            <span class="nav-link-text">Manage Project</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="">
+                        <a class="nav-link" href="@Url.Action("Index", "PropertyType", new { area = "Admin" })">
+                            <i class="fa fa-fw fa-dashboard"></i>
+                            <span class="nav-link-text">Manage Property Type</span>
+                        </a>
+                    </li>
+                }
+                else if (Session["UserRole"].ToString().Equals("2"))
+                {
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                        <a class="nav-link" href="@Url.Action("Edit", "AboutUs", new { area="Engineer"})">
+                            <i class="fa fa-fw fa-dashboard"></i>
+                            <span class="nav-link-text">Manage About Us</span>
+                        </a>
+                    </li>
+                }
             </ul>
 
 
@@ -137,7 +149,12 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="~/Admin/Account/LogOut" style="margin-left:800px">
+                    <a class="nav-link" style="margin-left:550px"   >
+                        <i class="fa fa-fw fa-signing"></i>Welcome @Session["Fullname"]
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="~/Admin/Account/LogOut" style="margin-left:100px">
                         <i class="fa fa-fw fa-sign-out"></i>Logout
                     </a>
                 </li>

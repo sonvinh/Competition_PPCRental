@@ -1,4 +1,5 @@
-﻿@{
+﻿@model PPCRental_Project.Models.ABOUT_US
+@{
     ViewBag.Title = "About";
     Layout = null;
 }
@@ -91,18 +92,7 @@
                 <div class="image fit from-left chtk ">
                     <div class="chtk_nd_pl">
                         <p>
-                            PPC Rental là doanh nghiệp hoạt động chuyên nghiệp trong<br />
-                            lĩnh vực môi giới và tiếp thị bất động sản. Công ty được phát<br />
-                            triển dựa trên nền tảng là sự hiểu biết sâu sắc về thị trường <br />
-                            bất động sản, pháp luật và mối quan hệ vững chắc với các<br />
-                            nhà đầu tư bất động sản chuyên nghiệp tại Việt Nam và đặc <br />
-                            biệt tại Thành phố Hồ Chí Minh.
-                        </p>
-                        <p>
-                            Đến PPC Rental, bạn sẽ được xem nhiều loại bất động sản <br />
-                            với giá cực sốc.Bạn sẽ được tiếp cận trực tiếp với người bán<br />
-                            hạn chế qua trung gian.Chúng tôi luôn đề cao khách hàng và<br />
-                            chất lượng lên hàng đầu.
+                            @Model.Contents
                         </p>
                     </div>
                 </div>
@@ -125,8 +115,7 @@
             </div>
             <p>
                 <b><img src="~/Content/wp-content/themes/vpwtheme/images/home.png" /></b>
-                45 Tran Hung Dao Street, District 1, Ho Chi Minh City
-            </p>
+                @Model.Adress
             <p>
                 <img src="~/Content/wp-content/themes/vpwtheme/images/phone-call.png" />
                 (028) 1234 5678

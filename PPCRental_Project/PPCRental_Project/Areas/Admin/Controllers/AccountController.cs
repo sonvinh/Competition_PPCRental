@@ -37,7 +37,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
                         }
                         else if (user.Role.Equals("2"))
                         {
-                            return RedirectToAction("Index", "Engineer/PropertyAdmin");
+                            return RedirectToAction("Edit", "AboutUs", new { area="Engineer"});
                         }
                     }
                     else 
@@ -61,7 +61,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
             Session["FullName"] = null;
             Session["UserID"] = null;
 
-            return RedirectToAction("Index", "Home", new { area=""});
+            return RedirectToAction("Login", "Account", new { area = "Admin" });
         }
     }
 }

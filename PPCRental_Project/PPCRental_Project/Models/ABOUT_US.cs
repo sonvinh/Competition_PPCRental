@@ -14,14 +14,19 @@ namespace PPCRental_Project.Models
 
 using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
 public partial class ABOUT_US
 {
 
     public int ID { get; set; }
 
+    [Required]
+    [DataType(DataType.MultilineText)]
+    [StringLength(10000,MinimumLength=100)]
     public string Contents { get; set; }
 
+    [Required]
     public string Adress { get; set; }
 
     public System.DateTime Update_day { get; set; }

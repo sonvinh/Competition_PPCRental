@@ -1,0 +1,50 @@
+﻿@model IEnumerable<PPCRental_Project.Models.PROPERTY_TYPE>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    if (Session["UserID"] == null)
+    {
+        Response.Redirect("~/Admin/Account/Login");
+    }
+    else
+    {
+        if (Session["UserRole"].ToString().Equals("1"))
+        {
+            Response.Redirect("~/Home/Error");
+        }
+    }
+}
+
+<h2>Property Type</h2>
+
+<p>
+    @Html.ActionLink("Create New", "createPropertyType")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodeType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodeType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "editPropertyType", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

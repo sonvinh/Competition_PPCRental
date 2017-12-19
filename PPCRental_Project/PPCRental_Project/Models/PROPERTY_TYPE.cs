@@ -28,6 +28,7 @@ public partial class PROPERTY_TYPE
 
     public int ID { get; set; }
 
+    
     public string CodeType { get; set; }
 
     public string Description { get; set; }

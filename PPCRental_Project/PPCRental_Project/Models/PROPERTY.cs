@@ -15,6 +15,7 @@ namespace PPCRental_Project.Models
     using System;
     using System.Collections.Generic;
     using System.Web;
+    using System.ComponentModel.DataAnnotations;
     
 public partial class PROPERTY
 {
@@ -29,12 +30,15 @@ public partial class PROPERTY
 
     public int ID { get; set; }
 
+    [Required]
+    [StringLength(40)]
     public string PropertyName { get; set; }
 
     public string Avatar { get; set; }
 
     public string Images { get; set; }
 
+    [Required]
     public Nullable<int> PropertyType_ID { get; set; }
 
     public string Content { get; set; }
