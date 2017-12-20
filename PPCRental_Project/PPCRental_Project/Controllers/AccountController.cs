@@ -46,7 +46,11 @@ namespace PPCRental_Project.Controllers
                     userdetail.Password = newpass;
                     model.SaveChanges();
                     TempData["changepassword"] = "Mật khẩu thay đổi thành công";
-                    return RedirectToAction("ViewDetail","Account");
+
+                    Session["FullName"] = null;
+                    Session["UserID"] = null;
+                    Session["UserRole"] = null;
+                    return RedirectToAction("Login","Account");
                 }
 
             }
@@ -133,6 +137,7 @@ namespace PPCRental_Project.Controllers
 
             Session["FullName"] = null;
             Session["UserID"] = null;
+            Session["UserRole"] = null;
 
             return RedirectToAction("Index","Home");
         }

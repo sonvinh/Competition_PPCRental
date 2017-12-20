@@ -93,14 +93,7 @@
                 <div class="col-md-10">
                     @Html.TextBoxFor(model => model.PROPERTY.Price, new { @class = "form-control", placeholder = "Prices", required = "required" })
                     @Html.ValidationMessageFor(model => model.PROPERTY.Price)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.PROPERTY.UnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.PROPERTY.UnitPrice, new { @class = "form-control", placeholder = "Unit Price" })
-                    @Html.ValidationMessageFor(model => model.PROPERTY.UnitPrice)
+                     VND
                 </div>
             </div>
 

@@ -60,9 +60,32 @@
                             }
 
                             <td>@item.Area</td>
-                            <td>@item.DISTRICT.DistrictName</td>
-                            <td>@item.STREET.StreetName</td>
-                            <td>@item.WARD.WardName</td>
+                            @if (item.DISTRICT.DistrictName == null) 
+                            {
+                                <td>------</td>
+                            }
+                            else
+                            {
+                                <td>@item.DISTRICT.DistrictName</td>
+                            }
+                            @if (item.STREET.StreetName == null)
+                            {
+                                <td>------</td>
+                            }
+                            else
+                            {
+                                <td>@item.STREET.StreetName</td>
+                            }
+                            @if (item.WARD.WardName == null)
+                            {
+                                <td>------</td>
+                            }
+                            else
+                            {
+                                <td>@item.WARD.WardName</td>
+                            }
+                            
+                            
                             @if (item.Status_ID == 1) 
                             {
                                 ViewBag.status = "Chưa duyệt";
@@ -75,7 +98,7 @@
                             {
                                 ViewBag.status = "Hết hạn";
                             }
-                            <td>@ViewBag.status</td>
+                            
                             <td>
                                 
                                 <a href="~/Admin/PropertyAdmin/Details/@item.ID"><span class="glyphicon glyphicon-list-alt"></span></a><br />
