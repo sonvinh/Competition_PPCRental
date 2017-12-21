@@ -100,7 +100,7 @@
                             <!--End Boundary of project short content-->
                             <!--Boundary of Detail button-->
                             <div class="thumbnail-footer">
-                                <a href="~/Project/Detail/@item.ID" class="btn btn-primary" role="button" id="btn-detail">Xem chi tiết</a>
+                                <a href="~/Project/Detail/@item.ID" class="btn btn-default" role="button" id="btn-detail">Xem chi tiết</a>
                             </div>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
             {
                 <div class="pagina-align">
                     <ul class="pagination">
-                        <li class="disabled" onclick="AlertClick"><a href="#">Previous</a></li>
+                        <li class="disabled" onclick="alert('Số trang đạt giới han')"><a href="#">Previous</a></li>
                         <li class="active"><a href="@Url.Action("Index", new { page = page })">1</a></li>
                         <li class="waves-effect"><a href="@Url.Action("Index", new { page = page + 1 })">2</a></li>
                         <li class="waves-effect"><a href="@Url.Action("Index", new { page = page + 2 })">3</a></li>
@@ -175,15 +175,10 @@
                         <li class="waves-effect"><a href="@Url.Action("Index", new { page = page - 2 })">3</a></li>
                         <li class="waves-effect"><a href="@Url.Action("Index", new { page = page - 1 })">4</a></li>
                         <li class="active"><a href="@Url.Action("Index", new { page = page  })">5</a></li>
-                        <li class="disabled" onclick="AlertClick"><a href="#">Next</a></li>
+                        <li class="disabled" onclick="alert('Số trang đat giới hạn')"><a href="#">Next</a></li>
                     </ul>
                 </div>
             }
-            <script>
-                function AlertClick() {
-                    alert("Số Trang Đã Đạt Giới Hạn");
-                }
-            </script>
             <!-- End Pagination-->
         </div>
     <!--Filter-->
@@ -259,7 +254,6 @@
                         <option value="1000000">1000000</option>
                     </select>
                     <!--End Price max Filter-->
-
                     <div>
                         <button class="btn btn-primary" id="btnfilter" style="margin-top:20px"> Filter</button>
                     </div>
