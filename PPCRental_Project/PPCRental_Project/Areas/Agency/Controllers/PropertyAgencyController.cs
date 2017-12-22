@@ -28,16 +28,10 @@ namespace PPCRental_Project.Areas.Agency.Controllers
         // GET: /Agency/PropertyAgency/
         public ActionResult Index()
         {
-            if (Session["UserID"] != null)
-            {
+
                 var id = (int)Session["UserID"];
                 var user = db.PROPERTY.Where(x => x.USER.ID == id).ToList();
                 return View(user);
-            }
-            else
-            {
-                return View();
-            }
 
         }
 

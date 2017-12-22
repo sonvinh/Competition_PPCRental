@@ -298,6 +298,7 @@
     <Content Include="Images\2.jpg" />
     <Content Include="Images\3.jpg" />
     <Content Include="Images\DSC_1103-watermark.jpg" />
+    <Content Include="Images\DSC_3121-edited.jpg" />
     <Content Include="Images\DSC_4173-watermark.jpg" />
     <Content Include="Images\DSC_7239-watermark.jpg" />
     <Content Include="Images\DSC_7383-watermark.jpg" />
@@ -424,7 +425,6 @@
     <Content Include="Areas\Agency\Views\web.config" />
     <Content Include="Areas\Agency\Views\PropertyAgency\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
-    <Content Include="Areas\Agency\Views\PropertyAgency\Index.cshtml" />
     <Content Include="Content\wp-content\themes\vpwtheme\font\utm_helvetins-webfont.ttf" />
     <Content Include="Content\wp-content\themes\vpwtheme\font\utm_helvetins-webfont.woff" />
     <Content Include="Areas\Admin\Views\PropertyType\createPropertyType.cshtml" />
@@ -440,6 +440,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Areas\Agency\Views\PropertyAgency\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
