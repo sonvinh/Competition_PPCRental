@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 <div id="detail-header">
     <p>Chi tiết dự án</p>
@@ -26,6 +27,19 @@
                     <p>Số phòng ngủ: @Html.DisplayFor(model => model.BedRoom)</p>
                     <p>Số phòng tắm: @Html.DisplayFor(model => model.BathRoom)</p>
                     <p>Bãi giữ xe: @Html.DisplayFor(model => model.PackingPlace)</p>
+                    <p>Tiện ích: @if (Model.PROPERTY_FEATURE.Count() != 0)
+                    {
+                        foreach (var item in Model.PROPERTY_FEATURE)
+                        {
+                            <p>+ @item.FEATURE.FeatureName </p>
+                                      
+                        }
+                    }
+                    else
+                    {
+                            <p> + None </p>
+                    }
+                    </p>
                     <hr />
                     <p>Price: @Html.DisplayFor(model => model.Price) @Html.DisplayFor(model => model.UnitPrice)</p>
                 </div>
