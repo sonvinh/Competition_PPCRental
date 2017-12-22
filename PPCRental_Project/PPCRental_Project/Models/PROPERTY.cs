@@ -49,8 +49,7 @@ public partial class PROPERTY
 
     public Nullable<int> District_ID { get; set; }
 
-    [RegularExpression("([0-9]+)")]
-    [StringLength(10)]
+
     public Nullable<int> Price { get; set; }
 
     public string UnitPrice { get; set; }
@@ -58,16 +57,15 @@ public partial class PROPERTY
     public string Area { get; set; }
 
 
-    [RegularExpression("([0-9]+)")]
-    [Range(1,5)]
+
     public Nullable<int> BedRoom { get; set; }
 
-    [RegularExpression("([0-9]+)")]
-    [Range(1, 5)]
+ 
+
     public Nullable<int> BathRoom { get; set; }
 
-    [RegularExpression("([0-9]+)")]
-    [Range(1, 5)]
+
+
     public Nullable<int> PackingPlace { get; set; }
 
     public Nullable<int> UserID { get; set; }
@@ -108,6 +106,7 @@ public partial class PROPERTY
     public HttpPostedFileBase ImageFile { get; set; }
     public IEnumerable<HttpPostedFileBase> ImageFile2 { get; set; }
 
-}
+        public string[] listfeature { get; set; }
+    }
 
 }

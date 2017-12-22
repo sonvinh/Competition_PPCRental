@@ -21,6 +21,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            ListAll();
             var property = db.PROPERTY.FirstOrDefault(x => x.ID == id);
             ViewBag.property_type = db.PROPERTY_TYPE.OrderByDescending(x => x.ID).ToList();
             ViewBag.StreetName = db.STREET.OrderByDescending(x => x.ID).Where(x => x.District_ID >= 31 && x.District_ID <= 54).ToList();
@@ -28,7 +29,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
             ViewBag.District = db.DISTRICT.OrderByDescending(x => x.ID).Where(x => x.ID >= 31 && x.ID <= 54).ToList();
             ViewBag.UserName = db.USER.OrderByDescending(x => x.ID).ToList();
             ViewBag.ProJectStatus = db.PROJECT_STATUS.OrderByDescending(x => x.ID).ToList();
-
+            ViewBag.feature = db.FEATURE.Where(x => x.PROPERTY_FEATURE.FirstOrDefault().Property_ID==id).FirstOrDefault();
             return View(property);
         }
 
@@ -126,6 +127,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
                 entity.Note = p.Note;
                 entity.Updated_at = DateTime.Parse(DateTime.Now.ToShortDateString());
                 entity.Sale_ID = (int)Session["UserID"];
+
                 TempData["edit"] = "Thông tin đã được chỉnh sửa thành công";
                 db.SaveChanges();
             }
@@ -153,6 +155,8 @@ namespace PPCRental_Project.Areas.Admin.Controllers
                     entity.Note = p.Note;
                     entity.Updated_at = DateTime.Parse(DateTime.Now.ToShortDateString());
                     entity.Sale_ID = (int)Session["UserID"];
+                    long idd = insertproperty(entity);
+
                     TempData["edit"] = "Thông tin đã được chỉnh sửa thành công";
                     db.SaveChanges();
                 }
@@ -187,6 +191,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
                     }
                     catch (Exception)
                     {
+                        entity.PropertyName = p.PropertyName;
                         entity.PropertyType_ID = p.PropertyType_ID;
                         entity.Content = p.Content;
                         entity.Street_ID = p.Street_ID;
@@ -204,6 +209,7 @@ namespace PPCRental_Project.Areas.Admin.Controllers
                         entity.Note = p.Note;
                         entity.Updated_at = DateTime.Parse(DateTime.Now.ToShortDateString());
                         entity.Sale_ID = (int)Session["UserID"];
+
                         TempData["edit"] = "Thông tin đã được chỉnh sửa thành công";
                         db.SaveChanges();
 
@@ -212,6 +218,13 @@ namespace PPCRental_Project.Areas.Admin.Controllers
             }
 
             return RedirectToAction("Index", "PropertyAdmin");
+        }
+
+        public long insertproperty(PROPERTY entity)
+        {
+            db.PROPERTY.Add(entity);
+            db.SaveChanges();
+            return entity.ID;
         }
 
         private string Upava(PROPERTY p)
@@ -247,7 +260,8 @@ namespace PPCRental_Project.Areas.Admin.Controllers
             return s;
         }
         public void ListAll()
-        {   
+        {
+            ViewBag.feature = db.FEATURE.ToList();
             ViewBag.property_type = db.PROPERTY_TYPE.ToList();
             ViewBag.street = db.STREET.OrderBy(x => x.StreetName).ToList();
             ViewBag.ward = db.WARD.OrderBy(x => x.WardName).ToList();

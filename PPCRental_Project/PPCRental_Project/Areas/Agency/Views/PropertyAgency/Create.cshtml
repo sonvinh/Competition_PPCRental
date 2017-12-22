@@ -1,5 +1,5 @@
-﻿@model PPCRental_Project.Models.PROPERTY_FEATURE
-
+﻿@model PPCRental_Project.Models.PROPERTY
+@using PPCRental_Project.Models;
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,25 +12,26 @@
 <h2>Create</h2>
 
 
-    @using (Html.BeginForm("Create", "PropertyAgency", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.AntiForgeryToken()
+@using (Html.BeginForm("Create", "PropertyAgency", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>PROPERTY</h4>
-            <hr />
-            @Html.ValidationSummary(true)
+    <div class="form-horizontal">
+        <h4>PROPERTY</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="col-xs-6">
             <div class="form-group">
-                @Html.LabelFor(model => model.PROPERTY.PropertyName, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.PropertyName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.PROPERTY.PropertyName, new { @class = "form-control", placeholder = "Property Name", required = "required" })
-                    @Html.ValidationMessageFor(model => model.PROPERTY.PropertyName)
+                    @Html.TextBoxFor(model => model.PropertyName, new { @class = "form-control", placeholder = "Property Name", required = "required" })
+                    @Html.ValidationMessageFor(model => model.PropertyName)
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.PROPERTY.Avatar, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                 
+
                     <div style="margin-left: 50px;">
                         <input type="file" name="ImageFile" />
                     </div>
@@ -38,102 +39,37 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.PROPERTY.Images, new { @class = "control-label col-md-4" })
+                @Html.LabelFor(model => model.Images, new { @class = "control-label col-md-4" })
                 <div class="col-md-4">
                     <label class="control-label">Select File</label>
                     <input name="ImageFile2" type="file" multiple>
-                    
-                    @Html.ValidationMessageFor(model => model.PROPERTY.Images)
+
+                    @Html.ValidationMessageFor(model => model.Images)
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.PROPERTY.PropertyType_ID, "PropertyType_ID", new { @class = "control-label col-md-4" })
+                @Html.LabelFor(model => model.PropertyType_ID, "PropertyType_ID", new { @class = "control-label col-md-4" })
                 <div class="col-md-4 input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon glyphicon-info-sign"></i></span>
+
                     @Html.DropDownList("PropertyType_ID", null, String.Empty, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.PROPERTY.PropertyType_ID)
+                    @Html.ValidationMessageFor(model => model.PropertyType_ID)
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.PROPERTY.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.PROPERTY.Content, new { @class = "form-control", placeholder = "Your Description", required = "required", rows = "10" })
-                    @Html.ValidationMessageFor(model => model.PROPERTY.Content)
+                    @Html.TextAreaFor(model => model.Content, new { @class = "form-control", placeholder = "Your Description", required = "required", rows = "10" })
+                    @Html.ValidationMessageFor(model => model.Content)
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.PROPERTY.Street_ID, "Street", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Street_ID, "Street", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("Street_ID", null, String.Empty, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.PROPERTY.Street_ID)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.PROPERTY.Ward_ID, "Ward_ID", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("Ward_ID", null, String.Empty, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.PROPERTY.Ward_ID)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.PROPERTY.District_ID, "District", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                   @Html.DropDownList("District_ID", null, String.Empty, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.PROPERTY.District_ID)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.PROPERTY.Price, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.PROPERTY.Price, new { @class = "form-control", placeholder = "Prices", required = "required" })
-                    @Html.ValidationMessageFor(model => model.PROPERTY.Price)
-                     VND
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.PROPERTY.Area, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.PROPERTY.Area, new { @class = "form-control", placeholder = "Area", required = "required" })
-                    @Html.ValidationMessageFor(model => model.PROPERTY.Area)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.PROPERTY.BedRoom, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.PROPERTY.BedRoom, new { @class = "form-control", placeholder = "Number Bedroom", required = "required" })
-                    @Html.ValidationMessageFor(model => model.PROPERTY.BedRoom)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.PROPERTY.BathRoom, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.PROPERTY.BathRoom, new { @class = "form-control", placeholder = "Number Bathroom", required = "required" })
-                    @Html.ValidationMessageFor(model => model.PROPERTY.BathRoom)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.PROPERTY.PackingPlace, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.PROPERTY.PackingPlace, new { @class = "form-control", placeholder = "Number ParkingPlace", required = "required" })
-                    @Html.ValidationMessageFor(model => model.PROPERTY.PackingPlace)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.FEATURE.ID, "Feature", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.ListBox("Feature_ID", (SelectList)ViewBag.Feature_ID, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.FEATURE.ID)
+                    @Html.ValidationMessageFor(model => model.Street_ID)
                 </div>
             </div>
 
@@ -143,23 +79,90 @@
                     <input type="submit" name="submit" value="Draf" class="btn btn-default" />
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" name="submit" value="Create" class="btn btn-default" />
                 </div>
             </div>
-
         </div>
-        
-        
-        
+        <div class="col-xs-5">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Ward_ID, "Ward_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Ward_ID", null, String.Empty, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Ward_ID)
+                </div>
+            </div>
 
-    }
+            <div class="form-group">
+                @Html.LabelFor(model => model.District_ID, "District", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("District_ID", null, String.Empty, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.District_ID)
+                </div>
+            </div>
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
+            <div class="form-group">
+                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Price, new { @class = "form-control", placeholder = "Prices", required = "required" })
+                    <p>
+                        @Html.ValidationMessageFor(model => model.Price) VND
+
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Area, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Area, new { @class = "form-control", placeholder = "Area", required = "required" })
+                    @Html.ValidationMessageFor(model => model.Area)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BedRoom, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.BedRoom, new { @class = "form-control", placeholder = "Number Bedroom", required = "required" })
+                    @Html.ValidationMessageFor(model => model.BedRoom)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BathRoom, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.BathRoom, new { @class = "form-control", placeholder = "Number Bathroom", required = "required" })
+                    @Html.ValidationMessageFor(model => model.BathRoom)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PackingPlace, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.PackingPlace, new { @class = "form-control", placeholder = "Number ParkingPlace", required = "required" })
+                    @Html.ValidationMessageFor(model => model.PackingPlace)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PROPERTY_FEATURE, "Feature", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("listfeature", new SelectList(ViewBag.feature, "ID", "FeatureName"), new { @class = "form-control", @multiple = "true" })
+                    @Html.ValidationMessageFor(model => model.PropertyType_ID)
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
 
 
 
