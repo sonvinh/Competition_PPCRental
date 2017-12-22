@@ -55,7 +55,7 @@ namespace PPCRental_Project.Areas.Agency.Controllers
             ViewBag.UserID = new SelectList(db.USER, "ID", "Email");
             ViewBag.Sale_ID = new SelectList(db.USER, "ID", "Email");
             ViewBag.Ward_ID = new SelectList(db.WARD.Where(y => y.ID >= 31 && y.ID <= 54), "ID", "WardName");
-            ViewBag.Feature_ID = new SelectList(db.FEATURE, "ID", "FeatureName");
+            ViewBag.feature = new SelectList(db.FEATURE, "ID", "FeatureName");
             return View();
         }
 
@@ -70,10 +70,6 @@ namespace PPCRental_Project.Areas.Agency.Controllers
             {
                 property.Avatar = AvatarU(property);
                 property.Images = ImagesU(property);
-                property.Price = 100;
-                property.BathRoom = 1;
-                property.BedRoom = 1;
-                property.PackingPlace = 1;
                 property.Created_at = DateTime.Now;
                 property.Create_post = DateTime.Now; // sua lai sau
                 property.UnitPrice = "VND";
@@ -92,12 +88,20 @@ namespace PPCRental_Project.Areas.Agency.Controllers
                     long idd = insertproperty(property);
 
                     PROPERTY_FEATURE pf = new PROPERTY_FEATURE();
-                    foreach (string x in property.listfeature)
+                    if (property.listfeature != null)
                     {
+                        foreach (string x in property.listfeature)
+                        {
 
-                        pf.Property_ID = (int)idd;
-                        pf.Feature_ID = int.Parse(x);
-                        db.PROPERTY_FEATURE.Add(pf);
+                            pf.Property_ID = (int)idd;
+                            pf.Feature_ID = int.Parse(x);
+                            db.PROPERTY_FEATURE.Add(pf);
+                            db.SaveChanges();
+                        }
+                        
+                    }
+                    else 
+                    {
                         db.SaveChanges();
                     }
 
@@ -111,10 +115,6 @@ namespace PPCRental_Project.Areas.Agency.Controllers
                 {
                     property.Avatar = "~/Images/NullImage.jpg";
                     property.Images = ImagesU(property);
-                    property.Price = 100;
-                    property.BathRoom = 1;
-                    property.BedRoom = 1;
-                    property.PackingPlace = 1;
                     property.Created_at = DateTime.Now;
                     property.Create_post = DateTime.Now; // sua lai sau
                     property.UnitPrice = "VND";
@@ -133,12 +133,19 @@ namespace PPCRental_Project.Areas.Agency.Controllers
                         long idd = insertproperty(property);
 
                         PROPERTY_FEATURE pf = new PROPERTY_FEATURE();
-                        foreach (string x in property.listfeature)
+                        if (property.listfeature != null)
                         {
+                            foreach (string x in property.listfeature)
+                            {
 
-                            pf.Property_ID = (int)idd;
-                            pf.Feature_ID = int.Parse(x);
-                            db.PROPERTY_FEATURE.Add(pf);
+                                pf.Property_ID = (int)idd;
+                                pf.Feature_ID = int.Parse(x);
+                                db.PROPERTY_FEATURE.Add(pf);
+                                db.SaveChanges();
+                            }
+                        }
+                        else
+                        {
                             db.SaveChanges();
                         }
 
@@ -152,10 +159,7 @@ namespace PPCRental_Project.Areas.Agency.Controllers
                     {
                         property.Avatar = AvatarU(property);
 
-                        property.Price = 100;
-                        property.BathRoom = 1;
-                        property.BedRoom = 1;
-                        property.PackingPlace = 1;
+
                         property.Created_at = DateTime.Now;
                         property.Create_post = DateTime.Now; // sua lai sau
                         property.UnitPrice = "VND";
@@ -174,12 +178,19 @@ namespace PPCRental_Project.Areas.Agency.Controllers
                             long idd = insertproperty(property);
 
                             PROPERTY_FEATURE pf = new PROPERTY_FEATURE();
-                            foreach (string x in property.listfeature)
+                            if (property.listfeature != null)
                             {
+                                foreach (string x in property.listfeature)
+                                {
 
-                                pf.Property_ID = (int)idd;
-                                pf.Feature_ID = int.Parse(x);
-                                db.PROPERTY_FEATURE.Add(pf);
+                                    pf.Property_ID = (int)idd;
+                                    pf.Feature_ID = int.Parse(x);
+                                    db.PROPERTY_FEATURE.Add(pf);
+                                    db.SaveChanges();
+                                }
+                            }
+                            else
+                            {
                                 db.SaveChanges();
                             }
 
@@ -190,10 +201,7 @@ namespace PPCRental_Project.Areas.Agency.Controllers
                     catch (Exception)
                     {
 
-                        property.Price = 100;
-                        property.BathRoom = 1;
-                        property.BedRoom = 1;
-                        property.PackingPlace = 1;
+
                         property.Created_at = DateTime.Now;
                         property.Create_post = DateTime.Now; // sua lai sau
                         property.UnitPrice = "VND";
@@ -212,12 +220,19 @@ namespace PPCRental_Project.Areas.Agency.Controllers
                             long idd = insertproperty(property);
 
                             PROPERTY_FEATURE pf = new PROPERTY_FEATURE();
-                            foreach (string x in property.listfeature)
+                            if (property.listfeature != null) 
                             {
+                                foreach (string x in property.listfeature)
+                                {
 
-                                pf.Property_ID = (int)idd;
-                                pf.Feature_ID = int.Parse(x);
-                                db.PROPERTY_FEATURE.Add(pf);
+                                    pf.Property_ID = (int)idd;
+                                    pf.Feature_ID = int.Parse(x);
+                                    db.PROPERTY_FEATURE.Add(pf);
+                                    db.SaveChanges();
+                                }
+                            }
+                            else
+                            {
                                 db.SaveChanges();
                             }
 
@@ -238,7 +253,7 @@ namespace PPCRental_Project.Areas.Agency.Controllers
             ViewBag.UserID = new SelectList(db.USER, "ID", "Email", property.UserID);
             ViewBag.Sale_ID = new SelectList(db.USER, "ID", "Email", property.Sale_ID);
             ViewBag.Ward_ID = new SelectList(db.WARD, "ID", "WardName", property.Ward_ID);
-            ViewBag.Feature_ID = new SelectList(db.FEATURE, "ID", "FeatureName");
+            ViewBag.feature = new SelectList(db.FEATURE, "ID", "FeatureName");
             return View(property);
         }
         public long insertproperty(PROPERTY entity)
