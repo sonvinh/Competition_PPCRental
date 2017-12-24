@@ -1,29 +1,32 @@
-﻿Feature: Postproject
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
+﻿Feature: PostProperty
+	As a owner of property
+	I want to advertise my property
+	so that i can easier to sell property.
 
-Background: 
-	Given the following project
-	| PropertyName                                 | PropertyType | Content                                                                                                      | Street          | Ward        | District | Price  | UnitPrice | Area  | BedRoom | BathRoom | PackingPlace | UserID | Create_at  | Create_post | Status   | Note | Update_at  | Sale_ID |
-	| PIS Top Apartment                            | Apartment    | The surrounding neighborhood is very much localized with a great number of local shops.                      | Cô Bắc          | P.Cô Giang  | Q.1      | 10000  | VND       | 120m2 | 3       | 2        | 1            | 1      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 2       |
-	| ViLa Q7                                      | Villa        | Brand new apartments with unbelievable river and city view, completely renovated and tastefully furnished.   | Nguyễn Thị Thập | P.Phú Mỹ    | Q.7      | 70000  | VND       | 120m2 | 3       | 4        | 1            | 1      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 2       |
-	| PIS Serviced Apartment – Style               | Office       | The well equipped kitchen is opened on a cozy living room and a dining area with table and chairs..          | Bến Vân Ðồn     | P.03        | Q.4      | 30000  | VND       | 130m2 | 2       | 3        | 1            | 4      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 3       |
-	| Vinhomes Central Park L2 – Duong’s Apartment | Villa        | Vinhomes Central Park is a new development that is in the heart of everything that Ho Chi Minh has to offer. | Bà Hạt          | P.02        | Q.10     | 110000 | VND       | 150m2 | 4       | 2        | 1            | 1      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 3       |
-	| Saigon Pearl Ruby Block                      | Apartment    | Studio apartment at central of CBD, nearby Ben Thanh market, Bui Vien Backpacker Area, 23/9 park…            | Chu Van An      | P.Long Bình | Q.9      | 30000  | VND       | 130m2 | 3       | 5        | 1            | 4      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 2       |  
-@mytag
-Scenario: Successfull Creating New Property
-	Given I am on Create Book Page
-	When I input the following information
-	| PropertyName                                 | PropertyType | Content                                                                                                      | Street          | Ward        | District | Price  | UnitPrice | Area  | BedRoom | BathRoom | PackingPlace | UserID | Create_at  | Create_post | Status   | Note | Update_at  | Sale_ID |
-	| PIS Top Apartment1                           | Apartment    | The surrounding neighborhood is very much localized with a great number of local shops.                      | Cô Bắc          | P.Cô Giang  | Q.1      | 10000  | VND       | 120m2 | 3       | 2        | 1            | 1      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 2       |
-	And I upload images for this property
-	And I upload Avatar for this property
-	Then the list property update
-	| PropertyName                                 | PropertyType | Content                                                                                                      | Street          | Ward        | District | Price  | UnitPrice | Area  | BedRoom | BathRoom | PackingPlace | UserID | Create_at  | Create_post | Status   | Note | Update_at  | Sale_ID |
-	| PIS Top Apartment                            | Apartment    | The surrounding neighborhood is very much localized with a great number of local shops.                      | Cô Bắc          | P.Cô Giang  | Q.1      | 10000  | VND       | 120m2 | 3       | 2        | 1            | 1      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 2       |
-	| ViLa Q7                                      | Villa        | Brand new apartments with unbelievable river and city view, completely renovated and tastefully furnished.   | Nguyễn Thị Thập | P.Phú Mỹ    | Q.7      | 70000  | VND       | 120m2 | 3       | 4        | 1            | 1      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 2       |
-	| PIS Serviced Apartment – Style               | Office       | The well equipped kitchen is opened on a cozy living room and a dining area with table and chairs..          | Bến Vân Ðồn     | P.03        | Q.4      | 30000  | VND       | 130m2 | 2       | 3        | 1            | 4      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 3       |
-	| Vinhomes Central Park L2 – Duong’s Apartment | Villa        | Vinhomes Central Park is a new development that is in the heart of everything that Ho Chi Minh has to offer. | Bà Hạt          | P.02        | Q.10     | 110000 | VND       | 150m2 | 4       | 2        | 1            | 1      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 3       |
-	| Saigon Pearl Ruby Block                      | Apartment    | Studio apartment at central of CBD, nearby Ben Thanh market, Bui Vien Backpacker Area, 23/9 park…            | Chu Van An      | P.Long Bình | Q.9      | 30000  | VND       | 130m2 | 3       | 5        | 1            | 4      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 2       |  
-	| PIS Top Apartment1                           | Apartment    | The surrounding neighborhood is very much localized with a great number of local shops.                      | Cô Bắc          | P.Cô Giang  | Q.1      | 10000  | VND       | 120m2 | 3       | 2        | 1            | 1      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 2       |
+	
+Background:
+	Given the following account
+	| email          | password | fullname   | phone      | address      | role |
+	| sale10@ppc.com | admin1   | marketing2 | 0123456789 | trần hưng đạo | 1    |
+	Given the following properties
+	| PropertyName       | Avatar                  | Images    | Property Type | Content                                                                                | Street         | Ward        | District | Price | UnitPrice | Area  | BedRoom | BathRoom | ParkingPlace | Owner            | Created_at | Created_post | Status   | Note | Updated_at |
+	| PIS Top Apartment1 | PIS_6656-Edit-stamp.jpg | test.jpg, | Apartment     | The surrounding neighborhood is very much localized with a great number of local shops | Điền Viên Thôn | TT Tây Đằng | Ba Vì    | 10000 | USD       | 120m2 | 3       | 3        | 1            | sale10@ppc.com   | 2017-11-09 | 2017-11-09   | Đã duyệt | Done | 2017-11-09 |
+	| PIS Top Apartment2 | PIS_6656-Edit-stamp.jpg | test.jpg, | Apartment     | The surrounding neighborhood is very much localized with a great number of local shops | Điền Viên Thôn | TT Tây Đằng | Ba Vì    | 10000 | USD       | 120m2 | 3       | 3        | 1            | sale10@ppc.com   | 2017-11-09 | 2017-11-09   | Đã duyệt | Done | 2017-11-09 |
+	| PIS Top Apartment3 | PIS_6656-Edit-stamp.jpg | test.jpg, | Apartment     | The surrounding neighborhood is very much localized with a great number of local shops | Điền Viên Thôn | TT Tây Đằng | Ba Vì    | 10000 | USD       | 120m2 | 3       | 3        | 1            | sale10@ppc.com   | 2017-11-09 | 2017-11-09   | Đã duyệt | Done | 2017-11-09 |
+	
+#//@mytagadd
+Scenario: Post project successfully
+	When I am at Home page
+	And I have navigate to Login page
+	And I entered 'sale10@ppc.com' and 'admin1'
+	And I have navigate to Post page
+	And I entered the following information
+	| PropertyName        | Avatar                  | Images   | Property Type | Content                                                                                | Street         | Ward        | District | Price | UnitPrice | Area  | BedRoom | BathRoom | ParkingPlace | Owner | Created_at | Created_post | Status   | Note | Updated_at |
+	| PIS Top Apartment5 | PIS_6656-Edit-stamp.jpg  | test.jpg, | Apartment     | The surrounding neighborhood is very much localized with a great number of local shops | Điền Viên Thôn | TT Tây Đằng | Ba Vì    | 10000 | USD       | 120m2 | 3       | 3        | 1            | sale10@ppc.com   | 2017-11-09 | 2017-11-09   | Đã duyệt | Done | 2017-11-09 |
+	And I have navigate to View List of Agency Project
+	Then The list of properties shoul have my new property
+	| PropertyName        | Avatar                  | Owner            | Price | Content                                                                                |
+	| PIS Top Apartment1 | PIS_6656-Edit-stamp.jpg | sale10@ppc.com   | 10000 | The surrounding neighborhood is very much localized with a great number of local shops |
+	| PIS Top Apartment2 | PIS_6656-Edit-stamp.jpg | sale10@ppc.com   | 10000 | The surrounding neighborhood is very much localized with a great number of local shops |
+	| PIS Top Apartment3 | PIS_6656-Edit-stamp.jpg | sale10@ppc.com   | 10000 | The surrounding neighborhood is very much localized with a great number of local shops |
+	| PIS Top Apartment5 | PIS_6656-Edit-stamp.jpg | sale10@ppc.com   | 10000 | The surrounding neighborhood is very much localized with a great number of local shops |

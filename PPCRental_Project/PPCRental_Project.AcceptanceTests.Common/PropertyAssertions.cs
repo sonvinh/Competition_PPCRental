@@ -22,6 +22,10 @@ namespace PPCRental_Project.AcceptanceTests.Common
         {
             shownBooks.Select(b => b.PropertyName).Should().Contain(expectedTitle);
         }
+        public static void ManageShouldShowList(IEnumerable<PROPERTY> shownPROPERTYs, IEnumerable<string> expectedPROPERTYNames)
+        {
+            shownPROPERTYs.Select(b => b.PropertyName).Should().Contain(expectedPROPERTYNames);
+        }
     }
 }
 

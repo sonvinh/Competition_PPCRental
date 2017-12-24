@@ -17,38 +17,56 @@ namespace PPCRental_Project.AcceptanceTests.Feature
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.2.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Postproject")]
-    public partial class PostprojectFeature
+    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
+    public partial class PostPropertyFeature
     {
         
-        private TechTalk.SpecFlow.ITestRunner testRunner;
+        private static TechTalk.SpecFlow.ITestRunner testRunner;
+        
+        private Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _testContext;
         
 #line 1 "Postproject.feature"
 #line hidden
         
-        [NUnit.Framework.OneTimeSetUpAttribute()]
-        public virtual void FeatureSetup()
+        public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Postproject", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-                    "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            get
+            {
+                return this._testContext;
+            }
+            set
+            {
+                this._testContext = value;
+            }
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
+        public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
+        {
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "PostProperty", "\tAs a owner of property\r\n\tI want to advertise my property\r\n\tso that i can easier " +
+                    "to sell property.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [NUnit.Framework.OneTimeTearDownAttribute()]
-        public virtual void FeatureTearDown()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
+        public static void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
-        [NUnit.Framework.SetUpAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
         public virtual void TestInitialize()
         {
+            if (((testRunner.FeatureContext != null) 
+                        && (testRunner.FeatureContext.FeatureInfo.Title != "PostProperty")))
+            {
+                global::PPCRental_Project.AcceptanceTests.Feature.PostPropertyFeature.FeatureSetup(null);
+            }
         }
         
-        [NUnit.Framework.TearDownAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCleanupAttribute()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -57,6 +75,7 @@ namespace PPCRental_Project.AcceptanceTests.Feature
         public virtual void ScenarioSetup(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioStart(scenarioInfo);
+            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<Microsoft.VisualStudio.TestTools.UnitTesting.TestContext>(TestContext);
         }
         
         public virtual void ScenarioCleanup()
@@ -66,155 +85,30 @@ namespace PPCRental_Project.AcceptanceTests.Feature
         
         public virtual void FeatureBackground()
         {
-#line 6
+#line 7
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "PropertyName",
-                        "PropertyType",
-                        "Content",
-                        "Street",
-                        "Ward",
-                        "District",
-                        "Price",
-                        "UnitPrice",
-                        "Area",
-                        "BedRoom",
-                        "BathRoom",
-                        "PackingPlace",
-                        "UserID",
-                        "Create_at",
-                        "Create_post",
-                        "Status",
-                        "Note",
-                        "Update_at",
-                        "Sale_ID"});
+                        "email",
+                        "password",
+                        "fullname",
+                        "phone",
+                        "address",
+                        "role"});
             table1.AddRow(new string[] {
-                        "PIS Top Apartment",
-                        "Apartment",
-                        "The surrounding neighborhood is very much localized with a great number of local " +
-                            "shops.",
-                        "Cô Bắc",
-                        "P.Cô Giang",
-                        "Q.1",
-                        "10000",
-                        "VND",
-                        "120m2",
-                        "3",
-                        "2",
-                        "1",
-                        "1",
-                        "2017-11-09",
-                        "2017-11-09",
-                        "Ðã duyệt",
-                        "Done",
-                        "2017-11-23",
-                        "2"});
-            table1.AddRow(new string[] {
-                        "ViLa Q7",
-                        "Villa",
-                        "Brand new apartments with unbelievable river and city view, completely renovated " +
-                            "and tastefully furnished.",
-                        "Nguyễn Thị Thập",
-                        "P.Phú Mỹ",
-                        "Q.7",
-                        "70000",
-                        "VND",
-                        "120m2",
-                        "3",
-                        "4",
-                        "1",
-                        "1",
-                        "2017-11-09",
-                        "2017-11-09",
-                        "Ðã duyệt",
-                        "Done",
-                        "2017-11-23",
-                        "2"});
-            table1.AddRow(new string[] {
-                        "PIS Serviced Apartment – Style",
-                        "Office",
-                        "The well equipped kitchen is opened on a cozy living room and a dining area with " +
-                            "table and chairs..",
-                        "Bến Vân Ðồn",
-                        "P.03",
-                        "Q.4",
-                        "30000",
-                        "VND",
-                        "130m2",
-                        "2",
-                        "3",
-                        "1",
-                        "4",
-                        "2017-11-09",
-                        "2017-11-09",
-                        "Ðã duyệt",
-                        "Done",
-                        "2017-11-23",
-                        "3"});
-            table1.AddRow(new string[] {
-                        "Vinhomes Central Park L2 – Duong’s Apartment",
-                        "Villa",
-                        "Vinhomes Central Park is a new development that is in the heart of everything tha" +
-                            "t Ho Chi Minh has to offer.",
-                        "Bà Hạt",
-                        "P.02",
-                        "Q.10",
-                        "110000",
-                        "VND",
-                        "150m2",
-                        "4",
-                        "2",
-                        "1",
-                        "1",
-                        "2017-11-09",
-                        "2017-11-09",
-                        "Ðã duyệt",
-                        "Done",
-                        "2017-11-23",
-                        "3"});
-            table1.AddRow(new string[] {
-                        "Saigon Pearl Ruby Block",
-                        "Apartment",
-                        "Studio apartment at central of CBD, nearby Ben Thanh market, Bui Vien Backpacker " +
-                            "Area, 23/9 park…",
-                        "Chu Van An",
-                        "P.Long Bình",
-                        "Q.9",
-                        "30000",
-                        "VND",
-                        "130m2",
-                        "3",
-                        "5",
-                        "1",
-                        "4",
-                        "2017-11-09",
-                        "2017-11-09",
-                        "Ðã duyệt",
-                        "Done",
-                        "2017-11-23",
-                        "2"});
-#line 7
- testRunner.Given("the following project", ((string)(null)), table1, "Given ");
-#line hidden
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Successfull Creating New Property")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void SuccessfullCreatingNewProperty()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successfull Creating New Property", new string[] {
-                        "mytag"});
-#line 15
-this.ScenarioSetup(scenarioInfo);
-#line 6
-this.FeatureBackground();
-#line 16
- testRunner.Given("I am on Create Book Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+                        "sale10@ppc.com",
+                        "admin1",
+                        "marketing2",
+                        "0123456789",
+                        "trần hưng đạo",
+                        "1"});
+#line 8
+ testRunner.Given("the following account", ((string)(null)), table1, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "PropertyName",
-                        "PropertyType",
+                        "Avatar",
+                        "Images",
+                        "Property Type",
                         "Content",
                         "Street",
                         "Ward",
@@ -224,45 +118,108 @@ this.FeatureBackground();
                         "Area",
                         "BedRoom",
                         "BathRoom",
-                        "PackingPlace",
-                        "UserID",
-                        "Create_at",
-                        "Create_post",
+                        "ParkingPlace",
+                        "Owner",
+                        "Created_at",
+                        "Created_post",
                         "Status",
                         "Note",
-                        "Update_at",
-                        "Sale_ID"});
+                        "Updated_at"});
             table2.AddRow(new string[] {
                         "PIS Top Apartment1",
+                        "PIS_6656-Edit-stamp.jpg",
+                        "test.jpg,",
                         "Apartment",
                         "The surrounding neighborhood is very much localized with a great number of local " +
-                            "shops.",
-                        "Cô Bắc",
-                        "P.Cô Giang",
-                        "Q.1",
+                            "shops",
+                        "Điền Viên Thôn",
+                        "TT Tây Đằng",
+                        "Ba Vì",
                         "10000",
-                        "VND",
+                        "USD",
                         "120m2",
                         "3",
-                        "2",
+                        "3",
                         "1",
-                        "1",
+                        "sale10@ppc.com",
                         "2017-11-09",
                         "2017-11-09",
-                        "Ðã duyệt",
+                        "Đã duyệt",
                         "Done",
-                        "2017-11-23",
-                        "2"});
-#line 17
- testRunner.When("I input the following information", ((string)(null)), table2, "When ");
+                        "2017-11-09"});
+            table2.AddRow(new string[] {
+                        "PIS Top Apartment2",
+                        "PIS_6656-Edit-stamp.jpg",
+                        "test.jpg,",
+                        "Apartment",
+                        "The surrounding neighborhood is very much localized with a great number of local " +
+                            "shops",
+                        "Điền Viên Thôn",
+                        "TT Tây Đằng",
+                        "Ba Vì",
+                        "10000",
+                        "USD",
+                        "120m2",
+                        "3",
+                        "3",
+                        "1",
+                        "sale10@ppc.com",
+                        "2017-11-09",
+                        "2017-11-09",
+                        "Đã duyệt",
+                        "Done",
+                        "2017-11-09"});
+            table2.AddRow(new string[] {
+                        "PIS Top Apartment3",
+                        "PIS_6656-Edit-stamp.jpg",
+                        "test.jpg,",
+                        "Apartment",
+                        "The surrounding neighborhood is very much localized with a great number of local " +
+                            "shops",
+                        "Điền Viên Thôn",
+                        "TT Tây Đằng",
+                        "Ba Vì",
+                        "10000",
+                        "USD",
+                        "120m2",
+                        "3",
+                        "3",
+                        "1",
+                        "sale10@ppc.com",
+                        "2017-11-09",
+                        "2017-11-09",
+                        "Đã duyệt",
+                        "Done",
+                        "2017-11-09"});
+#line 11
+ testRunner.Given("the following properties", ((string)(null)), table2, "Given ");
+#line hidden
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Post project successfully")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "PostProperty")]
+        public virtual void PostProjectSuccessfully()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Post project successfully", ((string[])(null)));
+#line 18
+this.ScenarioSetup(scenarioInfo);
+#line 7
+this.FeatureBackground();
+#line 19
+ testRunner.When("I am at Home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 20
- testRunner.And("I upload Avatar for this property: \'Avatar.jpg\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have navigate to Login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 21
- testRunner.And("I upload images for this property: \'Image1.jpg\',\'Image2.jpg\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I entered \'sale10@ppc.com\' and \'admin1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 22
+ testRunner.And("I have navigate to Post page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "PropertyName",
-                        "PropertyType",
+                        "Avatar",
+                        "Images",
+                        "Property Type",
                         "Content",
                         "Street",
                         "Ward",
@@ -272,146 +229,76 @@ this.FeatureBackground();
                         "Area",
                         "BedRoom",
                         "BathRoom",
-                        "PackingPlace",
-                        "UserID",
-                        "Create_at",
-                        "Create_post",
+                        "ParkingPlace",
+                        "Owner",
+                        "Created_at",
+                        "Created_post",
                         "Status",
                         "Note",
-                        "Update_at",
-                        "Sale_ID"});
+                        "Updated_at"});
             table3.AddRow(new string[] {
-                        "PIS Top Apartment",
+                        "PIS Top Apartment5",
+                        "PIS_6656-Edit-stamp.jpg",
+                        "test.jpg,",
                         "Apartment",
                         "The surrounding neighborhood is very much localized with a great number of local " +
-                            "shops.",
-                        "Cô Bắc",
-                        "P.Cô Giang",
-                        "Q.1",
+                            "shops",
+                        "Điền Viên Thôn",
+                        "TT Tây Đằng",
+                        "Ba Vì",
                         "10000",
-                        "VND",
+                        "USD",
                         "120m2",
                         "3",
-                        "2",
-                        "1",
-                        "1",
-                        "2017-11-09",
-                        "2017-11-09",
-                        "Ðã duyệt",
-                        "Done",
-                        "2017-11-23",
-                        "2"});
-            table3.AddRow(new string[] {
-                        "ViLa Q7",
-                        "Villa",
-                        "Brand new apartments with unbelievable river and city view, completely renovated " +
-                            "and tastefully furnished.",
-                        "Nguyễn Thị Thập",
-                        "P.Phú Mỹ",
-                        "Q.7",
-                        "70000",
-                        "VND",
-                        "120m2",
-                        "3",
-                        "4",
-                        "1",
-                        "1",
-                        "2017-11-09",
-                        "2017-11-09",
-                        "Ðã duyệt",
-                        "Done",
-                        "2017-11-23",
-                        "2"});
-            table3.AddRow(new string[] {
-                        "PIS Serviced Apartment – Style",
-                        "Office",
-                        "The well equipped kitchen is opened on a cozy living room and a dining area with " +
-                            "table and chairs..",
-                        "Bến Vân Ðồn",
-                        "P.03",
-                        "Q.4",
-                        "30000",
-                        "VND",
-                        "130m2",
-                        "2",
                         "3",
                         "1",
-                        "4",
+                        "sale10@ppc.com",
                         "2017-11-09",
                         "2017-11-09",
-                        "Ðã duyệt",
+                        "Đã duyệt",
                         "Done",
-                        "2017-11-23",
-                        "3"});
-            table3.AddRow(new string[] {
-                        "Vinhomes Central Park L2 – Duong’s Apartment",
-                        "Villa",
-                        "Vinhomes Central Park is a new development that is in the heart of everything tha" +
-                            "t Ho Chi Minh has to offer.",
-                        "Bà Hạt",
-                        "P.02",
-                        "Q.10",
-                        "110000",
-                        "VND",
-                        "150m2",
-                        "4",
-                        "2",
-                        "1",
-                        "1",
-                        "2017-11-09",
-                        "2017-11-09",
-                        "Ðã duyệt",
-                        "Done",
-                        "2017-11-23",
-                        "3"});
-            table3.AddRow(new string[] {
-                        "Saigon Pearl Ruby Block",
-                        "Apartment",
-                        "Studio apartment at central of CBD, nearby Ben Thanh market, Bui Vien Backpacker " +
-                            "Area, 23/9 park…",
-                        "Chu Van An",
-                        "P.Long Bình",
-                        "Q.9",
-                        "30000",
-                        "VND",
-                        "130m2",
-                        "3",
-                        "5",
-                        "1",
-                        "4",
-                        "2017-11-09",
-                        "2017-11-09",
-                        "Ðã duyệt",
-                        "Done",
-                        "2017-11-23",
-                        "2"});
-            table3.AddRow(new string[] {
+                        "2017-11-09"});
+#line 23
+ testRunner.And("I entered the following information", ((string)(null)), table3, "And ");
+#line 26
+ testRunner.And("I have navigate to View List of Agency Project", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "PropertyName",
+                        "Avatar",
+                        "Owner",
+                        "Price",
+                        "Content"});
+            table4.AddRow(new string[] {
                         "PIS Top Apartment1",
-                        "Apartment",
-                        "The surrounding neighborhood is very much localized with a great number of local " +
-                            "shops.",
-                        "Cô Bắc",
-                        "P.Cô Giang",
-                        "Q.1",
+                        "PIS_6656-Edit-stamp.jpg",
+                        "sale10@ppc.com",
                         "10000",
-                        "VND",
-                        "120m2",
-                        "3",
-                        "2",
-                        "1",
-                        "1",
-                        "2017-11-09",
-                        "2017-11-09",
-                        "Ðã duyệt",
-                        "Done",
-                        "2017-11-23",
-                        "2"});
-#line 22
- testRunner.Then("the list property update", ((string)(null)), table3, "Then ");
-#line 30
- testRunner.And("The Avatar should upload on server", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 31
- testRunner.And("The Images should upload on server", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        "The surrounding neighborhood is very much localized with a great number of local " +
+                            "shops"});
+            table4.AddRow(new string[] {
+                        "PIS Top Apartment2",
+                        "PIS_6656-Edit-stamp.jpg",
+                        "sale10@ppc.com",
+                        "10000",
+                        "The surrounding neighborhood is very much localized with a great number of local " +
+                            "shops"});
+            table4.AddRow(new string[] {
+                        "PIS Top Apartment3",
+                        "PIS_6656-Edit-stamp.jpg",
+                        "sale10@ppc.com",
+                        "10000",
+                        "The surrounding neighborhood is very much localized with a great number of local " +
+                            "shops"});
+            table4.AddRow(new string[] {
+                        "PIS Top Apartment5",
+                        "PIS_6656-Edit-stamp.jpg",
+                        "sale10@ppc.com",
+                        "10000",
+                        "The surrounding neighborhood is very much localized with a great number of local " +
+                            "shops"});
+#line 27
+ testRunner.Then("The list of properties shoul have my new property", ((string)(null)), table4, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
