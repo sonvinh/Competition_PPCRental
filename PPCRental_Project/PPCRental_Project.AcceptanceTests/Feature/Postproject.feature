@@ -1,0 +1,29 @@
+﻿Feature: Postproject
+	In order to avoid silly mistakes
+	As a math idiot
+	I want to be told the sum of two numbers
+
+Background: 
+	Given the following project
+	| PropertyName                                 | PropertyType | Content                                                                                                      | Street          | Ward        | District | Price  | UnitPrice | Area  | BedRoom | BathRoom | PackingPlace | UserID | Create_at  | Create_post | Status   | Note | Update_at  | Sale_ID |
+	| PIS Top Apartment                            | Apartment    | The surrounding neighborhood is very much localized with a great number of local shops.                      | Cô Bắc          | P.Cô Giang  | Q.1      | 10000  | VND       | 120m2 | 3       | 2        | 1            | 1      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 2       |
+	| ViLa Q7                                      | Villa        | Brand new apartments with unbelievable river and city view, completely renovated and tastefully furnished.   | Nguyễn Thị Thập | P.Phú Mỹ    | Q.7      | 70000  | VND       | 120m2 | 3       | 4        | 1            | 1      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 2       |
+	| PIS Serviced Apartment – Style               | Office       | The well equipped kitchen is opened on a cozy living room and a dining area with table and chairs..          | Bến Vân Ðồn     | P.03        | Q.4      | 30000  | VND       | 130m2 | 2       | 3        | 1            | 4      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 3       |
+	| Vinhomes Central Park L2 – Duong’s Apartment | Villa        | Vinhomes Central Park is a new development that is in the heart of everything that Ho Chi Minh has to offer. | Bà Hạt          | P.02        | Q.10     | 110000 | VND       | 150m2 | 4       | 2        | 1            | 1      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 3       |
+	| Saigon Pearl Ruby Block                      | Apartment    | Studio apartment at central of CBD, nearby Ben Thanh market, Bui Vien Backpacker Area, 23/9 park…            | Chu Van An      | P.Long Bình | Q.9      | 30000  | VND       | 130m2 | 3       | 5        | 1            | 4      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 2       |  
+@mytag
+Scenario: Successfull Creating New Property
+	Given I am on Create Book Page
+	When I input the following information
+	| PropertyName                                 | PropertyType | Content                                                                                                      | Street          | Ward        | District | Price  | UnitPrice | Area  | BedRoom | BathRoom | PackingPlace | UserID | Create_at  | Create_post | Status   | Note | Update_at  | Sale_ID |
+	| PIS Top Apartment1                           | Apartment    | The surrounding neighborhood is very much localized with a great number of local shops.                      | Cô Bắc          | P.Cô Giang  | Q.1      | 10000  | VND       | 120m2 | 3       | 2        | 1            | 1      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 2       |
+	And I upload images for this property
+	And I upload Avatar for this property
+	Then the list property update
+	| PropertyName                                 | PropertyType | Content                                                                                                      | Street          | Ward        | District | Price  | UnitPrice | Area  | BedRoom | BathRoom | PackingPlace | UserID | Create_at  | Create_post | Status   | Note | Update_at  | Sale_ID |
+	| PIS Top Apartment                            | Apartment    | The surrounding neighborhood is very much localized with a great number of local shops.                      | Cô Bắc          | P.Cô Giang  | Q.1      | 10000  | VND       | 120m2 | 3       | 2        | 1            | 1      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 2       |
+	| ViLa Q7                                      | Villa        | Brand new apartments with unbelievable river and city view, completely renovated and tastefully furnished.   | Nguyễn Thị Thập | P.Phú Mỹ    | Q.7      | 70000  | VND       | 120m2 | 3       | 4        | 1            | 1      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 2       |
+	| PIS Serviced Apartment – Style               | Office       | The well equipped kitchen is opened on a cozy living room and a dining area with table and chairs..          | Bến Vân Ðồn     | P.03        | Q.4      | 30000  | VND       | 130m2 | 2       | 3        | 1            | 4      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 3       |
+	| Vinhomes Central Park L2 – Duong’s Apartment | Villa        | Vinhomes Central Park is a new development that is in the heart of everything that Ho Chi Minh has to offer. | Bà Hạt          | P.02        | Q.10     | 110000 | VND       | 150m2 | 4       | 2        | 1            | 1      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 3       |
+	| Saigon Pearl Ruby Block                      | Apartment    | Studio apartment at central of CBD, nearby Ben Thanh market, Bui Vien Backpacker Area, 23/9 park…            | Chu Van An      | P.Long Bình | Q.9      | 30000  | VND       | 130m2 | 3       | 5        | 1            | 4      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 2       |  
+	| PIS Top Apartment1                           | Apartment    | The surrounding neighborhood is very much localized with a great number of local shops.                      | Cô Bắc          | P.Cô Giang  | Q.1      | 10000  | VND       | 120m2 | 3       | 2        | 1            | 1      | 2017-11-09 | 2017-11-09  | Ðã duyệt | Done | 2017-11-23 | 2       |

@@ -18,5 +18,10 @@ namespace PPCRental_Project.AcceptanceTests.Common
         {
             ShownName.Select(b => b.PropertyName).Should().Contain(expected);
         }
+        public static void HomeScreenShouldShow(IEnumerable<PROPERTY> shownBooks, string expectedTitle)
+        {
+            shownBooks.Select(b => b.PropertyName).Should().Contain(expectedTitle);
+        }
     }
 }
+
