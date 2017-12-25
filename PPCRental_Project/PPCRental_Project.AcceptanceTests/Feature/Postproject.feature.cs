@@ -95,8 +95,8 @@ namespace PPCRental_Project.AcceptanceTests.Feature
                         "address",
                         "role"});
             table1.AddRow(new string[] {
-                        "sale10@ppc.com",
-                        "admin1",
+                        "user@ppc.com",
+                        "user",
                         "marketing2",
                         "0123456789",
                         "trần hưng đạo",
@@ -141,7 +141,7 @@ namespace PPCRental_Project.AcceptanceTests.Feature
                         "3",
                         "3",
                         "1",
-                        "sale10@ppc.com",
+                        "user@ppc.com",
                         "2017-11-09",
                         "2017-11-09",
                         "Đã duyệt",
@@ -163,7 +163,7 @@ namespace PPCRental_Project.AcceptanceTests.Feature
                         "3",
                         "3",
                         "1",
-                        "sale10@ppc.com",
+                        "user@ppc.com",
                         "2017-11-09",
                         "2017-11-09",
                         "Đã duyệt",
@@ -185,7 +185,7 @@ namespace PPCRental_Project.AcceptanceTests.Feature
                         "3",
                         "3",
                         "1",
-                        "sale10@ppc.com",
+                        "user@ppc.com",
                         "2017-11-09",
                         "2017-11-09",
                         "Đã duyệt",
@@ -211,7 +211,7 @@ this.FeatureBackground();
 #line 20
  testRunner.Then("I have navigate to Login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 21
- testRunner.And("I entered \'sale10@ppc.com\' and \'admin1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I entered \'user@ppc.com\' and \'user\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 22
  testRunner.When("I have navigate to Post page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
@@ -252,7 +252,7 @@ this.FeatureBackground();
                         "3",
                         "3",
                         "1",
-                        "sale10@ppc.com",
+                        "user@ppc.com",
                         "2017-11-09",
                         "2017-11-09",
                         "Đã duyệt",
@@ -272,28 +272,28 @@ this.FeatureBackground();
             table4.AddRow(new string[] {
                         "PIS Top Apartment1",
                         "PIS_6656-Edit-stamp.jpg",
-                        "sale10@ppc.com",
+                        "user@ppc.com",
                         "10000",
                         "The surrounding neighborhood is very much localized with a great number of local " +
                             "shops"});
             table4.AddRow(new string[] {
                         "PIS Top Apartment2",
                         "PIS_6656-Edit-stamp.jpg",
-                        "sale10@ppc.com",
+                        "user@ppc.com",
                         "10000",
                         "The surrounding neighborhood is very much localized with a great number of local " +
                             "shops"});
             table4.AddRow(new string[] {
                         "PIS Top Apartment3",
                         "PIS_6656-Edit-stamp.jpg",
-                        "sale10@ppc.com",
+                        "user@ppc.com",
                         "10000",
                         "The surrounding neighborhood is very much localized with a great number of local " +
                             "shops"});
             table4.AddRow(new string[] {
                         "PIS Top Apartment5",
                         "PIS_6656-Edit-stamp.jpg",
-                        "sale10@ppc.com",
+                        "user@ppc.com",
                         "10000",
                         "The surrounding neighborhood is very much localized with a great number of local " +
                             "shops"});

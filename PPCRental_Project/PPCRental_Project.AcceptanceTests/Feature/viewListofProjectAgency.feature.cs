@@ -95,7 +95,7 @@ namespace PPCRental_Project.AcceptanceTests.Feature
                         "address",
                         "role"});
             table1.AddRow(new string[] {
-                        "user10@ppc.com",
+                        "user@ppc.com",
                         "user",
                         "marketing",
                         "0123456789",
@@ -141,7 +141,7 @@ namespace PPCRental_Project.AcceptanceTests.Feature
                         "3",
                         "3",
                         "1",
-                        "user10@ppc.com",
+                        "user@ppc.com",
                         "2017-11-09",
                         "2017-11-09",
                         "Đã duyệt",
@@ -163,7 +163,7 @@ namespace PPCRental_Project.AcceptanceTests.Feature
                         "3",
                         "3",
                         "1",
-                        "user10@ppc.com",
+                        "user@ppc.com",
                         "2017-11-09",
                         "2017-11-09",
                         "Đã duyệt",
@@ -185,7 +185,7 @@ namespace PPCRental_Project.AcceptanceTests.Feature
                         "3",
                         "3",
                         "1",
-                        "user10@ppc.com",
+                        "user@ppc.com",
                         "2017-11-09",
                         "2017-11-09",
                         "Đã duyệt",
@@ -212,7 +212,7 @@ this.FeatureBackground();
 #line 19
  testRunner.Then("I have navigate to Login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 20
- testRunner.And("I entered \'user10@ppc.com\' and \'user\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I entered \'user@ppc.com\' and \'user\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 21
  testRunner.When("I have navigate to View List of Project page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
