@@ -14,17 +14,16 @@ using TechTalk.SpecFlow;
 using System.Web.Mvc;
 using System.Web;
 
-
-namespace PPCRental_Project.AcceptanceTests.Drivers.Agency
+namespace PPCRental_Project.AcceptanceTests.Drivers.Sale
 {
-    public class AgencyDriver
+    public class SaleDriver
     {
-       K21T3_Team1_PPC3129Entities  db = new K21T3_Team1_PPC3129Entities();
+        K21T3_Team1_PPC3129Entities db = new K21T3_Team1_PPC3129Entities();
         private readonly CatalogContentU _content;
         private ActionResult _result;
         private PPCRental_Project.Controllers.AccountController agency;
         public USER us;
-        public AgencyDriver(CatalogContentU context)
+        public SaleDriver(CatalogContentU context)
         {
             _content = context;
         }
@@ -32,7 +31,7 @@ namespace PPCRental_Project.AcceptanceTests.Drivers.Agency
         {
             using (db)
             {
-                foreach( var row in us.Rows)
+                foreach (var row in us.Rows)
                 {
                     var user = new USER
                     {
@@ -51,15 +50,15 @@ namespace PPCRental_Project.AcceptanceTests.Drivers.Agency
                 }
                 db.SaveChanges();
             }
+            
         }
-        public void Navigate()
+        public void NavigateTo()
         {
-            using (var controller = new PPCRental_Project.Controllers.AccountController())
+            using (var controller = new PPCRental_Project.Areas.Admin.Controllers.AccountController())
             {
                 _result = controller.Login();
             }
         }
-
         public void Login(string email, string password)
         {
             agency = new PPCRental_Project.Controllers.AccountController();
@@ -70,13 +69,43 @@ namespace PPCRental_Project.AcceptanceTests.Drivers.Agency
             var moqSession = new Moq.Mock<HttpSessionStateBase>();
             moqContext.Setup(c => c.HttpContext.Session).Returns(moqSession.Object);
             agency.ControllerContext = moqContext.Object;
-            moqSession.Setup(s => s["UserRole"]).Returns("1");
+            moqSession.Setup(s => s["UserRole"]).Returns("0");
 
             us.Email = email;
             us.Password = password;
-           
-            agency.Login(email,password);
+
+            agency.Login(email, password);
         }
-        
+        public void GetListFromViewListOfAgencyProjectSale()
+        {
+            K21T3_Team1_PPC3129Entities get = new K21T3_Team1_PPC3129Entities();
+            
+
+            var controller = new PropertyAgencyController();
+
+            var moqContext = new Moq.Mock<ControllerContext>();
+            var moqSession = new Moq.Mock<HttpSessionStateBase>();
+            moqContext.Setup(c => c.HttpContext.Session).Returns(moqSession.Object);
+
+            var us = get.USER.FirstOrDefault(x => x.Email == "admin12@ppc.com");
+            //user.ControllerContext = moqContext.Object;
+
+            controller.ControllerContext = moqContext.Object;
+            moqSession.Setup(s => s["UserRole"]).Returns(us.Role);
+            moqSession.Setup(s => s["UserID"]).Returns(us.ID);
+
+            _result = controller.Index();
+        }
+        public void ShowProperty(Table expectedProperty) => ShowProperty(expectedProperty.Rows.Select(r => r["PropertyName"]));
+        public void ShowProperty(IEnumerable<string> expectedTitles)
+        {
+            //Act
+
+            var shownBooks = _result.Model<IEnumerable<PROPERTY>>();
+
+            //Assert
+            PropertyAssertions.ManageShouldShowList(shownBooks, expectedTitles);
+
+        }
     }
 }

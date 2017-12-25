@@ -18,14 +18,14 @@ namespace PPCRental_Project.AcceptanceTests.Feature
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.2.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class ViewLisofAgencyFeature
+    public partial class ViewListAgencyProjectSaleFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
         private Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _testContext;
         
-#line 1 "viewListofProjectAgency.feature"
+#line 1 "viewListAgencyProjectSale.feature"
 #line hidden
         
         public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
@@ -44,7 +44,7 @@ namespace PPCRental_Project.AcceptanceTests.Feature
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "ViewLisofAgency", "\tI want to view list of project", ProgrammingLanguage.CSharp, new string[] {
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "viewListAgencyProjectSale", "\tI want to view list of project", ProgrammingLanguage.CSharp, new string[] {
                         "automated"});
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -60,9 +60,9 @@ namespace PPCRental_Project.AcceptanceTests.Feature
         public virtual void TestInitialize()
         {
             if (((testRunner.FeatureContext != null) 
-                        && (testRunner.FeatureContext.FeatureInfo.Title != "ViewLisofAgency")))
+                        && (testRunner.FeatureContext.FeatureInfo.Title != "viewListAgencyProjectSale")))
             {
-                global::PPCRental_Project.AcceptanceTests.Feature.ViewLisofAgencyFeature.FeatureSetup(null);
+                global::PPCRental_Project.AcceptanceTests.Feature.ViewListAgencyProjectSaleFeature.FeatureSetup(null);
             }
         }
         
@@ -95,8 +95,8 @@ namespace PPCRental_Project.AcceptanceTests.Feature
                         "address",
                         "role"});
             table1.AddRow(new string[] {
-                        "user10@ppc.com",
-                        "user",
+                        "admin12@ppc.com",
+                        "admin",
                         "marketing",
                         "0123456789",
                         "trần hưng đạo",
@@ -126,7 +126,7 @@ namespace PPCRental_Project.AcceptanceTests.Feature
                         "Note",
                         "Updated_at"});
             table2.AddRow(new string[] {
-                        "PIS Top Apartment 1",
+                        "PIS Top Apartment1",
                         "PIS_6656-Edit-stamp.jpg",
                         "test.jpg,",
                         "Apartment",
@@ -141,14 +141,14 @@ namespace PPCRental_Project.AcceptanceTests.Feature
                         "3",
                         "3",
                         "1",
-                        "user10@ppc.com",
+                        "admin12@ppc.com",
                         "2017-11-09",
                         "2017-11-09",
                         "Đã duyệt",
                         "Done",
                         "2017-11-09"});
             table2.AddRow(new string[] {
-                        "PIS Top Apartment 2",
+                        "PIS Top Apartment2",
                         "PIS_6656-Edit-stamp.jpg",
                         "test.jpg,",
                         "Apartment",
@@ -163,14 +163,14 @@ namespace PPCRental_Project.AcceptanceTests.Feature
                         "3",
                         "3",
                         "1",
-                        "user10@ppc.com",
+                        "admin12@ppc.com",
                         "2017-11-09",
                         "2017-11-09",
                         "Đã duyệt",
                         "Done",
                         "2017-11-09"});
             table2.AddRow(new string[] {
-                        "PIS Top Apartment 3",
+                        "PIS Top Apartment3",
                         "PIS_6656-Edit-stamp.jpg",
                         "test.jpg,",
                         "Apartment",
@@ -185,7 +185,7 @@ namespace PPCRental_Project.AcceptanceTests.Feature
                         "3",
                         "3",
                         "1",
-                        "user10@ppc.com",
+                        "admin12@ppc.com",
                         "2017-11-09",
                         "2017-11-09",
                         "Đã duyệt",
@@ -197,12 +197,12 @@ namespace PPCRental_Project.AcceptanceTests.Feature
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("View List of Project")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ViewLisofAgency")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("View List of Agency Project Sale")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "viewListAgencyProjectSale")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("automated")]
-        public virtual void ViewListOfProject()
+        public virtual void ViewListOfAgencyProjectSale()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("View List of Project", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("View List of Agency Project Sale", ((string[])(null)));
 #line 17
 this.ScenarioSetup(scenarioInfo);
 #line 6
@@ -210,22 +210,22 @@ this.FeatureBackground();
 #line 18
  testRunner.When("I am at Home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 19
- testRunner.Then("I have navigate to Login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I have navigate to login admin page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 20
- testRunner.And("I entered \'user10@ppc.com\' and \'user\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("I enter \'admin12@ppc.com\' and \'admin\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 21
- testRunner.When("I have navigate to View List of Project page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I have navigate to View List of Project page sale", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "PropertyName"});
             table3.AddRow(new string[] {
-                        "PIS Top Apartment 1"});
+                        "PIS Top Apartment1"});
             table3.AddRow(new string[] {
-                        "PIS Top Apartment 2"});
+                        "PIS Top Apartment2"});
             table3.AddRow(new string[] {
-                        "PIS Top Apartment 3"});
+                        "PIS Top Apartment3"});
 #line 22
- testRunner.Then("I should see my own projects", ((string)(null)), table3, "Then ");
+ testRunner.Then("I should see my own projects sale", ((string)(null)), table3, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -9,10 +9,10 @@ Feature: Login
 Background:
 	Given the following account
 	| email          | password | fullname  | phone      | address       | role | 
-	| sale10@ppc.com | admin1   | marketing | 0123456789 | trần hưng đạo | 1    |
+	| user10@ppc.com | user   | marketing | 0123456789 | trần hưng đạo | 1    |
 
 Scenario: Login successfully
 	When I am at Home page
 	Then I have navigate to Login page
-	Then I entered 'sale10@ppc.com' and 'admin1'
+	Then I entered 'user10@ppc.com' and 'user'
 	

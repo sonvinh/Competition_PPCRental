@@ -233,7 +233,7 @@ namespace PPCRental_Project.AcceptanceTests.Drivers.Property
             var moqSession = new Moq.Mock<HttpSessionStateBase>();
             moqContext.Setup(c => c.HttpContext.Session).Returns(moqSession.Object);
 
-            var us = get.USER.FirstOrDefault(x => x.Email == "sale10@ppc.com");
+            var us = get.USER.FirstOrDefault(x => x.Email == "user10@ppc.com");
             //user.ControllerContext = moqContext.Object;
 
             controller.ControllerContext = moqContext.Object;
