@@ -158,6 +158,70 @@ namespace PPCRental_Project.AcceptanceTests.Drivers.Property
                 ab.SaveChanges();
             }
         }
+        
+        public void ShowProperty(Table expectedProperty) => ShowProperty(expectedProperty.Rows.Select(r => r["PropertyName"]));
+        public void ShowProperty(IEnumerable<string> expectedTitles)
+        {
+            //Act
+
+            var shownBooks = _result.Model<IEnumerable<PROPERTY>>();
+
+            //Assert
+            PropertyAssertions.ManageShouldShowList(shownBooks, expectedTitles);
+
+        }
+        public void OpenPropertyIdDetails(string propertyId)
+        {
+            var property = _context.ReferenceProject.GetById(propertyId);
+            using (var controller = new ProjectController())
+            {
+                _result = controller.Detail(property.ID);
+            }
+
+
+        }
+        public void ShowPropertyDetails(Table shownPropertyDetails)
+        {
+            //Arrange
+            K21T3_Team1_PPC3129Entities dbt = new K21T3_Team1_PPC3129Entities();
+            var expectedPropertyDetails = shownPropertyDetails.Rows.Single();
+            string exPropertyName = expectedPropertyDetails["PropertyName"];
+            string exAvatar = expectedPropertyDetails["Avatar"];
+            string exOwner = expectedPropertyDetails["Owner"];
+            var userID = dbt.USER.FirstOrDefault(d => d.Email == exOwner).ID;
+            string exContent = expectedPropertyDetails["Content"];
+            string exPrice = expectedPropertyDetails["Price"];
+            //Act
+            var actualPropertyDetails = _result.Model<PROPERTY>();
+
+            //Assert
+            actualPropertyDetails.Should().Match<PROPERTY>(
+                b => b.PropertyName == exPropertyName
+                && b.Avatar == exAvatar
+                && b.UserID == userID
+                && b.Content == exContent
+                && b.Price == int.Parse(exPrice));
+        }
+        public void GetListFromViewListOfProject()
+        {
+            K21T3_Team1_PPC3129Entities get = new K21T3_Team1_PPC3129Entities();
+            AccountController user = new AccountController();
+
+            var controller = new PropertyAgencyController();
+
+            var moqContext = new Moq.Mock<ControllerContext>();
+            var moqSession = new Moq.Mock<HttpSessionStateBase>();
+            moqContext.Setup(c => c.HttpContext.Session).Returns(moqSession.Object);
+
+            var us = get.USER.FirstOrDefault(x => x.Email == "sale10@ppc.com");
+            //user.ControllerContext = moqContext.Object;
+
+            controller.ControllerContext = moqContext.Object;
+            moqSession.Setup(s => s["UserRole"]).Returns(us.Role);
+            moqSession.Setup(s => s["UserID"]).Returns(us.ID);
+            _result = controller.Index();
+
+        }
         public void GetListFromViewListOfAgencyProject()
         {
             K21T3_Team1_PPC3129Entities get = new K21T3_Team1_PPC3129Entities();
@@ -177,17 +241,6 @@ namespace PPCRental_Project.AcceptanceTests.Drivers.Property
             moqSession.Setup(s => s["UserID"]).Returns(us.ID);
 
             _result = controller.Index();
-        }
-        public void ShowProperty(Table expectedProperty) => ShowProperty(expectedProperty.Rows.Select(r => r["PropertyName"]));
-        public void ShowProperty(IEnumerable<string> expectedTitles)
-        {
-            //Act
-
-            var shownBooks = _result.Model<IEnumerable<PROPERTY>>();
-
-            //Assert
-            PropertyAssertions.ManageShouldShowList(shownBooks, expectedTitles);
-
         }
     }
     

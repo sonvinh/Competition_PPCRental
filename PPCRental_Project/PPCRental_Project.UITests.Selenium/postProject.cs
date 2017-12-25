@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
+using OpenQA.Selenium;
 using PPCRental_Project.AcceptanceTests.Drivers.Property;
-namespace PPCRental_Project.AcceptanceTests.Steps
+using PPCRental_Project.UITests.Selenium.Support;
+
+namespace PPCRental_Project.UITests.Selenium
 {
-    [Binding]
-    public sealed class PostProperty
+    [Binding , Scope(Tag ="web")]
+    class postProject
     {
         private PropertyDriver _prodriver;
-        public PostProperty(PropertyDriver pdriver)
-        {
-            _prodriver = pdriver;
-
-        }
-
         [Given(@"the following properties")]
         public void GivenTheFollowingProperties(Table table)
         {
@@ -25,7 +22,7 @@ namespace PPCRental_Project.AcceptanceTests.Steps
         [When(@"I have navigate to Post page")]
         public void WhenIHaveNavigateToPostPage()
         {
-            _prodriver.NavigateToPostPage();
+            
         }
 
         [When(@"I entered the following information")]
@@ -33,16 +30,15 @@ namespace PPCRental_Project.AcceptanceTests.Steps
         {
             _prodriver.CreateProperty(table);
         }
-        
+        [When(@"I have navigate to View List of Agency Project")]
+        public void WhenIHaveNavigateToViewListOfAgencyProject()
+        {
+            _prodriver.GetListFromViewListOfAgencyProject();
+        }
         [Then(@"The list of properties shoul have my new property")]
         public void ThenTheListOfPropertiesShoulHaveMyNewProperty(Table table)
         {
             _prodriver.ShowProperty(table);
-        }
-        [When(@"I have navigate to View List of Agency Project")]
-        public void WhenIHaveNavigateToViewListOfProjectPage()
-        {
-            _prodriver.GetListFromViewListOfAgencyProject();
         }
     }
 }

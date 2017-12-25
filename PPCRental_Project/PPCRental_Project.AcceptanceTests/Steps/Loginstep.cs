@@ -20,13 +20,13 @@ namespace PPCRental_Project.AcceptanceTests.Steps
             _agencydriver.InserttoDB(table);
         }
 
-        [When(@"I have navigate to Login page")]
+        [Then(@"I have navigate to Login page")]
         public void WhenIHaveNavigateToLoginPage()
         {
             _agencydriver.Navigate();
         }
 
-        [When(@"I entered '(.*)' and '(.*)'")]
+        [Then(@"I entered '(.*)' and '(.*)'")]
         public void WhenIEnteredAnd(string email, string password)
         {
             _agencydriver.Login(email , password);

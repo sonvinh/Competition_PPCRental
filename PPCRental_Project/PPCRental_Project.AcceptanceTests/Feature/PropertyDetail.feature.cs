@@ -18,14 +18,14 @@ namespace PPCRental_Project.AcceptanceTests.Feature
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.2.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class PostPropertyFeature
+    public partial class PropertyDetailFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
         private Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _testContext;
         
-#line 1 "Postproject.feature"
+#line 1 "PropertyDetail.feature"
 #line hidden
         
         public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
@@ -44,8 +44,7 @@ namespace PPCRental_Project.AcceptanceTests.Feature
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "PostProperty", "\tAs a owner of property\r\n\tI want to post my property\r\n\tso that i can to sell prop" +
-                    "erty.", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "PropertyDetail", "\tAs I want to see detail of a property\r\n\tSo we can decide to bye this property", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -60,9 +59,9 @@ namespace PPCRental_Project.AcceptanceTests.Feature
         public virtual void TestInitialize()
         {
             if (((testRunner.FeatureContext != null) 
-                        && (testRunner.FeatureContext.FeatureInfo.Title != "PostProperty")))
+                        && (testRunner.FeatureContext.FeatureInfo.Title != "PropertyDetail")))
             {
-                global::PPCRental_Project.AcceptanceTests.Feature.PostPropertyFeature.FeatureSetup(null);
+                global::PPCRental_Project.AcceptanceTests.Feature.PropertyDetailFeature.FeatureSetup(null);
             }
         }
         
@@ -85,7 +84,7 @@ namespace PPCRental_Project.AcceptanceTests.Feature
         
         public virtual void FeatureBackground()
         {
-#line 7
+#line 5
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "email",
@@ -101,7 +100,7 @@ namespace PPCRental_Project.AcceptanceTests.Feature
                         "0123456789",
                         "trần hưng đạo",
                         "1"});
-#line 8
+#line 6
  testRunner.Given("the following account", ((string)(null)), table1, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -191,29 +190,25 @@ namespace PPCRental_Project.AcceptanceTests.Feature
                         "Đã duyệt",
                         "Done",
                         "2017-11-09"});
-#line 11
+#line 9
  testRunner.Given("the following properties", ((string)(null)), table2, "Given ");
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Post project successfully")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "PostProperty")]
-        public virtual void PostProjectSuccessfully()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("See list the propertyname , the avatar , owner , content , price of property")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "PropertyDetail")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
+        public virtual void SeeListThePropertynameTheAvatarOwnerContentPriceOfProperty()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Post project successfully", ((string[])(null)));
-#line 18
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("See list the propertyname , the avatar , owner , content , price of property", new string[] {
+                        "mytag"});
+#line 15
 this.ScenarioSetup(scenarioInfo);
-#line 7
+#line 5
 this.FeatureBackground();
-#line 19
- testRunner.When("I am at Home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 20
- testRunner.Then("I have navigate to Login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 21
- testRunner.And("I entered \'sale10@ppc.com\' and \'admin1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 22
- testRunner.When("I have navigate to Post page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 16
+ testRunner.Given("I open details of \'PIS Top Apartment1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "PropertyName",
@@ -237,7 +232,7 @@ this.FeatureBackground();
                         "Note",
                         "Updated_at"});
             table3.AddRow(new string[] {
-                        "PIS Top Apartment5",
+                        "PIS Top Apartment1",
                         "PIS_6656-Edit-stamp.jpg",
                         "test.jpg,",
                         "Apartment",
@@ -258,47 +253,8 @@ this.FeatureBackground();
                         "Đã duyệt",
                         "Done",
                         "2017-11-09"});
-#line 23
- testRunner.And("I entered the following information", ((string)(null)), table3, "And ");
-#line 26
- testRunner.And("I have navigate to View List of Agency Project", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                        "PropertyName",
-                        "Avatar",
-                        "Owner",
-                        "Price",
-                        "Content"});
-            table4.AddRow(new string[] {
-                        "PIS Top Apartment1",
-                        "PIS_6656-Edit-stamp.jpg",
-                        "sale10@ppc.com",
-                        "10000",
-                        "The surrounding neighborhood is very much localized with a great number of local " +
-                            "shops"});
-            table4.AddRow(new string[] {
-                        "PIS Top Apartment2",
-                        "PIS_6656-Edit-stamp.jpg",
-                        "sale10@ppc.com",
-                        "10000",
-                        "The surrounding neighborhood is very much localized with a great number of local " +
-                            "shops"});
-            table4.AddRow(new string[] {
-                        "PIS Top Apartment3",
-                        "PIS_6656-Edit-stamp.jpg",
-                        "sale10@ppc.com",
-                        "10000",
-                        "The surrounding neighborhood is very much localized with a great number of local " +
-                            "shops"});
-            table4.AddRow(new string[] {
-                        "PIS Top Apartment5",
-                        "PIS_6656-Edit-stamp.jpg",
-                        "sale10@ppc.com",
-                        "10000",
-                        "The surrounding neighborhood is very much localized with a great number of local " +
-                            "shops"});
-#line 27
- testRunner.Then("The list of properties shoul have my new property", ((string)(null)), table4, "Then ");
+#line 17
+ testRunner.Then("The property details have be show", ((string)(null)), table3, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

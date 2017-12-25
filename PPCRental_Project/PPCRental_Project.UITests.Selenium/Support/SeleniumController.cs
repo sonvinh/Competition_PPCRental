@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OpenQA.Selenium.Chrome;
 
 namespace PPCRental_Project.UITests.Selenium.Support
 {
@@ -29,7 +30,7 @@ namespace PPCRental_Project.UITests.Selenium.Support
             //Start web server to deploy and run app
             StartIisExpress();
 
-            Browser = Browsers.Firefox;
+            Browser = Browsers.Chrome;
 
             //Trace("Selenium started");
         }

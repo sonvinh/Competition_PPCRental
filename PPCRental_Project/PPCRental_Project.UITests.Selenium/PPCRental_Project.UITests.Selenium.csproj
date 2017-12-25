@@ -12,7 +12,8 @@
     <AssemblyName>PPCRental_Project.UITests.Selenium</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>fcbda892</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -103,6 +104,12 @@
     <Compile Include="Config\MsBuildDeployer.cs" />
     <Compile Include="Config\ProjectLocation.cs" />
     <Compile Include="Config\WebApplication.cs" />
+    <Compile Include="Feature\LoginSelenium.feature.cs">
+      <DependentUpon>LoginSelenium.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="postProject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\Browsers.cs" />
     <Compile Include="Support\SeleniumController.cs" />
@@ -112,10 +119,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Feature\LoginSelenium.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>LoginSelenium.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PPCRental_Project.AcceptanceTests.Common\PPCRental_Project.AcceptanceTests.Common.csproj">
+      <Project>{312540ef-0f99-471e-adb7-281f68665346}</Project>
+      <Name>PPCRental_Project.AcceptanceTests.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PPCRental_Project.AcceptanceTests\PPCRental_Project.AcceptanceTests.csproj">
+      <Project>{8ba3823c-888c-4ba0-887d-1050f6c5e2e1}</Project>
+      <Name>PPCRental_Project.AcceptanceTests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PPCRental_Project.UnitTests\PPCRental_Project.UnitTests.csproj">
+      <Project>{9ed3c737-9dfc-4e47-aee6-3b4b808c81b9}</Project>
+      <Name>PPCRental_Project.UnitTests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PPCRental_Project\PPCRental_Project.csproj">
+      <Project>{4e0753e5-7fff-4f3c-952f-5f0373d11d5c}</Project>
+      <Name>PPCRental_Project</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -123,8 +155,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props'))" />
+    <Error Condition="!Exists('..\packages\Selenium.Firefox.WebDriver.0.19.1\build\Selenium.Firefox.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Firefox.WebDriver.0.19.1\build\Selenium.Firefox.WebDriver.targets'))" />
   </Target>
   <Import Project="..\packages\Selenium.Chrome.WebDriver.2.33\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.2.33\build\Selenium.Chrome.WebDriver.targets')" />
+  <Import Project="..\packages\Selenium.Firefox.WebDriver.0.19.1\build\Selenium.Firefox.WebDriver.targets" Condition="Exists('..\packages\Selenium.Firefox.WebDriver.0.19.1\build\Selenium.Firefox.WebDriver.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

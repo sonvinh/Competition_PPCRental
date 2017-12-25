@@ -128,6 +128,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Postproject.feature</DependentUpon>
     </Compile>
+    <Compile Include="Feature\PropertyDetail.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PropertyDetail.feature</DependentUpon>
+    </Compile>
     <Compile Include="Feature\VIewListOfProject.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -137,6 +142,8 @@
     <Compile Include="Steps\HomeScreenstep.cs" />
     <Compile Include="Steps\Loginstep.cs" />
     <Compile Include="Steps\PostProperty.cs" />
+    <Compile Include="Steps\PropertyDetailStep.cs" />
+    <Compile Include="Steps\ViewofProjectAgency.cs" />
     <Compile Include="Support\ActionResultExtensions.cs" />
     <Compile Include="Support\CatalogContentU.cs" />
     <Compile Include="Support\CatalogContext.cs" />
@@ -154,6 +161,10 @@
     <None Include="Feature\Postproject.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Postproject.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Feature\PropertyDetail.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>PropertyDetail.feature.cs</LastGenOutput>
     </None>
     <None Include="Feature\VIewListOfProject.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
