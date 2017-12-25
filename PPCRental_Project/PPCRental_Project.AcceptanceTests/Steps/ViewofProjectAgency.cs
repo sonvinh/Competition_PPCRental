@@ -14,9 +14,19 @@ namespace PPCRental_Project.AcceptanceTests.Steps
         {
             _projectDriver = driver;
         }
-        
+        [When(@"I have navigate to View List of Project page")]
+        public void WhenIHaveNavigateToViewListOfProjectPage()
+        {
+            _projectDriver.GetListFromViewListOfAgencyProject();
+        }
+        [Then(@"I should see my own projects")]
+        public void ThenIShouldSeeMyOwnProjects(Table expectedList)
+        {
+            _projectDriver.ShowProperty(expectedList);
 
-        
+        }
+
+
 
     }
 }
