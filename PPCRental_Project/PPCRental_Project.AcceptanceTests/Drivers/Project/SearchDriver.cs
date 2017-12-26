@@ -12,7 +12,7 @@ using PPCRental_Project;
 
 namespace PPCRental_Project.AcceptanceTests.Drivers.Project
 {
-    class SearchDriver
+    public class SearchDriver
     {
         private readonly SearchResultState _result;
 

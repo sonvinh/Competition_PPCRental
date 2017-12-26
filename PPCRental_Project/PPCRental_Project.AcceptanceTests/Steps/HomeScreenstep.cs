@@ -4,7 +4,7 @@ using TechTalk.SpecFlow;
 
 namespace PPCRental_Project.AcceptanceTests.Steps
 {
-    [Binding]
+    [Binding, Scope(Tag = "automated")]
     class HomeScreenstep
     {
 

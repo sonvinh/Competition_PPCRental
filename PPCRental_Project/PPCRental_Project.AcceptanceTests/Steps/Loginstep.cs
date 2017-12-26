@@ -6,7 +6,7 @@ using TechTalk.SpecFlow;
 using PPCRental_Project.AcceptanceTests.Drivers.Agency;
 namespace PPCRental_Project.AcceptanceTests.Steps
 {
-    [Binding]
+    [Binding, Scope(Tag = "automated")]
     public sealed class Loginstep
     {
         private readonly AgencyDriver _agencydriver;

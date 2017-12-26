@@ -13,7 +13,7 @@ using PPCRental_Project;
 
 namespace PPCRental_Project.AcceptanceTests.Drivers.Project
 {
-    class ProjectDriver
+    public class ProjectDriver
     {
         private ActionResult _result;
         private PropertyAgencyController _controller;

@@ -104,11 +104,17 @@
     <Compile Include="Config\MsBuildDeployer.cs" />
     <Compile Include="Config\ProjectLocation.cs" />
     <Compile Include="Config\WebApplication.cs" />
+    <Compile Include="Feature\Filter.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Filter.feature</DependentUpon>
+    </Compile>
     <Compile Include="Feature\LoginSelenium.feature.cs">
       <DependentUpon>LoginSelenium.feature</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="FilterDistricts.cs" />
     <Compile Include="Loginsteps.cs" />
     <Compile Include="postProject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,6 +126,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Feature\Filter.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Filter.feature.cs</LastGenOutput>
+    </None>
     <None Include="Feature\LoginSelenium.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>LoginSelenium.feature.cs</LastGenOutput>
